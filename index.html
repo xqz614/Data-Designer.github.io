@@ -1,3 +1,4 @@
+
 <!--
  * @Author: Jon Barron
  * @Date: 2019-05-11 22:15:22
@@ -6,900 +7,670 @@
  * @Editors:sheng-qiang
  * @EditTime: 2021-02-05 22:39:00
  * @LastEditors:Chuang Zhao
- * @LastEditTime: 2022-05-22 23:03:00
+ * @LastEditTime: 2025-01-01 00:00:00
  -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta name=viewport content="width=device-width">
-  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-  <meta name="google-site-verification" content="XJEfN7CEZMRI5ZV4DpaAt1e5xjTSSNlVj2u65_T1h5k" />
-  <style type="text/css">
-    /* Color scheme stolen from Sergey Karayev */
-
-    a {
-      color: #1772d0;
-      /* color: #07889b; */
-      text-decoration: none;
-    }
-       
-    a.black {
-      color: #000000;
-      /* color: #07889b; */
-      text-decoration: none;
-    }
-    
-    span.tag {
-      color: #FFFFFF;
-      /* color: #07889b; */
-      background-color:#0076DF;
-      box-shadow: 3px 3px 1px #E0E0E0;
-      padding:1px 5px 2px 5px;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="XJEfN7CEZMRI5ZV4DpaAt1e5xjTSSNlVj2u65_T1h5k">
+  <meta name="description" content="Chuang Zhao's Academic Homepage - AI for Science, Transfer Learning, Recommendation System">
+  <title>Chuang Zhao (赵闯) - Academic Homepage</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/zc.ico">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <style>
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     
-    a:focus,
-    a:hover {
-      color: #e46911; /* #f09228; */
-      text-decoration: none;
+    /* Root Variables (Academic Color Palette) */
+    :root {
+      --primary: #1E3A8A; /* Deep Navy - Main color */
+      --secondary: #F97316; /* Orange - Highlight */
+      --neutral-100: #F8FAFC; /* Light gray - Background */
+      --neutral-200: #E2E8F0; /* Border */
+      --neutral-700: #334155; /* Text - Secondary */
+      --neutral-900: #1E293B; /* Text - Primary */
+      --tag-kdd: #165DFF;
+      --tag-tkde: #0E86D4;
+      --tag-www: #0CA678;
+      --tag-aaai: #793EF9;
+      --tag-other: #64748B;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --transition: all 0.2s ease-in-out;
     }
     
-    body,
-    td,
-    th,
-    tr,
-    p,
-    a {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 16px
+    /* Base Styles */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--neutral-900);
+      background-color: var(--neutral-100);
+      padding: 20px 0;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    h1 { /* Name */
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    h2 { /* Section Heading */
+      font-size: 1.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--neutral-200);
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    h3 { /* Subheading (Year) */
+      font-size: 1.25rem;
+      color: var(--neutral-700);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+      color: var(--neutral-700);
     }
     
     strong {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 16px;
+      font-weight: 600;
     }
     
-    heading {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 22px;
-      color: #e46911;
+    em {
+      font-style: italic;
     }
     
-    subheading {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 18px;
-      font-style:italic;
-      color: #E68D51;
+    /* Links & Buttons */
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
     }
     
-    papertitle {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 16px;
-      font-weight: bold;
+    a:hover {
+      color: var(--secondary);
+      text-decoration: underline;
     }
     
-    name {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 32px;
+    a.black {
+      color: var(--neutral-900);
     }
     
+    /* Profile Section */
+    .profile {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--neutral-200);
+      margin-bottom: 2rem;
+    }
+    
+    .profile__image {
+      flex: 0 0 180px;
+    }
+    
+    .profile__image img {
+      width: 100%;
+      border-radius: 50%;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .profile__info {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .profile__contact {
+      margin: 1rem 0;
+      font-weight: 500;
+    }
+    
+    .profile__collab {
+      color: var(--secondary);
+      font-weight: 500;
+      margin: 1rem 0;
+    }
+    
+    .profile__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .profile__links a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    /* News Section */
+    .news__list {
+      display: grid;
+      grid-template-columns: minmax(100px, 1fr) 5fr;
+      gap: 1rem;
+      list-style: none;
+    }
+    
+    .news__date {
+      font-weight: 500;
+      color: var(--neutral-700);
+      white-space: nowrap;
+    }
+    
+    .news__item {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    
+    .news__full {
+      margin-top: 1rem;
+      display: inline-block;
+    }
+    
+    /* Publications Section */
+    .publication__note {
+      font-style: italic;
+      color: var(--neutral-700);
+      margin-bottom: 1.5rem;
+    }
+    
+    .publication__item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+    }
+    
+    .publication__item:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    
+    .publication__tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+    
+    .tag-kdd { background-color: var(--tag-kdd); }
+    .tag-tkde { background-color: var(--tag-tkde); }
+    .tag-www { background-color: var(--tag-www); }
+    .tag-aaai { background-color: var(--tag-aaai); }
+    .tag-other { background-color: var(--tag-other); }
+    
+    .publication__title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .publication__authors {
+      margin-bottom: 0.5rem;
+    }
+    
+    .publication__authors .underline {
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    
+    .publication__journal {
+      color: var(--neutral-700);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    
+    .publication__links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    /* Sections Common */
+    .section__list {
+      display: grid;
+      grid-template-columns: minmax(120px, 1fr) 4fr;
+      gap: 1rem;
+      list-style: none;
+    }
+    
+    .section__label {
+      font-weight: 500;
+      color: var(--neutral-700);
+    }
+    
+    .section__content {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    
+    /* Awards Section */
+    .awards__list {
+      padding-left: 1.5rem;
+      color: var(--neutral-700);
+    }
+    
+    .awards__list li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Footer */
     .footer {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px;
-      opacity: 0.75;
-      color: #777;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--neutral-200);
+      font-size: 0.875rem;
+      color: var(--neutral-700);
+      text-align: center;
     }
     
-    .one {
-      width: 160px;
-      height: 160px;
-      position: relative;
+    .footer a {
+      color: var(--neutral-700);
+      font-weight: 400;
     }
     
-    .two {
-      width: 160px;
-      height: 160px;
-      position: absolute;
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
+    .footer a:hover {
+      color: var(--primary);
     }
     
-    .fade {
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .profile {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      
+      .profile__links {
+        justify-content: center;
+      }
+      
+      .news__list, .section__list {
+        grid-template-columns: 1fr;
+      }
+      
+      .news__date {
+        font-weight: 600;
+        color: var(--primary);
+      }
+      
+      .publication__item {
+        padding: 1rem;
+      }
     }
     
-    span.highlight {
-      background-color: #ffffd0;
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
     }
     
-    span.artifact {
-      color:#6cb41b;
-      padding: 1px;
-    }
-    
-    span.underline {
-      border-bottom:1px solid black;
-      padding-bottom:1px;
-    }
-    
-    span.tldr {
-      color: #555555;
-    }
-    
-    em.highlight {
-      color: #e37222;
+    /* Counter */
+    #busuanzi_container_site_pv {
+      margin-left: 1rem;
     }
   </style>
-  <link rel="icon" type="image/png" href="images/zc.ico">
-  <title>Chuang Zhao's Homepage</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-  <table width="960" border="0" align="center" cellspacing="0" cellpadding="0">
-    <tr>
-      <td>
-        <!-- Intro Begin -->
-        <table width="100%" align="left" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
-          <colgroup>
-            <col span="1" style="width: 23%;">
-            <col span="1" style="width: 77%;">
-          </colgroup>
-          <tr>
-            <td valign="middle">
-              <img style="border-radius:50%;" src="images/sand.jpg" height="170px">
-            </td>
-            <td valign="middle">
-              <p align="left">
-                <name>Chuang Zhao 赵闯</name>
-              </p>
-              <p>
-                I am a Phd candidate of Electronic and Computer Engineering at <a href="https://ece.hkust.edu.hk/"> HKUST(香港科技大学)</a> since 12/2024. <br>
-                I focus on <em class="highlight">AI for Science, Transfer Learning, and Recommendation System. </em> <br>
-				My current advisor is <a href="https://xmengli.github.io/">Prof. Xiaomeng Li</a>, co-supervised by <a href="https://cse.hkust.edu.hk/admin/people/faculty/profile/zxf">Prof.Xiaofang Zhou</a>.
-                My master advisor is <a href="http://come.tju.edu.cn/info/1089/3759.htm">Prof. Hongke Zhao</a>. <br>
-                I also work closely with <a href="https://eller.arizona.edu/people/yong-ge">Prof. Yong Ge</a> from Arizona and <a href="https://scholar.google.com/citations?user=cVDF1tkAAAAJ&hl=en">Prof. Hui Xiong</a> from HKUST(Guang Zhou).
-              </p>
-              <p align=left>Contact: czhaobo [AT] connect [dot] ust [dot] hk</p>
-              <p align=left, style="color: red;">I am actively looking for collaborators in Healthcare and Recommender system. If you are interested, please reach out via e-mail.</p>
+  <div class="container">
+    <!-- Profile Section -->
+    <section class="profile">
+      <div class="profile__image">
+        <img src="images/sand.jpg" alt="Chuang Zhao">
+      </div>
+      <div class="profile__info">
+        <h1>Chuang Zhao (赵闯)</h1>
+        <p>
+          PhD Candidate of Electronic and Computer Engineering<br>
+          <a href="https://ece.hkust.edu.hk/">Hong Kong University of Science and Technology (HKUST)</a> (Since 12/2024)<br>
+          Research Interests: <strong>AI for Science, Transfer Learning, Recommendation System</strong>
+        </p>
+        <p>
+          Advisors: <a href="https://xmengli.github.io/">Prof. Xiaomeng Li</a> (Primary),
+          <a href="https://cse.hkust.edu.hk/admin/people/faculty/profile/zxf">Prof. Xiaofang Zhou</a> (Co-supervised)<br>
+          Master Advisor: <a href="http://come.tju.edu.cn/info/1089/3759.htm">Prof. Hongke Zhao</a><br>
+          Collaborators: <a href="https://eller.arizona.edu/people/yong-ge">Prof. Yong Ge</a> (Arizona),
+          <a href="https://scholar.google.com/citations?user=cVDF1tkAAAAJ&hl=en">Prof. Hui Xiong</a> (HKUST-GZ)
+        </p>
+        <div class="profile__contact">
+          Email: czhaobo [AT] connect [dot] ust [dot] hk
+        </div>
+        <div class="profile__collab">
+          Actively seeking collaborators in Healthcare and Recommender Systems — feel free to reach out!
+        </div>
+        <div class="profile__links">
+          <a href="https://github.com/Data-Designer">GitHub</a>
+          <a href="https://scholar.google.com/citations?user=YYMcwZAAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Chuang-Zhao-5/research">ResearchGate</a>
+          <a href="https://dblp.org/pid/29/5452.html">DBLP</a>
+          <a href="https://blog.csdn.net/weixin_40539952?spm=1000.2115.3001.5343">CSDN Column</a>
+        </div>
+      </div>
+    </section>
 
-              <p align=left>
-                <a href="https://github.com/Data-Designer"> GitHub </a> &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-                <a href="https://scholar.google.com/citations?user=YYMcwZAAAAAJ&hl=en">Google Scholar</a> &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-                <a href="https://www.researchgate.net/profile/Chuang-Zhao-5/research">ResearchGate</a> &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-                <a href="https://dblp.org/pid/29/5452.html"> DBLP </a> &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-                <a href="https://blog.csdn.net/weixin_40539952?spm=1000.2115.3001.5343"> CSDN Column </a> 
-              </p>
-            </td>
-          </tr>
-        </table>
-        <!-- Intro End -->
+    <!-- News Section -->
+    <section>
+      <h2>News</h2>
+      <ul class="news__list">
+        <li class="news__date">05/2025</li>
+        <li class="news__item">One paper accepted by KDD! Congratulations.</li>
+        
+        <li class="news__date">12/2024</li>
+        <li class="news__item">Passed the PQE! Thrilling achievement.</li>
+        
+        <li class="news__date">07/2024</li>
+        <li class="news__item">One paper accepted by TKDE! Congratulations.</li>
+        
+        <li class="news__date">05/2024</li>
+        <li class="news__item">One paper accepted by TSMC! Congratulations.</li>
+        
+        <li class="news__date">10/2023</li>
+        <li class="news__item">One paper accepted by TKDE! Congratulations.</li>
+        
+        <li class="news__date">01/2023</li>
+        <li class="news__item">One paper accepted by WWW2023! Congratulations.</li>
+        
+        <li class="news__date">11/2022</li>
+        <li class="news__item">Decided to join HKUST to pursue PhD under Prof. Xiaomeng Li.</li>
+      </ul>
+      <a href="news.html" class="news__full">Full List →</a>
+    </section>
 
-        <!-- News Begin -->
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12">
-          <tr>
-            <td>
-              <heading>News</heading>
-            </td>
-          </tr>
-        </table>
-        <table width="100%" align="center" border="0" cellpadding="12" style="table-layout:fixed;">
-          <colgroup>
-            <col span="1" style="width: 23%;">
-            <col span="1" style="width: 77%;">
-          </colgroup>
-          <tr>
-           <td valign="center">
-             05/2025
-           </td>
-           <td valign="center">
-               One paper Accepted by KDD! Congratulations.
-           </td>
-                                       <tr>
-          <tr>
-           <td valign="center">
-             12/2024
-           </td>
-           <td valign="center">
-               I have passed the PQE! It's so thrilling. Congratulations.
-           </td>
-                                       <tr>
-          <tr>
-          <tr>
-           <td valign="center">
-             07/2024
-           </td>
-           <td valign="center">
-               One paper Accepted by TKDE! Congratulations.
-           </td>
-                                       <tr>
-          <tr>
-           <td valign="center">
-             05/2024
-           </td>
-           <td valign="center">
-               One paper Accepted by TSMC! Congratulations.
-           </td>
-                                       <tr>
-    	   <tr>
-            <td valign="center">
-              10/2023
-            </td>
-            <td valign="center">
-                One paper Accepted by TKDE! Congratulations.
-            </td>
-    	  		  		  		  <tr>
-                                      <!--      <td valign="center">
-              08/2023
-            </td>
-            <td valign="center">
-                One paper Accepted by CIKM2023! Congratulations.
-            </td>
-          </tr>-->
-<!--    	  		  		  <tr>-->
-<!--            <td valign="center">-->
-<!--              03/2023-->
-<!--            </td>-->
-<!--            <td valign="center">
-                Submit One paper to TPAMI! Good luck!
-            </td>
-          </tr> -->
-                          <!--		  <tr>
-            <td valign="center">
-              02/2023
-            </td>
-            <td valign="center">
-                Submit One paper to TC! Good luck!
-            </td>
-          </tr>
-    	  <tr>-->
-    	  <!-- <tr> -->
-            <!-- <td valign="center"> -->
-              <!-- 02/2023 -->
-            <!-- </td> -->
-            <!-- <td valign="center"> -->
-                <!-- Submit two papers to KDD2023! Good luck! -->
-            <!-- </td> -->
-          <!-- </tr> -->
-<!--    	  <tr>-->
-    	  		  <tr>
-            <td valign="center">
-              01/2023
-            </td>
-            <td valign="center">
-                One paper Accepted by WWW2023! Congratulations.
-            </td>
-          </tr>
-    	  <tr>
-            <td valign="center">
-              11/2022
-            </td>
-            <td valign="center">
-                I have decided to join HKUST to pursue my Phd, supervised by Prof Xiaomeng Li.
-            </td>
-          </tr>
-    	  <!-- <tr>
-            <td valign="center">
-              10/2022
-            </td>
-            <td valign="center">
-                My paper on class imbalance has been accepted by Journal on Computing! Congratulations.
-            </td>
-          </tr>-->
-    	  <!-- <tr>
-            <td valign="center">
-              10/2022
-            </td>
-            <td valign="center">
-                Submit my latest work to WWW2023.
-            </td>
-          </tr> -->
-    	  		   <!-- <tr>
-            <td valign="center">
-              09/2022
-            </td>
-            <td valign="center">
-                Invited to serve as WSDM reviewer.
-            </td>
-          </tr>
-    	  <tr>
-            <td valign="center">
-              07/2022
-            </td>
-            <td valign="center">
-                IELTS 7.0! Nice!
-            </td> -->
-          </tr>
-    	  <!--<tr>
-            <td valign="center">
-              07/2022
-            </td>
-            <td valign="center">
-                TKDE First Round! Good Luck!
-            </td>
-          </tr>
-    	  <!--<tr>
-            <td valign="center">
-              06/2022
-            </td>
-            <td valign="center">
-                I am too busy to revise JOC and TKDE while preparing for IELTS. Fighting!
-            </td>
-          </tr>
-    	  <tr>
-            <td valign="center">
-              05/2022
-            </td>
-            <td valign="center">
-                I'm looking for a PhD position, targeting the Computer Science Department in Hong Kong.
-            </td>
-          </tr>
-    	  <tr>
-            <td valign="center">
-              04/2022
-            </td>
-            <td valign="center">
-                I will be joining <a href="http://research.lenovo.com/webapp/view/researchField.html">Lenovo</a> as a Research Intern in summer 2022.
-            </td>
-          </tr> 
-    	  <tr>
-            <td valign="center">
-              12/2020
-            </td>
-            <td valign="center">
-                I will be joining <a href="https://fuxi.163.com/">Netease Games</a> as a Research Intern in winter 2021.
-            </td>
-          </tr>
-                  <td>
-           <a href="news.html">Full List</a>
-          </td>-->
-    	  <td>
-           <a href="news.html">Full List</a>
-          </td>
-          <td>
-          </td>
-         </tr>
-        </table>
-        <!-- News End -->
-    
-        <!-- Publications Begin -->
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12">
-          <tr>
-            <td>
-              <heading>Publications</heading>
-            </td>
-          </tr>
-        </table>
-        <!-- 优化后的补充说明行 -->
-        <table width="100%" align="center" border="0" cellpadding="0" style="margin-bottom: 12px;">
-          <tr>
-            <td style="padding-left: 12px; padding-right: 12px;">
-              <p style="font-style: italic; color: #666; margin: 0; font-size: 15px;">
-                Several papers are currently under review and are not listed here.
-              </p>
-            </td>
-          </tr>
-        </table>
+    <!-- Publications Section -->
+    <section>
+      <h2>Publications</h2>
+      <p class="publication__note">Several papers are currently under review and are not listed here.</p>
+      
+      <h3>2025</h3>
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[TNNLS 2025]</span>
+        <div class="publication__title">Enhancing Domain Generalization in Medical Image Segmentation With Global and Local Prompts</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Xiaomeng Li</div>
+        <div class="publication__journal">IEEE Transactions on Neural Networks and Learning Systems, Accepted. (CCF B类期刊)</div>
 
-        <table width="100%" align="center" border="0" cellpadding="12" style="table-layout:fixed;">
-          <!-- <colgroup>
-            <col span="1" style="width: 23%;">
-            <col span="1" style="width: 77%;">
-          </colgroup> -->
-          <td>
-              <subheading>2025</subheading>
-            </td>
-          <tr>
-            <td valign="center">
-              <span class="tag">[TNNLS 2025]</span>&nbsp;&nbsp;<papertitle> Enhancing Domain Generalization in Medical Image Segmentation With Global and Local Prompts</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Xiaomeng Li
-              <br>
-              <i> IEEE Transactions on Neural Networks and Learning Systems, Accepted. (CCF B类期刊)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-          <tr>
-          <tr>
-            <td valign="center">
-              <span class="tag">[TWeb 2025]</span>&nbsp;&nbsp;<papertitle> Cross-domain Transfer of Valence Preferences via a Meta-optimization Approach</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Hongke Zhao, Ming He, Xiaomeng Li, Jianping Fan
-              <br>
-              <i> ACM Transactions on the Web, Accepted. (CCF B类期刊)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td valign="center">
-              <span class="tag">[TKDE 2025]</span>&nbsp;&nbsp;<papertitle> Collaborative Knowledge Fusion: A Novel Method for Multi-task Recommender Systems via LLMs
-</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Xing Su, Hongke Zhao, Ming He, Jianping Fan, Xiaomeng Li
-              <br>
-              <i> IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-          <tr>
-          <tr>
-            <td valign="center">
-              <span class="tag">[KDD 2025]</span>&nbsp;&nbsp;<papertitle> Diffmv: A Unified Diffusion Framework for Healthcare Predictions with Random Missing Views and View Laziness
-</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Hui Tang, Hongke Zhao, Xiaomeng Li
-              <br>
-              <i> ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD’25), Accepted. (CCF A类会议,  Acceptance Rate：18.4%)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td valign="center">
-              <span class="tag">[TOIS 2025]</span>&nbsp;&nbsp;<papertitle> Beyond Sequential Patterns: Rethinking Healthcare Predictions with Contextual Insights
-</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Hui Tang, Hongke Zhao, Xiaomeng Li
-              <br>
-              <i> ACM Transactions on Information Systems (TOIS’25), Accepted. (CCF A类期刊)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td valign="center">
-              <span class="tag">[NAACL 2025]</span>&nbsp;&nbsp;<papertitle> Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Capabilities via Dynamic-Meta Instruction
-</papertitle>
-              <br>
-              Liping Liu, Chunhong Zhang, Likang Wu, <span class="underline">Chuang Zhao</span>, Zheng Hu, Ming He, Jianping Fan
-              <br>
-              <i>The 2025 Annual Conference of the Nations of the Americas Chapter of the ACL (NAACL’25), Accepted. (CCF B类会议, Acceptance Rate：22%)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-             <tr>
-               <td valign="center">
-                 <span class="tag">[WWW 2025]</span>&nbsp;&nbsp;<papertitle> Unveiling Discrete Clues: Superior Healthcare Predictions for Rare Diseases
-   </papertitle>
-                 <br>
-                 <span class="underline">Chuang Zhao</span>, Hui Tang, Jiheng Zhang, Xiaomeng Li
-                 <br>
-                 <i>ACM Web Conference 2025 (WWW’25), Accepted. (CCF A类会议, Oral rate: 5.42%)</i>
-                 <br>
-                   <a href="">Paper</a> /
-                   <a href="https://github.com/Data-Designer">Code</a>
-                 <br>
-               </td>
-             </tr>
-             
-             <td>
-           <subheading>2024</subheading>
-         </td>
-          <tr>
-            <td valign="center">
-              <span class="tag">[TKDE 2024]</span>&nbsp;&nbsp;<papertitle> Enhancing Precision Drug Recommendations via In-depth Exploration of Motif Relationships
-</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Hongke Zhao, Xiaofang Zhou, Xiaomeng Li
-              <br>
-              <i>IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td valign="center">
-              <span class="tag">[SIGKDD 2024]</span>&nbsp;&nbsp;<papertitle> Performative Debias with Fair-exposure Optimization Driven by Strategic Agents in Recommender Systems
-</papertitle>
-              <br>
-              Zhicheng Xiang, Hongke Zhao, <span class="underline">Chuang Zhao</span>, Ming He, Jianping Fan
-              <br>
-              <i>ACM SIGKDD Conference on Knowledge Discovery and Data Mining 2024 (SIGKDD'24). (CCF A类会议, Acceptance Rate：20%)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td valign="center">
-              <span class="tag">[TSMC 2024]</span>&nbsp;&nbsp;<papertitle> Bi-discriminator Domain Adversarial Neural Networks with Class-Level Gradient Alignment
-</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Hongke Zhao, Hengshu Zhu, Zhenya Huang, Nan Feng, Enhong Chen, Hui Xiong
-              <br>
-              <i>IEEE Transactions on Systems, Man, and Cybernetics: Systems, Accepted. (CCF B类期刊)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-          
-    	   <td>
-            <subheading>2023</subheading>
-          </td>
-    	  <tr>
-            <td valign="center">
-              <span class="tag">[TKDE 2023]</span>&nbsp;&nbsp;<papertitle>Cross-Domain Recommendation via Progressive Structural Alignment
-</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Hongke Zhao, Xiaomeng Li, Ming He, JiahuiWang, Jianping Fan
-              <br>
-              <i>IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-		  
-		  
-		  
-		  		            <tr>
-	        <td valign="center">
-	          <span class="tag">[CIKM 2023]</span>&nbsp;&nbsp;<papertitle>Sequential recommendation via an adaptive cross-domain knowledge decomposition
-</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Xinyu Li, Hongke Zhao, Ming He, Jianping Fan
-              <br>
-              <i>Conference on Information and Knowledge Management 2023 (CIKM’23), Accepted. (CCF B类会议, Acceptance Rate: 24%)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>
-              <br>
-            </td>
-          </tr>
-		  
-		            <tr>
-	        <td valign="center">
-	          <span class="tag">[WWW 2023]</span>&nbsp;&nbsp;<papertitle>Cross-domain recommendation via user interest alignment
-</papertitle>
-              <br>
-              <span class="underline">Chuang Zhao</span>, Hongke Zhao, Ming He, Jian Zhang, Jianping Fan
-              <br>
-              <i>ACM Web Conference 2023 (WWW’23), Accepted. (CCF A类会议,  Acceptance Rate：22%)</i>
-              <br>
-                <a href="">Paper</a> /
-                <a href="https://github.com/Data-Designer">Code</a>    
-              <br>
-            </td>
-          </tr>
-		  
-		  
-		  
-          <td>
-            <subheading>2022</subheading>
-          </td>
-			<tr>
-	        <td valign="center">
-	          <span class="tag">[JOC 2022]</span>&nbsp;&nbsp;<papertitle>An Ensemble Learning Approach with Gradient Resampling for Class-imbalanced problems</papertitle>
-	          <br>
-	           Hongke Zhao, <span class="underline">Chuang Zhao</span>, Xi Zhang*, Nanlin Liu, Hengshu Zhu, Qi Liu, Hui Xiong
-	          <br>
-	          <i>INFORMS journal on Computing (JOC), Accepted. (UTD24期刊，CCF B类期刊)</i>
-	          <br>
-	            <a href="">Paper</a> /
-	            <a href="https://github.com/Data-Designer">Code</a>    
-	          <br>
-	        </td>
-	      </tr>
-	
-	      <tr>
-	        <td valign="center">
-	          <span class="tag">[WWW 2022]</span>&nbsp;&nbsp;<papertitle>Winning Tracker: A New Model for Real-time Winning Prediction in MOBA Games</papertitle>
-	          <br>
-	          <span class="underline">Chuang Zhao</span>, Hongke Zhao, Yong Ge, Runze Wu, Xudong Shen
-	          <br>
-	          <i>ACM Web Conference 2022 (WWW’22), Accepted. (CCF A类会议,  Acceptance Rate：22%)</i>
-	          <br>
-	            <a href="data/WWW2022_WT.pdf">Paper</a> /
-	            <a href="https://github.com/Data-Designer">Code</a>    
-	          <br>
-	        </td>
-	      </tr>
-	      <tr>
-	        <td valign="center">
-	          <span class="tag">[AAAI 2022]</span>&nbsp;&nbsp;<papertitle>Multi-dimensional Prediction of Guild Health in Online Games: A Stability-Aware Multi-task Learning Approach</papertitle>
-	          <br>
-	          <span class="underline">Chuang Zhao</span>, Hongke Zhao, Runze Wu, Qilin Deng, Yu Ding, JianRong Tao, Changjie Fan
-	          <br>
-	          <i>36th AAAI Conference on Artificial Intelligence (AAAI'22), Accepted. (CCF A类会议，Acceptance Rate：14.6%)</i>
-	          <br>
-	            <a href="data/AAAI2022_SAMLA.pdf">Paper</a> /
-				<a href="data/AAAI2022_SAMLA_A.pdf">Appendix</a> /
-	            <a href="https://github.com/Data-Designer">Code</a>
-	          <br>
-	        </td>
-	      </tr>
-	        <tr>
-	          <td valign="center">
-	          <span class="tag">[AAAI 2022]</span>&nbsp;&nbsp;<papertitle>Co-Promotion Predictions of Financing Market and Sales Market: A Cooperative-Competitive Attention Approach</papertitle>
-	          <br>
-	          Lei Zhang, Xiang Wang, <span class="underline">Chuang Zhao</span>, Hongke Zhao, Rui Li, Runze Wu
-	          <br>
-	          <i>36th AAAI Conference on Artificial Intelligence (AAAI'22), Accepted. (CCF A类会议，Acceptance Rate：14.6%)</i>
-	          <br>
-	            <a href="data/AAAI2022_CATN.pdf">Paper</a> /
-	            <a href="https://github.com/Data-Designer">Code</a>
-	            <br>
-	        </td>
-	      </tr>
-		  <tr>
-	        <td valign="center">
-	            <span class="tag">[TEVC 2022]</span>&nbsp;&nbsp;<papertitle>CoEA: A Cooperative–Competitive Evolutionary Algorithm for Bidirectional Recommendations</papertitle>
-	            <br>
-	            Hongke Zhao, Xinpeng Wu, <span class="underline">Chuang Zhao</span>, Lei Zhang, Haiping Ma, Fan Cheng
-	            <br>
-	            <i>IEEE Transactions on Evolutionary Computation (IEEE TEVC), 26(1), 28-42, 2022. (IF:11.169, ABS 4, CCF B类期刊)</i>
-	            <br>
-	            <a href="data/Tevc.pdf">Paper</a> /
-	            <a href="https://github.com/Data-Designer">Code</a>
-	            <br>
-	        </td>
-	      </tr>
-			<td>
-	        <subheading>2020</subheading>
-			</td>
-		    <tr>
-	        <td valign="center">
-	            <span class="tag">[ICIS'20]</span>&nbsp;&nbsp;<papertitle>A Machine Learning Method for Measuring Information Disclosure in Sharing Economy Platforms</papertitle>
-	            <br>
-	            Xin Wei, Wei He, Xi Zhang, <span class="underline">Chuang Zhao</span>, Hongke Zhao
-	            <br>
-	            <i>Forty-First International Conference on Information Systems (ICIS’20), India 2020, Accepted. (Acceptance Rate：28%)</i>
-	            <br>
-	            <a href="data/ICIS2020.pdf">Paper</a> / 
-	            <a href="https://github.com/Data-Designer">Code</a>
-	            <br>
-	        </td>
-	      </tr>
-	      <tr>
-	        <td valign="center">
-	            <span class="tag">[JSSMS 2020]</span>&nbsp;&nbsp;<papertitle>Fresh Food Logistics Risk Assessment Based on Bayesian Network</papertitle>
-	            <br>
-	            <span class="underline">Chuang Zhao</span>, Lang Kun
-	            <br>
-	            <i>Journal of Systems Science and Mathematical Sciences (JSSMS), 2020, 40(11), 2108. (CSCD, 北大核心)</i>
-	            <br>
-	            <a href="data/Fresh2020.pdf">Paper</a> / 
-	            <a href="https://github.com/Data-Designer">Code</a>
-	            <br>
-	        </td>
-	      </tr>
-	    </table>
-	    <!-- Publications End -->
-		
-		<!-- Internship Begin -->
-	    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12">
-	      <tr>
-	        <td>
-	          <heading>Internship</heading>
-	        </td>
-	      </tr>
-	    </table>
-	    <table width="100%" align="center" border="0" cellpadding="12" style="table-layout:fixed;">
-	      <colgroup>
-	            <col span="1" style="width: 23%;">
-	            <col span="1" style="width: 77%;">
-	      </colgroup>
-		  <tr>
-	        <td valign="center">
-	          <a href="http://research.lenovo.com/webapp/view/index.html"><span>Beijin</span></a>
-	        </td>
-	        <td valign="center">
-	            <em>Research Intern (Mentor: <a href="https://scholar.google.com/citations?user=bWIHRvoAAAAJ&hl=en">Ming He</a>)</em>, Lenovo AI Lab, Beijin, China, 5/2022 – 8/2023
-	        </td>
-	      </tr>
-	      <tr>
-	        <td valign="center">
-	          <a href="https://fuxi.163.com/"><span>Hang Zhou</span></a>
-	        </td>
-	        <td valign="center">
-	            <em>Research Intern (Mentor: <a href="https://wu-runze.github.io/">Runze Wu</a>)</em>, NetEase Games, Hangzhou, China, 12/2020 – 05/2022
-	        </td>
-	      </tr>
-	
-	    </table>
-	    <!-- Internship End -->
-	    <!--Profession Begin --->
-	    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12">
-	      <tr>
-	        <td>
-	          <heading>Academic Services</heading>
-	        </td>
-	      </tr>
-	    </table>
-	    <table width="100%" align="center" border="0" cellpadding="12" style="table-layout:fixed;">
-	      <colgroup>
-	            <col span="1" style="width: 23%;">
-	            <col span="1" style="width: 77%;">
-	      </colgroup>
-	    </table>
-	    <table width="100%" align="center" border="0" cellpadding="12" style="table-layout:fixed;">
-	      <colgroup>
-	            <col span="1" style="width: 23%;">
-	            <col span="1" style="width: 77%;">
-	      </colgroup>
-		  <tr>
-	        <td valign="center">
-	          Conference Reviewer
-	        </td>
-	        <td>
-	            WSDM 2022
-	            <br>
-				SIGKDD 2024
-                <br>
-                SIGKDD 2025, ICLR 2025, WWW 2025, SIGIR 2025, NIPS 2025, ACL 2025
-                <br>
-                SIGKDD 2026, WSDM 2026, AAAI 2026, WWW 2026, ICML 2026
-	        </td>
-	      </tr> 
-	      <tr>
-	        <td valign="center">
-	            Journal Reviewer
-	        </td>
-	        <td>
-                PeerJ Computer Science
-                <br>
-                Information Processing and Management
-                <br>
-                IEEE Transactions on Knowledge and Data Engineering
-                <br>
-                IEEE Transactions on Systems, Man, and Cybernetics: Systems
-                <br>
-                IEEE Transactions on Learning Technologies
-                <br>
-	            Journal of Computer Science and Technology
-                <br>
-                Expert Systems With Applications
-                <br>
-                Knowledge-based Systems
-	            <br>
-	            Electronic Commerce Research and Applications
-                <br>
-	            Multimedia Systems
-                <br>
-                IEEE Transactions on Big Data
-                <br>
-                Science Reports
-                <br>
-                ACM Transactions on Information Systems
-	        </td>
-	      </tr>
-	    </table>
-	    <!-- Profession End-->
-	
-	    <!-- Education Begin -
-	    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12">
-	      <tr>
-	        <td>
-	          <heading>Education</heading>
-	        </td>
-	      </tr>
-	    </table>
-	    <table width="100%" align="center" border="0" cellpadding="12" style="table-layout:fixed;">
-	      <colgroup>
-	            <col span="1" style="width: 23%;">
-	            <col span="1" style="width: 77%;">
-	      </colgroup>
-	      <tr>
-	        <td valign="center">
-	          2020-
-	        </td>
-	        <td> 
-	            Ph.D in Computer Science and Technology (Candidate)
-	            <br>
-	            <span><a class="black" href="https://www.ucas.ac.cn/">University of Chinese Academy of Sciences</a> (Cultivation Unit: <a class="black" href="http://www.ict.ac.cn/">Institute of Computing Technology</a>, <a class="black" href="http://www.cas.cn/">Chinese Academy of Sciences</a>)</span>
-	        </td>
-	      </tr>
-	      <tr>
-	        <td valign="center">
-	          2018-2020
-	        </td>
-	        <td> 
-	            M. E. in Computer Science and Technology
-	            <br>
-	            <span><a class="black" href="https://www.ucas.ac.cn/">University of Chinese Academy of Sciences</a> (Cultivation Unit: <a class="black" href="http://www.ict.ac.cn/">Institute of Computing Technology</a>, <a class="black" href="http://www.cas.cn/">Chinese Academy of Sciences</a>)</span>
-	        </td>
-	      </tr>
-	      <tr>
-	        <td valign="center">
-	          2014-2018
-	        </td>
-	        <td>
-	            B. S. in Computer Science and Technology
-	            <br>
-	            <span><a class="black" href="https://ai.bnu.edu.cn/">School of Information Science and Technology</a>, <a class="black" href="https://www.bnu.edu.cn/xbyx/index.htm">Beijing Normal University</a></span>
-	        </td>
-	      </tr>
-	    </table>
-	    <!-- Education End -->
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[TWeb 2025]</span>
+        <div class="publication__title">Cross-domain Transfer of Valence Preferences via a Meta-optimization Approach</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Ming He, Xiaomeng Li, Jianping Fan</div>
+        <div class="publication__journal">ACM Transactions on the Web, Accepted. (CCF B类期刊)</div>
 
-<!-- 		       <!-- Prof Begin 
-       <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12">
-        <tr>
-          <td>
-            <heading>Professional Activities (Reviewer)</heading>
-          </td>
-        </tr>
-      </table>
-       <ul>
-	   	   <li> ACM International Conference on Web Search and Data Mining. </li>
-	   <li> Journal of Computer Science and Technology. </li>
-	   <li> Electronic Commerce Research and Applications. </li>
-        </ul>
-        <!-- Prof End --> 
-		
-		
-       
-       <!-- Awards Begin -->
-       <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12">
-        <tr>
-          <td>
-            <heading>Recent Honors and Awards</heading>
-          </td>
-        </tr>
-      </table>
-       <ul>
-           <li> 2025: Outstanding Reviewer for KDD. </li>
-           <li> 2024: Excellent Reviewer for KDD. </li>
-       <li> 2023: Outstanding thesis award of TJU. </li>
-    	<li>2022  &amp; 2021: First-class Scholarship of TJU (Top 1%).</li>
-        <li>2021: National Graduate Student Mathematical Modeling (Third Prize).</li>
-        <li>2021: Merit Student of TJU.</li>
-        <li>2020: National Encouragement Scholarship (Top 1%).</li>
-    	<li>2020: Outstanding Student Leaders.</li>
-    	<li>2019: Liaoning Province Contemporary Undergraduate Mathematical Contest in Modeling (First Prize).</li>
-    	<li>2019: Liaoning Province Internet plus entrepreneurship competition (First Prize).</li>
-    	<li>2019: National Social Practice Activities (First Prize).</li>
-        </ul>
-        <!-- Awards End -->
-    
-        <table width="100%" align="center" border="0" cellpadding="12">
-          <tr>
-            <td width="100%" valign="center">
-              <p class="footer">
-                Design: <a href="https://jonbarron.info/" target="_blank" style="color: #777; font-size: 14px;">Jon Barron</a>, <a href="https://liminyang.web.illinois.edu/  " target="_blank" style="color: #777; font-size: 14px;">Limin Yang</a> and <a href="https://sheng-qiang.github.io/" target="_blank" style="color: #777; font-size: 14px;">Chuang Zhao</a> <br>
-              Last updated:
-                <script>
-                  t = new Date(document.lastModified).toLocaleDateString()
-                  document.write(t);
-                </script>
-               &nbsp;&nbsp;
-               <span id="busuanzi_container_site_pv">#Visit: <span id="busuanzi_value_site_pv"></span> (2022/5/22~)</span>
-               <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=b2Y7F_bl6Usq0MdZHYxwFenfzkh5yaxJKIaE57rqReg&cl=ffffff&w=a"></script>
-              </p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-tkde">[TKDE 2025]</span>
+        <div class="publication__title">Collaborative Knowledge Fusion: A Novel Method for Multi-task Recommender Systems via LLMs</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Xing Su, Hongke Zhao, Ming He, Jianping Fan, Xiaomeng Li</div>
+        <div class="publication__journal">IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</div>
 
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-kdd">[KDD 2025]</span>
+        <div class="publication__title">Diffmv: A Unified Diffusion Framework for Healthcare Predictions with Random Missing Views and View Laziness</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hui Tang, Hongke Zhao, Xiaomeng Li</div>
+        <div class="publication__journal">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD’25), Accepted. (CCF A类会议, Acceptance Rate：18.4%)</div>
+
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[TOIS 2025]</span>
+        <div class="publication__title">Beyond Sequential Patterns: Rethinking Healthcare Predictions with Contextual Insights</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hui Tang, Hongke Zhao, Xiaomeng Li</div>
+        <div class="publication__journal">ACM Transactions on Information Systems (TOIS’25), Accepted. (CCF A类期刊)</div>
+
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[NAACL 2025]</span>
+        <div class="publication__title">Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Capabilities via Dynamic-Meta Instruction</div>
+        <div class="publication__authors">Liping Liu, Chunhong Zhang, Likang Wu, <span class="underline">Chuang Zhao</span>, Zheng Hu, Ming He, Jianping Fan</div>
+        <div class="publication__journal">The 2025 Annual Conference of the Nations of the Americas Chapter of the ACL (NAACL’25), Accepted. (CCF B类会议, Acceptance Rate：22%)</div>
+
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-www">[WWW 2025]</span>
+        <div class="publication__title">Unveiling Discrete Clues: Superior Healthcare Predictions for Rare Diseases</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hui Tang, Jiheng Zhang, Xiaomeng Li</div>
+        <div class="publication__journal">ACM Web Conference 2025 (WWW’25), Accepted. (CCF A类会议, Oral rate: 5.42%)</div>
+
+      </div>
+      
+      <h3>2024</h3>
+      <div class="publication__item">
+        <span class="publication__tag tag-tkde">[TKDE 2024]</span>
+        <div class="publication__title">Enhancing Precision Drug Recommendations via In-depth Exploration of Motif Relationships</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Xiaofang Zhou, Xiaomeng Li</div>
+        <div class="publication__journal">IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</div>
+
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-kdd">[SIGKDD 2024]</span>
+        <div class="publication__title">Performative Debias with Fair-exposure Optimization Driven by Strategic Agents in Recommender Systems</div>
+        <div class="publication__authors">Zhicheng Xiang, Hongke Zhao, <span class="underline">Chuang Zhao</span>, Ming He, Jianping Fan</div>
+        <div class="publication__journal">ACM SIGKDD Conference on Knowledge Discovery and Data Mining 2024 (SIGKDD'24). (CCF A类会议, Acceptance Rate：20%)</div>
+
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[TSMC 2024]</span>
+        <div class="publication__title">Bi-discriminator Domain Adversarial Neural Networks with Class-Level Gradient Alignment</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Hengshu Zhu, Zhenya Huang, Nan Feng, Enhong Chen, Hui Xiong</div>
+        <div class="publication__journal">IEEE Transactions on Systems, Man, and Cybernetics: Systems, Accepted. (CCF B类期刊)</div>
+
+      </div>
+      
+      <h3>2023</h3>
+      <div class="publication__item">
+        <span class="publication__tag tag-tkde">[TKDE 2023]</span>
+        <div class="publication__title">Cross-Domain Recommendation via Progressive Structural Alignment</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Xiaomeng Li, Ming He, JiahuiWang, Jianping Fan</div>
+        <div class="publication__journal">IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</div>
+
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[CIKM 2023]</span>
+        <div class="publication__title">Sequential recommendation via an adaptive cross-domain knowledge decomposition</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Xinyu Li, Hongke Zhao, Ming He, Jianping Fan</div>
+        <div class="publication__journal">Conference on Information and Knowledge Management 2023 (CIKM’23), Accepted. (CCF B类会议, Acceptance Rate: 24%)</div>
+
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-www">[WWW 2023]</span>
+        <div class="publication__title">Cross-domain recommendation via user interest alignment</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Ming He, Jian Zhang, Jianping Fan</div>
+        <div class="publication__journal">ACM Web Conference 2023 (WWW’23), Accepted. (CCF A类会议, Acceptance Rate：22%)</div>
+
+      </div>
+      
+      <h3>2022</h3>
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[JOC 2022]</span>
+        <div class="publication__title">An Ensemble Learning Approach with Gradient Resampling for Class-imbalanced problems</div>
+        <div class="publication__authors">Hongke Zhao, <span class="underline">Chuang Zhao</span>, Xi Zhang*, Nanlin Liu, Hengshu Zhu, Qi Liu, Hui Xiong</div>
+        <div class="publication__journal">INFORMS journal on Computing (JOC), Accepted. (UTD24期刊，CCF B类期刊)</div>
+
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-www">[WWW 2022]</span>
+        <div class="publication__title">Winning Tracker: A New Model for Real-time Winning Prediction in MOBA Games</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Yong Ge, Runze Wu, Xudong Shen</div>
+        <div class="publication__journal">ACM Web Conference 2022 (WWW’22), Accepted. (CCF A类会议, Acceptance Rate：22%)</div>
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-aaai">[AAAI 2022]</span>
+        <div class="publication__title">Multi-dimensional Prediction of Guild Health in Online Games: A Stability-Aware Multi-task Learning Approach</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Runze Wu, Qilin Deng, Yu Ding, JianRong Tao, Changjie Fan</div>
+        <div class="publication__journal">36th AAAI Conference on Artificial Intelligence (AAAI'22), Accepted. (CCF A类会议，Acceptance Rate：14.6%)</div>
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-aaai">[AAAI 2022]</span>
+        <div class="publication__title">Co-Promotion Predictions of Financing Market and Sales Market: A Cooperative-Competitive Attention Approach</div>
+        <div class="publication__authors">Lei Zhang, Xiang Wang, <span class="underline">Chuang Zhao</span>, Hongke Zhao, Rui Li, Runze Wu</div>
+        <div class="publication__journal">36th AAAI Conference on Artificial Intelligence (AAAI'22), Accepted. (CCF A类会议，Acceptance Rate：14.6%)</div>
+
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[TEVC 2022]</span>
+        <div class="publication__title">CoEA: A Cooperative–Competitive Evolutionary Algorithm for Bidirectional Recommendations</div>
+        <div class="publication__authors">Hongke Zhao, Xinpeng Wu, <span class="underline">Chuang Zhao</span>, Lei Zhang, Haiping Ma, Fan Cheng</div>
+        <div class="publication__journal">IEEE Transactions on Evolutionary Computation (IEEE TEVC), 26(1), 28-42, 2022. (IF:11.169, ABS 4, CCF B类期刊)</div>
+      </div>
+      
+      <h3>2020</h3>
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[ICIS'20]</span>
+        <div class="publication__title">A Machine Learning Method for Measuring Information Disclosure in Sharing Economy Platforms</div>
+        <div class="publication__authors">Xin Wei, Wei He, Xi Zhang, <span class="underline">Chuang Zhao</span>, Hongke Zhao</div>
+        <div class="publication__journal">Forty-First International Conference on Information Systems (ICIS’20), India 2020, Accepted. (Acceptance Rate：28%)</div>
+      </div>
+      
+      <div class="publication__item">
+        <span class="publication__tag tag-other">[JSSMS 2020]</span>
+        <div class="publication__title">Fresh Food Logistics Risk Assessment Based on Bayesian Network</div>
+        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Lang Kun</div>
+        <div class="publication__journal">Journal of Systems Science and Mathematical Sciences (JSSMS), 2020, 40(11), 2108. (CSCD, 北大核心)</div>
+      </div>
+    </section>
+
+    <!-- Internship Section -->
+    <section>
+      <h2>Internship</h2>
+      <ul class="section__list">
+        <li class="section__label">Beijing</li>
+        <li class="section__content">
+          <em>Research Intern (Mentor: <a href="https://scholar.google.com/citations?user=bWIHRvoAAAAJ&hl=en">Ming He</a>)</em><br>
+          Lenovo AI Lab, Beijing, China, 5/2022 – 8/2023
+        </li>
+        
+        <li class="section__label">Hangzhou</li>
+        <li class="section__content">
+          <em>Research Intern (Mentor: <a href="https://wu-runze.github.io/">Runze Wu</a>)</em><br>
+          NetEase Games, Hangzhou, China, 12/2020 – 05/2022
+        </li>
+      </ul>
+    </section>
+
+    <!-- Academic Services Section -->
+    <section>
+      <h2>Academic Services</h2>
+      <ul class="section__list">
+        <li class="section__label">Conference Reviewer</li>
+        <li class="section__content">
+          WSDM 2022<br>
+          SIGKDD 2024<br>
+          SIGKDD 2025, ICLR 2025, WWW 2025, SIGIR 2025, NIPS 2025, ACL 2025<br>
+          SIGKDD 2026, WSDM 2026, AAAI 2026, WWW 2026, ICML 2026
+        </li>
+        
+        <li class="section__label">Journal Reviewer</li>
+        <li class="section__content">
+          PeerJ Computer Science<br>
+          Information Processing and Management<br>
+          IEEE Transactions on Knowledge and Data Engineering<br>
+          IEEE Transactions on Systems, Man, and Cybernetics: Systems<br>
+          IEEE Transactions on Learning Technologies<br>
+          Journal of Computer Science and Technology<br>
+          Expert Systems With Applications<br>
+          Knowledge-based Systems<br>
+          Electronic Commerce Research and Applications<br>
+          Multimedia Systems<br>
+          IEEE Transactions on Big Data<br>
+          Science Reports<br>
+          ACM Transactions on Information Systems
+        </li>
+      </ul>
+    </section>
+
+    <!-- Awards Section -->
+    <section>
+      <h2>Recent Honors and Awards</h2>
+      <ul class="awards__list">
+        <li>2025: Outstanding Reviewer for KDD</li>
+        <li>2024: Excellent Reviewer for KDD</li>
+        <li>2023: Outstanding thesis award of TJU</li>
+        <li>2022 & 2021: First-class Scholarship of TJU (Top 1%)</li>
+        <li>2021: National Graduate Student Mathematical Modeling (Third Prize)</li>
+        <li>2021: Merit Student of TJU</li>
+        <li>2020: National Encouragement Scholarship (Top 1%)</li>
+        <li>2020: Outstanding Student Leaders</li>
+        <li>2019: Liaoning Province Contemporary Undergraduate Mathematical Contest in Modeling (First Prize)</li>
+        <li>2019: Liaoning Province Internet plus entrepreneurship competition (First Prize)</li>
+        <li>2019: National Social Practice Activities (First Prize)</li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        Design: <a href="https://jonbarron.info/" target="_blank">Jon Barron</a>,
+        <a href="https://liminyang.web.illinois.edu/" target="_blank">Limin Yang</a> and
+        <a href="https://sheng-qiang.github.io/" target="_blank">Chuang Zhao</a><br>
+        Last updated: <script>document.write(new Date(document.lastModified).toLocaleDateString());</script>
+        &nbsp;&nbsp;
+        <span id="busuanzi_container_site_pv">#Visit: <span id="busuanzi_value_site_pv"></span> (2022/5/22~)</span>
+      </p>
+      <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=b2Y7F_bl6Usq0MdZHYxwFenfzkh5yaxJKIaE57rqReg&cl=ffffff&w=a"></script>
+    </footer>
+  </div>
+
+  <!-- Busuanzi Counter -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
-
 </html>
