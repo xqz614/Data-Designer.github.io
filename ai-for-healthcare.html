@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Healthcare - Latest arXiv Papers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-tertiary: #e9ecef;
+      --primary: #003366;
+      --secondary: #0059b3;
+      --accent: #0077b6;
+      --text-primary: #333333;
+      --text-secondary: #666666;
+      --text-tertiary: #888888;
+      --border-light: #dee2e6;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .back-link {
+      display: inline-block;
+      color: var(--secondary);
+      text-decoration: none;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .back-link:hover { text-decoration: underline; }
+    
+    h1 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .stat {
+      background: var(--bg-secondary);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      color: var(--text-tertiary);
+    }
+    
+    .paper-card {
+      background: var(--bg-primary);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      border: 1px solid var(--border-light);
+      transition: box-shadow 0.2s ease;
+    }
+    
+    .paper-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    
+    .paper-number {
+      flex: 0 0 40px;
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .paper-content {
+      flex: 1;
+    }
+    
+    .paper-title {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .paper-title:hover { text-decoration: underline; }
+    
+    .paper-authors {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .paper-date {
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .paper-abstract {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      padding: 0.75rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+    }
+    
+    .paper-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .paper-link {
+      color: var(--secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .paper-link:hover { text-decoration: underline; }
+    
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-tertiary);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="index.html" class="back-link">← Back to Homepage</a>
+      <h1>AI for Healthcare</h1>
+      <p class="subtitle">人工智能在医疗健康领域的应用研究</p>
+      <div class="stats">
+        <span class="stat">📊 50 Papers</span>
+        <span class="stat">📅 Updated: 2026-03-18</span>
+      </div>
+    </div>
+    
+    <div class="papers-list">
+
+    <div class="paper-card">
+      <div class="paper-number">1</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16867v1" target="_blank" class="paper-title">Efficient Reasoning on the Edge</a>
+        <div class="paper-authors">Yelysei Bondarenko, Thomas Hehn, Rob Hesselink et al. (18 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Large language models (LLMs) with chain-of-thought reasoning achieve state-of-the-art performance across complex problem-solving tasks, but their verbose reasoning traces and large context requirements make them impractical for edge deployment. These challenges include high token generation costs, large KV-cache footprints, and inefficiencies when distilling reasoning capabilities into smaller mod...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16867v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16867v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">2</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16862v1" target="_blank" class="paper-title">Chronos: Temporal-Aware Conversational Agents with Structured Event Retrieval for Long-Term Memory</a>
+        <div class="paper-authors">Sahil Sen, Elias Lumer, Anmol Gulati et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Recent advances in Large Language Models (LLMs) have enabled conversational AI agents to engage in extended multi-turn interactions spanning weeks or months. However, existing memory systems struggle to reason over temporally grounded facts and preferences that evolve across months of interaction and lack effective retrieval strategies for multi-hop, time-sensitive queries over long dialogue histo...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16862v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16862v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">3</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16854v1" target="_blank" class="paper-title">Spatial Causal Tensor Completion for Multiple Exposures and Outcomes: An Application to the Health Effects of PFAS Pollution</a>
+        <div class="paper-authors">Xiaodan Zhou, Brian J Reich, Shu Yang</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Per- and polyfluoroalkyl substances (PFAS) are typically encountered as mixtures of distinct chemicals with distinct effects on multiple health outcomes. Estimating joint causal effects using spatially-dependent observed data is challenging. We propose a spatial causal tensor completion framework that jointly models multiple exposures and outcomes within a low-rank tensor structure, while adjustin...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16854v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16854v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">4</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16846v1" target="_blank" class="paper-title">Dynamic Meta-Layer Aggregation for Byzantine-Robust Federated Learning</a>
+        <div class="paper-authors">Reek Das, Biplab Kanti Sen</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Federated Learning (FL) is increasingly applied in sectors like healthcare, finance, and IoT, enabling collaborative model training while safeguarding user privacy. However, FL systems are susceptible to Byzantine adversaries that inject malicious updates, which can severely compromise global model performance. Existing defenses tend to focus on specific attack types and fail against untargeted st...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16846v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16846v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">5</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16825v1" target="_blank" class="paper-title">Real-Time Decoding of Movement Onset and Offset for Brain-Controlled Rehabilitation Exoskeleton</a>
+        <div class="paper-authors">Kanishka Mitra, Satyam Kumar, Frigyes Samuel Racz et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Robot-assisted therapy can deliver high-dose, task-specific training after neurologic injury, but most systems act primarily at the limb level-engaging the impaired neural circuits only indirectly-which remains a key barrier to truly contingent, neuroplasticity-targeted rehabilitation. We address this gap by implementing online, dual-state motor imagery control of an upper-limb exoskeleton, enabli...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16825v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16825v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">6</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16822v1" target="_blank" class="paper-title">Surg$Σ$: A Spectrum of Large-Scale Multimodal Data and Foundation Models for Surgical Intelligence</a>
+        <div class="paper-authors">Zhitao Zeng, Mengya Xu, Jian Jiang et al. (16 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Surgical intelligence has the potential to improve the safety and consistency of surgical care, yet most existing surgical AI frameworks remain task-specific and struggle to generalize across procedures and institutions. Although multimodal foundation models, particularly multimodal large language models, have demonstrated strong cross-task capabilities across various medical domains, their advanc...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16822v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16822v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">7</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16820v1" target="_blank" class="paper-title">Thermo-Rheological Memory of $κ$-Carrageenan Fluid Gels Formed Under Flow</a>
+        <div class="paper-authors">Julien Bauland, Tim J. Wooster, Peter Fischer et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Fluid gels are soft materials formed by shearing biopolymer solutions during the sol-gel transition. Their ability to yield and flow beyond a critical stress makes them attractive for designing versatile, biocompatible materials in food, health care and medical applications. Although it is well established that both microstructure and mechanical properties depend on the shear applied during gelati...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16820v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16820v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">8</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16812v1" target="_blank" class="paper-title">ODIN-Based CPU-GPU Architecture with Replay-Driven Simulation and Emulation</a>
+        <div class="paper-authors">Nij Dorairaj, Debabrata Chatterjee, Hong Wang et al. (11 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Integration of CPU and GPU technologies is a key enabler for modern AI and graphics workloads, combining control-oriented processing with massive parallel compute capability. As systems evolve toward chiplet-based architectures, pre-silicon validation of tightly coupled CPU-GPU subsystems becomes increasingly challenging due to complex validation framework setup, large design scale, high concurren...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16812v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16812v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">9</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16803v1" target="_blank" class="paper-title">Development of Low-Cost and Bidirectional Syringe Pumps for Soft Robotics Applications</a>
+        <div class="paper-authors">Krishamsu Subedi Chhetri, Aryan Mayor, Elise Corbin et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Soft robotics leverages deformable materials to develop robots capable of navigating unstructured and dynamic environments. Silicone Voxel-Based Soft Robots (Silibots) are a type of pneumatically actuated soft robots that rely on the inflation and deflation of their voxels for shape-shifting behaviors. However, traditional pneumatic actuation methods (high pressure solenoids, medical diaphragm pum...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16803v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16803v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">10</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16781v1" target="_blank" class="paper-title">IOSVLM: A 3D Vision-Language Model for Unified Dental Diagnosis from Intraoral Scans</a>
+        <div class="paper-authors">Huimin Xiong, Zijie Meng, Tianxiang Hu et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">3D intraoral scans (IOS) are increasingly adopted in routine dentistry due to abundant geometric evidence, and unified multi-disease diagnosis is desirable for clinical documentation and communication. While recent works introduce dental vision-language models (VLMs) to enable unified diagnosis and report generation on 2D images or multi-view images rendered from IOS, they do not fully leverage na...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16781v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16781v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">11</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16777v1" target="_blank" class="paper-title">Anticipatory Planning for Multimodal AI Agents</a>
+        <div class="paper-authors">Yongyuan Liang, Shijie Zhou, Yu Gu et al. (9 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Recent advances in multimodal agents have improved computer-use interaction and tool-usage, yet most existing systems remain reactive, optimizing actions in isolation without reasoning about future states or long-term goals. This limits planning coherence and prevents agents from reliably solving high-level, multi-step tasks. We introduce TraceR1, a two-stage reinforcement learning framework that ...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16777v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16777v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">12</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16751v1" target="_blank" class="paper-title">Finding Common Ground in a Sea of Alternatives</a>
+        <div class="paper-authors">Jay Chooi, Paul Gölz, Ariel D. Procaccia et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">We study the problem of selecting a statement that finds common ground across diverse population preferences. Generative AI is uniquely suited for this task because it can access a practically infinite set of statements, but AI systems like the Habermas machine leave the choice of generated statement to a voting rule. What it means for this rule to find common ground, however, is not well-defined....</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16751v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16751v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">13</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16745v1" target="_blank" class="paper-title">Persistent Device Identity for Network Access Control in the Era of MAC Address Randomization: A RADIUS-Based Framework</a>
+        <div class="paper-authors">Premanand Seralathan</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Modern operating systems increasingly randomize Media Access Control (MAC) addresses to protect user privacy, fundamentally disrupting Network Access Control (NAC) systems that have relied on MAC addresses as persistent device identifiers for over two decades. This disruption affects critical enterprise environments including federal government agencies operating under FISMA, healthcare organizati...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16745v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16745v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">14</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16744v1" target="_blank" class="paper-title">Nonstandard Errors in AI Agents</a>
+        <div class="paper-authors">Ruijiang Gao, Steven Chong Xiao</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">We study whether state-of-the-art AI coding agents, given the same data and research question, produce the same empirical results. Deploying 150 autonomous Claude Code agents to independently test six hypotheses about market quality trends in NYSE TAQ data for SPY (2015--2024), we find that AI agents exhibit sizable \textit{nonstandard errors} (NSEs), that is, uncertainty from agent-to-agent varia...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16744v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16744v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">15</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16741v1" target="_blank" class="paper-title">Bayesian Inference of Psychometric Variables From Brain and Behavior in Implicit Association Tests</a>
+        <div class="paper-authors">Christian A. Kothe, Sean Mullen, Michael V. Bronstein et al. (10 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Objective. We establish a principled method for inferring mental health related psychometric variables from neural and behavioral data using the Implicit Association Test (IAT) as the data generation engine, aiming to overcome the limited predictive performance (typically under 0.7 AUC) of the gold-standard D-score method, which relies solely on reaction times.
+  Approach. We propose a sparse hier...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16741v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16741v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">16</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16738v1" target="_blank" class="paper-title">MedCL-Bench: Benchmarking stability-efficiency trade-offs and scaling in biomedical continual learning</a>
+        <div class="paper-authors">Min Zeng, Shuang Zhou, Zaifu Zhan et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Medical language models must be updated as evidence and terminology evolve, yet sequential updating can trigger catastrophic forgetting. Although biomedical NLP has many static benchmarks, no unified, task-diverse benchmark exists for evaluating continual learning under standardized protocols, robustness to task order and compute-aware reporting. We introduce MedCL-Bench, which streams ten biomedi...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16738v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16738v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">17</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16734v1" target="_blank" class="paper-title">Differential Harm Propensity in Personalized LLM Agents: The Curious Case of Mental Health Disclosure</a>
+        <div class="paper-authors">Caglar Yildirim</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Large language models (LLMs) are increasingly deployed as tool-using agents, shifting safety concerns from harmful text generation to harmful task completion. Deployed systems often condition on user profiles or persistent memory, yet agent safety evaluations typically ignore personalization signals. To address this gap, we investigated how mental health disclosure, a sensitive and realistic user-...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16734v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16734v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">18</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16723v1" target="_blank" class="paper-title">Federated Learning with Multi-Partner OneFlorida+ Consortium Data for Predicting Major Postoperative Complications</a>
+        <div class="paper-authors">Yuanfang Ren, Varun Sai Vemuri, Zhenhong Hu et al. (9 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Background: This study aims to develop and validate federated learning models for predicting major postoperative complications and mortality using a large multicenter dataset from the OneFlorida Data Trust. We hypothesize that federated learning models will offer robust generalizability while preserving data privacy and security. Methods: This retrospective, longitudinal, multicenter cohort study ...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16723v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16723v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">19</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16692v1" target="_blank" class="paper-title">Dataflow-Oriented Classification and Performance Analysis of GPU-Accelerated Homomorphic Encryption</a>
+        <div class="paper-authors">Ai Nozaki, Takuya Kojima, Hideki Takase et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Fully Homomorphic Encryption (FHE) enables secure computation over encrypted data, but its computational cost remains a major obstacle to practical deployment. To mitigate this overhead, many studies have explored GPU acceleration for the CKKS scheme, which is widely used for approximate arithmetic. In CKKS, CKKS parameters are configured for each workload by balancing multiplicative depth, securi...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16692v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16692v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">20</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16685v1" target="_blank" class="paper-title">vAccSOL: Efficient and Transparent AI Vision Offloading for Mobile Robots</a>
+        <div class="paper-authors">Adam Zahir, Michele Gucciardom Falk Selker, Anastasios Nanos et al. (7 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Mobile robots are increasingly deployed for inspection, patrol, and search-and-rescue operations, relying on computer vision for perception, navigation, and autonomous decision-making. However, executing modern vision workloads onboard is challenging due to limited compute resources and strict energy constraints. While some platforms include embedded accelerators, these are typically tied to propr...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16685v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16685v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">21</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16682v1" target="_blank" class="paper-title">A Semantic Timbre Dataset for the Electric Guitar</a>
+        <div class="paper-authors">Joseph Cameron, Alan Blackwell</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Understanding and manipulating timbre is central to audio synthesis, yet this remains under-explored in machine learning due to a lack of annotated datasets linking perceptual timbre dimensions to semantic descriptors. We present the Semantic Timbre Dataset, a curated collection of monophonic electric guitar sounds, each labeled with one of 19 semantic timbre descriptors and corresponding magnitud...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16682v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16682v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">22</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16679v1" target="_blank" class="paper-title">HMAR: Hierarchical Modality-Aware Expert and Dynamic Routing Medical Image Retrieval Architecture</a>
+        <div class="paper-authors">Aojie Yuan</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Medical image retrieval (MIR) is a critical component of computer-aided diagnosis, yet existing systems suffer from three persistent limitations: uniform feature encoding that fails to account for the varying clinical importance of anatomical structures, ambiguous similarity metrics based on coarse classification labels, and an exclusive focus on global image similarity that cannot meet the clinic...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16679v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16679v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">23</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16669v1" target="_blank" class="paper-title">Kinema4D: Kinematic 4D World Modeling for Spatiotemporal Embodied Simulation</a>
+        <div class="paper-authors">Mutian Xu, Tianbao Zhang, Tianqi Liu et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Simulating robot-world interactions is a cornerstone of Embodied AI. Recently, a few works have shown promise in leveraging video generations to transcend the rigid visual/physical constraints of traditional simulators. However, they primarily operate in 2D space or are guided by static environmental cues, ignoring the fundamental reality that robot-world interactions are inherently 4D spatiotempo...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16669v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16669v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">24</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16663v1" target="_blank" class="paper-title">When Openclaw Agents Learn from Each Other: Insights from Emergent AI Agent Communities for Human-AI Partnership in Education</a>
+        <div class="paper-authors">Eason Chen, Ce Guan, Ahmed Elshafiey et al. (8 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">The AIED community envisions AI evolving "from tools to teammates," yet our understanding of AI teammates remains limited to dyadic human-AI interactions. We offer a different vantage point: a rapidly growing ecosystem of AI agent platforms where over 167,000 agents participate, interact as peers, and develop learning behaviors without researcher intervention. Drawing on a month of daily qualitati...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16663v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16663v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">25</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16659v1" target="_blank" class="paper-title">Machines acquire scientific taste from institutional traces</a>
+        <div class="paper-authors">Ziqin Gong, Ning Li, Huaikang Zhou</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Artificial intelligence matches or exceeds human performance on tasks with verifiable answers, from protein folding to Olympiad mathematics. Yet the capacity that most governs scientific advance is not reasoning but taste: the ability to judge which untested ideas deserve pursuit, exercised daily by editors and funders but never successfully articulated, taught, or automated. Here we show that fin...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16659v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16659v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">26</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16651v1" target="_blank" class="paper-title">What if Pinocchio Were a Reinforcement Learning Agent: A Normative End-to-End Pipeline</a>
+        <div class="paper-authors">Benoît Alcaraz</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">In the past decade, artificial intelligence (AI) has developed quickly. With this rapid progression came the need for systems capable of complying with the rules and norms of our society so that they can be successfully and safely integrated into our daily lives. Inspired by the story of Pinocchio in ``Le avventure di Pinocchio - Storia di un burattino'', this thesis proposes a pipeline that addre...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16651v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16651v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">27</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16646v1" target="_blank" class="paper-title">Whose Knowledge Counts? Co-Designing Community-Centered AI Auditing Tools with Educators in Hawai`i</a>
+        <div class="paper-authors">Dora Zhao, Hannah Cha, Michael J. Ryan et al. (8 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Although generative AI is being deployed into classrooms with promises of aiding teachers, educators caution that these tools can have unintended pedagogical repercussions, including cultural misrepresentation and bias. These concerns are heightened in low-resource language and Indigenous education settings, where AI systems frequently underperform. We investigate these challenges in Hawai`i, wher...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16646v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16646v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">28</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16642v1" target="_blank" class="paper-title">When AI Navigates the Fog of War</a>
+        <div class="paper-authors">Ming Li, Xirui Li, Tianyi Zhou</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Can AI reason about a war before its trajectory becomes historically obvious? Analyzing this capability is difficult because retrospective geopolitical prediction is heavily confounded by training-data leakage. We address this challenge through a temporally grounded case study of the early stages of the 2026 Middle East conflict, which unfolded after the training cutoff of current frontier models....</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16642v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16642v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">29</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16633v1" target="_blank" class="paper-title">Why We Need to Destroy the Illusion of Speaking to A Human: Critical Reflections On Ethics at the Front-End for LLMs</a>
+        <div class="paper-authors">Sarah Diefenbach, Daniel Ullrich</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Conversation with chatbots based on Large Language Models (LLMs) such as ChatGPT has become one of the major forms of interaction with Artificial Intelligence (AI) in everyday life. What makes this interaction so convenient is that interacting with LLMs feels so natural, and resembles what we know from real, human conversations. At the same time, this seeming similarity is part of one of the ethic...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16633v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16633v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">30</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16612v1" target="_blank" class="paper-title">Retrieval-Augmented Sketch-Guided 3D Building Generation</a>
+        <div class="paper-authors">Zhengyang Wang, Nuttapong Rochanavibhata, Yuxiao Ren et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">In the early design stage of Japanese detached houses, the lack of a unified design representation among clients, sales representatives, and designers leads to design drift and inefficient feedback. Usually, sketches handed off by sales representatives may lose details for quick drawing, which reduces the fidelity of subsequent 3D generation using generative AI models. The generated 3D model typic...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16612v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16612v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">31</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16593v1" target="_blank" class="paper-title">Scalable Inspection Planning via Flow-based Mixed Integer Linear Programming</a>
+        <div class="paper-authors">Adir Morgan, Kiril Solovey, Oren Salzman</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Inspection planning is concerned with computing the shortest robot path to inspect a given set of points of interest (POIs) using the robot's sensors. This problem arises in a wide range of applications from manufacturing to medical robotics. To alleviate the problem's complexity, recent methods rely on sampling-based methods to obtain a more manageable (discrete) graph inspection planning (GIP) p...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16593v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16593v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">32</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16587v1" target="_blank" class="paper-title">HistoAtlas: A Pan-Cancer Morphology Atlas Linking Histomics to Molecular Programs and Clinical Outcomes</a>
+        <div class="paper-authors">Pierre-Antoine Bannier</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">We present HistoAtlas, a pan-cancer computational atlas that extracts 38 interpretable histomic features from 6,745 diagnostic H&E slides across 21 TCGA cancer types and systematically links every feature to survival, gene expression, somatic mutations, and immune subtypes. All associations are covariate-adjusted, multiple-testing corrected, and classified into evidence-strength tiers. The atlas r...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16587v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16587v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">33</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16586v1" target="_blank" class="paper-title">Runtime Governance for AI Agents: Policies on Paths</a>
+        <div class="paper-authors">Maurits Kaptein, Vassilis-Javed Khan, Andriy Podstavnychy</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">AI agents -- systems that plan, reason, and act using large language models -- produce non-deterministic, path-dependent behavior that cannot be fully governed at design time, where with governed we mean striking the right balance between as high as possible successful task completion rate and the legal, data-breach, reputational and other costs associated with running agents. We argue that the ex...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16586v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16586v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">34</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16572v1" target="_blank" class="paper-title">Malicious Or Not: Adding Repository Context to Agent Skill Classification</a>
+        <div class="paper-authors">Florian Holzbauer, David Schmidt, Gabriel Gegenhuber et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Agent skills extend local AI agents, such as Claude Code or Open Claw, with additional functionality, and their popularity has led to the emergence of dedicated skill marketplaces, similar to app stores for mobile applications. Simultaneously, automated skill scanners were introduced, analyzing the skill description available in SKILL.md, to verify their benign behavior. The results for individual...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16572v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16572v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">35</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16569v1" target="_blank" class="paper-title">Deep Tabular Representation Corrector</a>
+        <div class="paper-authors">Hangting Ye, Peng Wang, Wei Fan et al. (7 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Tabular data have been playing a mostly important role in diverse real-world fields, such as healthcare, engineering, finance, etc. The recent success of deep learning has fostered many deep networks (e.g., Transformer, ResNet) based tabular learning methods. Generally, existing deep tabular machine learning methods are along with the two paradigms, i.e., in-learning and pre-learning. In-learning ...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16569v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16569v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">36</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16567v1" target="_blank" class="paper-title">Characterizing Delusional Spirals through Human-LLM Chat Logs</a>
+        <div class="paper-authors">Jared Moore, Ashish Mehta, William Agnew et al. (14 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">As large language models (LLMs) have proliferated, disturbing anecdotal reports of negative psychological effects, such as delusions, self-harm, and ``AI psychosis,'' have emerged in global media and legal discourse. However, it remains unclear how users and chatbots interact over the course of lengthy delusional ``spirals,'' limiting our ability to understand and mitigate the harm. In our work, w...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16567v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16567v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">37</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16551v1" target="_blank" class="paper-title">CompDiff: Hierarchical Compositional Diffusion for Fair and Zero-Shot Intersectional Medical Image Generation</a>
+        <div class="paper-authors">Mahmoud Ibrahim, Bart Elen, Chang Sun et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Generative models are increasingly used to augment medical imaging datasets for fairer AI. Yet a key assumption often goes unexamined: that generators themselves produce equally high-quality images across demographic groups. Models trained on imbalanced data can inherit these imbalances, yielding degraded synthesis quality for rare subgroups and struggling with demographic intersections absent fro...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16551v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16551v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">38</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16546v1" target="_blank" class="paper-title">DanceHA: A Multi-Agent Framework for Document-Level Aspect-Based Sentiment Analysis</a>
+        <div class="paper-authors">Lei Wang, Min Huang, Eduard Dragut</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Aspect-Based Sentiment Intensity Analysis (ABSIA) has garnered increasing attention, though research largely focuses on domain-specific, sentence-level settings. In contrast, document-level ABSIA--particularly in addressing complex tasks like extracting Aspect-Category-Opinion-Sentiment-Intensity (ACOSI) tuples--remains underexplored. In this work, we introduce DanceHA, a multi-agent framework des...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16546v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16546v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">39</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16513v1" target="_blank" class="paper-title">FEAT: A Linear-Complexity Foundation Model for Extremely Large Structured Data</a>
+        <div class="paper-authors">Zhenghang Song, Tang Qian, Lu Chen et al. (10 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Structured data is foundational to healthcare, finance, e-commerce, and scientific data management. Large structured-data models (LDMs) extend the foundation model paradigm to unify heterogeneous datasets for tasks such as classification, regression, and decision support. However, existing LDMs face major limitations. First, most rely on sample-wise self-attention, whose O(N^2) complexity limits t...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16513v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16513v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">40</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16499v1" target="_blank" class="paper-title">Fractal and Spectral Dimensions as Determinants of Thermal Ablation Outcomes in Cancer Tissues</a>
+        <div class="paper-authors">Mario Olmo-Fajardo, Alexander López, Malte Henkel et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Clinical thermal ablation outcomes display significant variability that classical bio-heat models cannot fully explain. One reason may lie in the fractal architecture of biological tissues, which has been identified as a robust biomarker directly correlated with cancer grades. This structural heterogeneity, together with memory effects (e.g., thermotolerance), causes heat transfer in living tissue...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16499v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16499v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">41</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16458v1" target="_blank" class="paper-title">Agentic AI for SAGIN Resource Management_Semantic Awareness, Orchestration, and Optimization</a>
+        <div class="paper-authors">Linghao Zhang, Haitao Zhao, Bo Xu et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Space-air-ground integrated networks (SAGIN) promise ubiquitous 6G connectivity but face significant resource management challenges due to heterogeneous infrastructure, dynamic topologies, and stringent quality-of-service (QoS) requirements. Conventional model-driven approaches struggle with scalability and adaptability in such complex environments. This paper presents an agentic artificial intell...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16458v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16458v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">42</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16448v1" target="_blank" class="paper-title">TRUST-SQL: Tool-Integrated Multi-Turn Reinforcement Learning for Text-to-SQL over Unknown Schemas</a>
+        <div class="paper-authors">Ai Jian, Xiaoyun Zhang, Wanrou Du et al. (8 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Text-to-SQL parsing has achieved remarkable progress under the Full Schema Assumption. However, this premise fails in real-world enterprise environments where databases contain hundreds of tables with massive noisy metadata. Rather than injecting the full schema upfront, an agent must actively identify and verify only the relevant subset, giving rise to the Unknown Schema scenario we study in this...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16448v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16448v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">43</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16445v1" target="_blank" class="paper-title">Visual Distraction Undermines Moral Reasoning in Vision-Language Models</a>
+        <div class="paper-authors">Xinyi Yang, Chenheng Xu, Weijun Hong et al. (7 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Moral reasoning is fundamental to safe Artificial Intelligence (AI), yet ensuring its consistency across modalities becomes critical as AI systems evolve from text-based assistants to embodied agents. Current safety techniques demonstrate success in textual contexts, but concerns remain about generalization to visual inputs. Existing moral evaluation benchmarks rely on textonly formats and lack sy...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16445v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16445v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">44</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16444v1" target="_blank" class="paper-title">Fast-HaMeR: Boosting Hand Mesh Reconstruction using Knowledge Distillation</a>
+        <div class="paper-authors">Hunain Ahmed Jillani, Ahmed Tawfik Aboukhadra, Ahmed Elhayek et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Fast and accurate 3D hand reconstruction is essential for real-time applications in VR/AR, human-computer interaction, robotics, and healthcare. Most state-of-the-art methods rely on heavy models, limiting their use on resource-constrained devices like headsets, smartphones, and embedded systems. In this paper, we investigate how the use of lightweight neural networks, combined with Knowledge Dist...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16444v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16444v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">45</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16430v1" target="_blank" class="paper-title">EngGPT2: Sovereign, Efficient and Open Intelligence</a>
+        <div class="paper-authors">G. Ciarfaglia, A. Rosanova, S. Cipolla et al. (16 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">EngGPT2-16B-A3B is the latest iteration of Engineering Group's Italian LLM and it's built to be a Sovereign, Efficient and Open model. EngGPT2 is trained on 2.5 trillion tokens - less than Qwen3's 36T or Llama3's 15T - and delivers performance on key benchmarks, including MMLU-Pro, GSM8K, IFEval and HumanEval, comparable to dense models in the 8B-16B range, while requiring one-fifth to half of the...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16430v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16430v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">46</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16421v1" target="_blank" class="paper-title">HGP-Mamba: Integrating Histology and Generated Protein Features for Mamba-based Multimodal Survival Risk Prediction</a>
+        <div class="paper-authors">Jing Dai, Chen Wu, Ming Wu et al. (7 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Recent advances in multimodal learning have significantly improved cancer survival risk prediction. However, the joint prognostic potential of protein markers and histopathology images remains underexplored, largely due to the high cost and limited availability of protein expression profiling. To address this challenge, we propose HGP-Mamba, a Mamba-based multimodal framework that efficiently inte...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16421v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16421v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">47</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16417v1" target="_blank" class="paper-title">Via Negativa for AI Alignment: Why Negative Constraints Are Structurally Superior to Positive Preferences</a>
+        <div class="paper-authors">Quan Cheng</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Recent empirical results have demonstrated that training large language models (LLMs) with negative-only feedback can match or exceed standard reinforcement learning from human feedback (RLHF). Negative Sample Reinforcement achieves parity with PPO on mathematical reasoning; Distributional Dispreference Optimization trains effectively using only dispreferred samples; and Constitutional AI outperfo...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16417v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16417v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">48</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16397v1" target="_blank" class="paper-title">Fanar 2.0: Arabic Generative AI Stack</a>
+        <div class="paper-authors"> FANAR TEAM, Ummar Abbas, Mohammad Shahmeer Ahmad et al. (37 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">We present Fanar 2.0, the second generation of Qatar's Arabic-centric Generative AI platform. Sovereignty is a first-class design principle: every component, from data pipelines to deployment infrastructure, was designed and operated entirely at QCRI, Hamad Bin Khalifa University. Fanar 2.0 is a story of resource-constrained excellence: the effort ran on 256 NVIDIA H100 GPUs, with Arabic having on...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16397v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16397v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">49</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16392v1" target="_blank" class="paper-title">DermaFlux: Synthetic Skin Lesion Generation with Rectified Flows for Enhanced Image Classification</a>
+        <div class="paper-authors">Stathis Galanakis, Alexandros Koliousis, Stefanos Zafeiriou</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Despite recent advances in deep generative modeling, skin lesion classification systems remain constrained by the limited availability of large, diverse, and well-annotated clinical datasets, resulting in class imbalance between benign and malignant lesions and consequently reduced generalization performance. We introduce DermaFlux, a rectified flow-based text-to-image generative framework that sy...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16392v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16392v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">50</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16372v1" target="_blank" class="paper-title">InViC: Intent-aware Visual Cues for Medical Visual Question Answering</a>
+        <div class="paper-authors">Zhisong Wang, Ziyang Chen, Zanting Ye et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Medical visual question answering (Med-VQA) aims to answer clinically relevant questions grounded in medical images. However, existing multimodal large language models (MLLMs) often exhibit shortcut answering, producing plausible responses by exploiting language priors or dataset biases while insufficiently attending to visual evidence. This behavior undermines clinical reliability, especially whe...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16372v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16372v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    
+    <div class="footer">
+      <p>Auto-generated from arXiv API | <a href="index.html">Chuang Zhao</a></p>
+    </div>
+  </div>
+</body>
+</html>
