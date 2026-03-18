@@ -1,4 +1,3 @@
-
 <!--
  * @Author: Jon Barron
  * @Date: 2019-05-11 22:15:22
@@ -215,11 +214,53 @@
       box-shadow: var(--shadow-sm);
       margin-bottom: 1.5rem;
       transition: var(--transition);
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
     }
-    
+
     .publication__item:hover {
       box-shadow: var(--shadow-md);
       transform: translateY(-2px);
+    }
+
+    .publication__content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .publication__thumbnail {
+      flex: 0 0 160px;
+      width: 160px;
+      height: 120px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--neutral-200);
+    }
+
+    .publication__thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .publication__thumbnail:hover img {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .publication__item {
+        flex-direction: column-reverse;
+      }
+
+      .publication__thumbnail {
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4/3;
+      }
     }
     
     .publication__tag {
@@ -428,164 +469,249 @@
       <h2>Publications</h2>
       <p class="publication__note">Several papers are currently under review and are not listed here.</p>
       
-      <h3>2025</h3>
+<!--      <h3>2025</h3>-->
       <div class="publication__item">
-        <span class="publication__tag tag-other">[TNNLS 2025]</span>
-        <div class="publication__title">Enhancing Domain Generalization in Medical Image Segmentation With Global and Local Prompts</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Xiaomeng Li</div>
-        <div class="publication__journal">IEEE Transactions on Neural Networks and Learning Systems, Accepted. (CCF B类期刊)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[TNNLS 2025]</span>
+          <div class="publication__title">Enhancing Domain Generalization in Medical Image Segmentation With Global and Local Prompts</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Xiaomeng Li</div>
+          <div class="publication__journal">IEEE Transactions on Neural Networks and Learning Systems, Accepted. (CCF B类期刊)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/tnnls2025.png" alt="TNNLS 2025 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-other">[TWeb 2025]</span>
-        <div class="publication__title">Cross-domain Transfer of Valence Preferences via a Meta-optimization Approach</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Ming He, Xiaomeng Li, Jianping Fan</div>
-        <div class="publication__journal">ACM Transactions on the Web, Accepted. (CCF B类期刊)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[TWeb 2025]</span>
+          <div class="publication__title">Cross-domain Transfer of Valence Preferences via a Meta-optimization Approach</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Ming He, Xiaomeng Li, Jianping Fan</div>
+          <div class="publication__journal">ACM Transactions on the Web, Accepted. (CCF B类期刊)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/tweb2025.png" alt="TWeb 2025 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-tkde">[TKDE 2025]</span>
-        <div class="publication__title">Collaborative Knowledge Fusion: A Novel Method for Multi-task Recommender Systems via LLMs</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Xing Su, Hongke Zhao, Ming He, Jianping Fan, Xiaomeng Li</div>
-        <div class="publication__journal">IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-tkde">[TKDE 2025]</span>
+          <div class="publication__title">Collaborative Knowledge Fusion: A Novel Method for Multi-task Recommender Systems via LLMs</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Xing Su, Hongke Zhao, Ming He, Jianping Fan, Xiaomeng Li</div>
+          <div class="publication__journal">IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/tkde2025.png" alt="TKDE 2025 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-kdd">[KDD 2025]</span>
-        <div class="publication__title">Diffmv: A Unified Diffusion Framework for Healthcare Predictions with Random Missing Views and View Laziness</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hui Tang, Hongke Zhao, Xiaomeng Li</div>
-        <div class="publication__journal">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD’25), Accepted. (CCF A类会议, Acceptance Rate：18.4%)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-kdd">[KDD 2025]</span>
+          <div class="publication__title">Diffmv: A Unified Diffusion Framework for Healthcare Predictions with Random Missing Views and View Laziness</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hui Tang, Hongke Zhao, Xiaomeng Li</div>
+          <div class="publication__journal">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD’25), Accepted. (CCF A类会议, Acceptance Rate：18.4%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/kdd2025.png" alt="KDD 2025 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-other">[TOIS 2025]</span>
-        <div class="publication__title">Beyond Sequential Patterns: Rethinking Healthcare Predictions with Contextual Insights</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hui Tang, Hongke Zhao, Xiaomeng Li</div>
-        <div class="publication__journal">ACM Transactions on Information Systems (TOIS’25), Accepted. (CCF A类期刊)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[TOIS 2025]</span>
+          <div class="publication__title">Beyond Sequential Patterns: Rethinking Healthcare Predictions with Contextual Insights</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hui Tang, Hongke Zhao, Xiaomeng Li</div>
+          <div class="publication__journal">ACM Transactions on Information Systems (TOIS’25), Accepted. (CCF A类期刊)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/tois2025.png" alt="TOIS 2025 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-other">[NAACL 2025]</span>
-        <div class="publication__title">Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Capabilities via Dynamic-Meta Instruction</div>
-        <div class="publication__authors">Liping Liu, Chunhong Zhang, Likang Wu, <span class="underline">Chuang Zhao</span>, Zheng Hu, Ming He, Jianping Fan</div>
-        <div class="publication__journal">The 2025 Annual Conference of the Nations of the Americas Chapter of the ACL (NAACL’25), Accepted. (CCF B类会议, Acceptance Rate：22%)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[NAACL 2025]</span>
+          <div class="publication__title">Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Capabilities via Dynamic-Meta Instruction</div>
+          <div class="publication__authors">Liping Liu, Chunhong Zhang, Likang Wu, <span class="underline">Chuang Zhao</span>, Zheng Hu, Ming He, Jianping Fan</div>
+          <div class="publication__journal">The 2025 Annual Conference of the Nations of the Americas Chapter of the ACL (NAACL’25), Accepted. (CCF B类会议, Acceptance Rate：22%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/naacl2025.png" alt="NAACL 2025 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-www">[WWW 2025]</span>
-        <div class="publication__title">Unveiling Discrete Clues: Superior Healthcare Predictions for Rare Diseases</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hui Tang, Jiheng Zhang, Xiaomeng Li</div>
-        <div class="publication__journal">ACM Web Conference 2025 (WWW’25), Accepted. (CCF A类会议, Oral rate: 5.42%)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-www">[WWW 2025]</span>
+          <div class="publication__title">Unveiling Discrete Clues: Superior Healthcare Predictions for Rare Diseases</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hui Tang, Jiheng Zhang, Xiaomeng Li</div>
+          <div class="publication__journal">ACM Web Conference 2025 (WWW’25), Accepted. (CCF A类会议, Oral rate: 5.42%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/www2025.png" alt="WWW 2025 Framework">
+        </div>
       </div>
       
-      <h3>2024</h3>
+<!--      <h3>2024</h3>-->
       <div class="publication__item">
-        <span class="publication__tag tag-tkde">[TKDE 2024]</span>
-        <div class="publication__title">Enhancing Precision Drug Recommendations via In-depth Exploration of Motif Relationships</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Xiaofang Zhou, Xiaomeng Li</div>
-        <div class="publication__journal">IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</div>
-
-      </div>
-      
-      <div class="publication__item">
-        <span class="publication__tag tag-kdd">[SIGKDD 2024]</span>
-        <div class="publication__title">Performative Debias with Fair-exposure Optimization Driven by Strategic Agents in Recommender Systems</div>
-        <div class="publication__authors">Zhicheng Xiang, Hongke Zhao, <span class="underline">Chuang Zhao</span>, Ming He, Jianping Fan</div>
-        <div class="publication__journal">ACM SIGKDD Conference on Knowledge Discovery and Data Mining 2024 (SIGKDD'24). (CCF A类会议, Acceptance Rate：20%)</div>
-
-      </div>
-      
-      <div class="publication__item">
-        <span class="publication__tag tag-other">[TSMC 2024]</span>
-        <div class="publication__title">Bi-discriminator Domain Adversarial Neural Networks with Class-Level Gradient Alignment</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Hengshu Zhu, Zhenya Huang, Nan Feng, Enhong Chen, Hui Xiong</div>
-        <div class="publication__journal">IEEE Transactions on Systems, Man, and Cybernetics: Systems, Accepted. (CCF B类期刊)</div>
-
-      </div>
-      
-      <h3>2023</h3>
-      <div class="publication__item">
-        <span class="publication__tag tag-tkde">[TKDE 2023]</span>
-        <div class="publication__title">Cross-Domain Recommendation via Progressive Structural Alignment</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Xiaomeng Li, Ming He, JiahuiWang, Jianping Fan</div>
-        <div class="publication__journal">IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-tkde">[TKDE 2024]</span>
+          <div class="publication__title">Enhancing Precision Drug Recommendations via In-depth Exploration of Motif Relationships</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Xiaofang Zhou, Xiaomeng Li</div>
+          <div class="publication__journal">IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/tkde2024_drug.png" alt="TKDE 2024 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-other">[CIKM 2023]</span>
-        <div class="publication__title">Sequential recommendation via an adaptive cross-domain knowledge decomposition</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Xinyu Li, Hongke Zhao, Ming He, Jianping Fan</div>
-        <div class="publication__journal">Conference on Information and Knowledge Management 2023 (CIKM’23), Accepted. (CCF B类会议, Acceptance Rate: 24%)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-kdd">[SIGKDD 2024]</span>
+          <div class="publication__title">Performative Debias with Fair-exposure Optimization Driven by Strategic Agents in Recommender Systems</div>
+          <div class="publication__authors">Zhicheng Xiang, Hongke Zhao, <span class="underline">Chuang Zhao</span>, Ming He, Jianping Fan</div>
+          <div class="publication__journal">ACM SIGKDD Conference on Knowledge Discovery and Data Mining 2024 (SIGKDD'24). (CCF A类会议, Acceptance Rate：20%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/kdd2024.png" alt="SIGKDD 2024 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-www">[WWW 2023]</span>
-        <div class="publication__title">Cross-domain recommendation via user interest alignment</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Ming He, Jian Zhang, Jianping Fan</div>
-        <div class="publication__journal">ACM Web Conference 2023 (WWW’23), Accepted. (CCF A类会议, Acceptance Rate：22%)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[TSMC 2024]</span>
+          <div class="publication__title">Bi-discriminator Domain Adversarial Neural Networks with Class-Level Gradient Alignment</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Hengshu Zhu, Zhenya Huang, Nan Feng, Enhong Chen, Hui Xiong</div>
+          <div class="publication__journal">IEEE Transactions on Systems, Man, and Cybernetics: Systems, Accepted. (CCF B类期刊)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/tsmc2024.png" alt="TSMC 2024 Framework">
+        </div>
       </div>
       
-      <h3>2022</h3>
+<!--      <h3>2023</h3>-->
       <div class="publication__item">
-        <span class="publication__tag tag-other">[JOC 2022]</span>
-        <div class="publication__title">An Ensemble Learning Approach with Gradient Resampling for Class-imbalanced problems</div>
-        <div class="publication__authors">Hongke Zhao, <span class="underline">Chuang Zhao</span>, Xi Zhang*, Nanlin Liu, Hengshu Zhu, Qi Liu, Hui Xiong</div>
-        <div class="publication__journal">INFORMS journal on Computing (JOC), Accepted. (UTD24期刊，CCF B类期刊)</div>
-
-      </div>
-      
-      <div class="publication__item">
-        <span class="publication__tag tag-www">[WWW 2022]</span>
-        <div class="publication__title">Winning Tracker: A New Model for Real-time Winning Prediction in MOBA Games</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Yong Ge, Runze Wu, Xudong Shen</div>
-        <div class="publication__journal">ACM Web Conference 2022 (WWW’22), Accepted. (CCF A类会议, Acceptance Rate：22%)</div>
-      </div>
-      
-      <div class="publication__item">
-        <span class="publication__tag tag-aaai">[AAAI 2022]</span>
-        <div class="publication__title">Multi-dimensional Prediction of Guild Health in Online Games: A Stability-Aware Multi-task Learning Approach</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Runze Wu, Qilin Deng, Yu Ding, JianRong Tao, Changjie Fan</div>
-        <div class="publication__journal">36th AAAI Conference on Artificial Intelligence (AAAI'22), Accepted. (CCF A类会议，Acceptance Rate：14.6%)</div>
+        <div class="publication__content">
+          <span class="publication__tag tag-tkde">[TKDE 2023]</span>
+          <div class="publication__title">Cross-Domain Recommendation via Progressive Structural Alignment</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Xiaomeng Li, Ming He, JiahuiWang, Jianping Fan</div>
+          <div class="publication__journal">IEEE Transactions on Knowledge and Data Engineering, Accepted. (CCF A类期刊)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/tkde2023.png" alt="TKDE 2023 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-aaai">[AAAI 2022]</span>
-        <div class="publication__title">Co-Promotion Predictions of Financing Market and Sales Market: A Cooperative-Competitive Attention Approach</div>
-        <div class="publication__authors">Lei Zhang, Xiang Wang, <span class="underline">Chuang Zhao</span>, Hongke Zhao, Rui Li, Runze Wu</div>
-        <div class="publication__journal">36th AAAI Conference on Artificial Intelligence (AAAI'22), Accepted. (CCF A类会议，Acceptance Rate：14.6%)</div>
-
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[CIKM 2023]</span>
+          <div class="publication__title">Sequential recommendation via an adaptive cross-domain knowledge decomposition</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Xinyu Li, Hongke Zhao, Ming He, Jianping Fan</div>
+          <div class="publication__journal">Conference on Information and Knowledge Management 2023 (CIKM’23), Accepted. (CCF B类会议, Acceptance Rate: 24%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/cikm2023.png" alt="CIKM 2023 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-other">[TEVC 2022]</span>
-        <div class="publication__title">CoEA: A Cooperative–Competitive Evolutionary Algorithm for Bidirectional Recommendations</div>
-        <div class="publication__authors">Hongke Zhao, Xinpeng Wu, <span class="underline">Chuang Zhao</span>, Lei Zhang, Haiping Ma, Fan Cheng</div>
-        <div class="publication__journal">IEEE Transactions on Evolutionary Computation (IEEE TEVC), 26(1), 28-42, 2022. (IF:11.169, ABS 4, CCF B类期刊)</div>
+        <div class="publication__content">
+          <span class="publication__tag tag-www">[WWW 2023]</span>
+          <div class="publication__title">Cross-domain recommendation via user interest alignment</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Ming He, Jian Zhang, Jianping Fan</div>
+          <div class="publication__journal">ACM Web Conference 2023 (WWW’23), Accepted. (CCF A类会议, Acceptance Rate：22%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/www2023.png" alt="WWW 2023 Framework">
+        </div>
       </div>
       
-      <h3>2020</h3>
+<!--      <h3>2022</h3>-->
       <div class="publication__item">
-        <span class="publication__tag tag-other">[ICIS'20]</span>
-        <div class="publication__title">A Machine Learning Method for Measuring Information Disclosure in Sharing Economy Platforms</div>
-        <div class="publication__authors">Xin Wei, Wei He, Xi Zhang, <span class="underline">Chuang Zhao</span>, Hongke Zhao</div>
-        <div class="publication__journal">Forty-First International Conference on Information Systems (ICIS’20), India 2020, Accepted. (Acceptance Rate：28%)</div>
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[JOC 2022]</span>
+          <div class="publication__title">An Ensemble Learning Approach with Gradient Resampling for Class-imbalanced problems</div>
+          <div class="publication__authors">Hongke Zhao, <span class="underline">Chuang Zhao</span>, Xi Zhang*, Nanlin Liu, Hengshu Zhu, Qi Liu, Hui Xiong</div>
+          <div class="publication__journal">INFORMS journal on Computing (JOC), Accepted. (UTD24期刊，CCF B类期刊)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/joc2022.png" alt="JOC 2022 Framework">
+        </div>
       </div>
       
       <div class="publication__item">
-        <span class="publication__tag tag-other">[JSSMS 2020]</span>
-        <div class="publication__title">Fresh Food Logistics Risk Assessment Based on Bayesian Network</div>
-        <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Lang Kun</div>
-        <div class="publication__journal">Journal of Systems Science and Mathematical Sciences (JSSMS), 2020, 40(11), 2108. (CSCD, 北大核心)</div>
+        <div class="publication__content">
+          <span class="publication__tag tag-www">[WWW 2022]</span>
+          <div class="publication__title">Winning Tracker: A New Model for Real-time Winning Prediction in MOBA Games</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Yong Ge, Runze Wu, Xudong Shen</div>
+          <div class="publication__journal">ACM Web Conference 2022 (WWW’22), Accepted. (CCF A类会议, Acceptance Rate：22%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/www2022.png" alt="WWW 2022 Framework">
+        </div>
+      </div>
+      
+      <div class="publication__item">
+        <div class="publication__content">
+          <span class="publication__tag tag-aaai">[AAAI 2022]</span>
+          <div class="publication__title">Multi-dimensional Prediction of Guild Health in Online Games: A Stability-Aware Multi-task Learning Approach</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Hongke Zhao, Runze Wu, Qilin Deng, Yu Ding, JianRong Tao, Changjie Fan</div>
+          <div class="publication__journal">36th AAAI Conference on Artificial Intelligence (AAAI'22), Accepted. (CCF A类会议，Acceptance Rate：14.6%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/aaai2022_guild.png" alt="AAAI 2022 Framework 1">
+        </div>
+      </div>
+      
+      <div class="publication__item">
+        <div class="publication__content">
+          <span class="publication__tag tag-aaai">[AAAI 2022]</span>
+          <div class="publication__title">Co-Promotion Predictions of Financing Market and Sales Market: A Cooperative-Competitive Attention Approach</div>
+          <div class="publication__authors">Lei Zhang, Xiang Wang, <span class="underline">Chuang Zhao</span>, Hongke Zhao, Rui Li, Runze Wu</div>
+          <div class="publication__journal">36th AAAI Conference on Artificial Intelligence (AAAI'22), Accepted. (CCF A类会议，Acceptance Rate：14.6%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/aaai2022_copromo.png" alt="AAAI 2022 Framework 2">
+        </div>
+      </div>
+      
+      <div class="publication__item">
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[TEVC 2022]</span>
+          <div class="publication__title">CoEA: A Cooperative–Competitive Evolutionary Algorithm for Bidirectional Recommendations</div>
+          <div class="publication__authors">Hongke Zhao, Xinpeng Wu, <span class="underline">Chuang Zhao</span>, Lei Zhang, Haiping Ma, Fan Cheng</div>
+          <div class="publication__journal">IEEE Transactions on Evolutionary Computation (IEEE TEVC), 26(1), 28-42, 2022. (IF:11.169, ABS 4, CCF B类期刊)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/tevc2022.png" alt="TEVC 2022 Framework">
+        </div>
+      </div>
+      
+<!--      <h3>2020</h3>-->
+      <div class="publication__item">
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[ICIS'20]</span>
+          <div class="publication__title">A Machine Learning Method for Measuring Information Disclosure in Sharing Economy Platforms</div>
+          <div class="publication__authors">Xin Wei, Wei He, Xi Zhang, <span class="underline">Chuang Zhao</span>, Hongke Zhao</div>
+          <div class="publication__journal">Forty-First International Conference on Information Systems (ICIS’20), India 2020, Accepted. (Acceptance Rate：28%)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/icis2020.png" alt="ICIS 2020 Framework">
+        </div>
+      </div>
+      
+      <div class="publication__item">
+        <div class="publication__content">
+          <span class="publication__tag tag-other">[JSSMS 2020]</span>
+          <div class="publication__title">Fresh Food Logistics Risk Assessment Based on Bayesian Network</div>
+          <div class="publication__authors"><span class="underline">Chuang Zhao</span>, Lang Kun</div>
+          <div class="publication__journal">Journal of Systems Science and Mathematical Sciences (JSSMS), 2020, 40(11), 2108. (CSCD, 北大核心)</div>
+        </div>
+        <div class="publication__thumbnail">
+          <img src="images/papers/jssms2020.png" alt="JSSMS 2020 Framework">
+        </div>
       </div>
     </section>
 
@@ -622,6 +748,8 @@
         <li class="section__label">Journal Reviewer</li>
         <li class="section__content">
           PeerJ Computer Science<br>
+          Information Science<br>
+          Neural Networks<br>
           Information Processing and Management<br>
           IEEE Transactions on Knowledge and Data Engineering<br>
           IEEE Transactions on Systems, Man, and Cybernetics: Systems<br>
@@ -632,7 +760,7 @@
           Electronic Commerce Research and Applications<br>
           Multimedia Systems<br>
           IEEE Transactions on Big Data<br>
-          Science Reports<br>
+          Scientific Reports<br>
           ACM Transactions on Information Systems
         </li>
       </ul>
