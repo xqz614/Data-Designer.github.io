@@ -160,6 +160,32 @@
       border: 1px solid var(--border-light);
       box-shadow: var(--shadow-sm);
     }
+      
+      
+      /* 新增：Claw Status Icon 样式 */
+      .claw-status-icon {
+        position: absolute;
+        top: 5px;          /* 右上角偏移量 */
+        right: 5px;
+        width: 32px;       /* 小 icon 尺寸，可根据需要调整 */
+        height: 32px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-light);
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        z-index: 10;       /* 确保 icon 在最上层 */
+      }
+
+      .claw-status-icon:hover {
+        transform: scale(1.1); /* hover 轻微放大，提升交互感 */
+        box-shadow: var(--shadow-md);
+      }
+
+      .claw-status-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     
     .profile__info {
       flex: 1;
@@ -512,6 +538,12 @@
       <div class="profile__image">
         <img src="images/sand.jpg" alt="Chuang Zhao">
       </div>
+      <a href="https://salmon-roy-benchmark-discovery.trycloudflare.com/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="claw-status-icon">
+        <img src="images/MyClaw-status.png" alt="Claw Status">
+      </a>
       <div class="profile__info">
         <h1>Chuang Zhao (赵闯)</h1>
         <p>
