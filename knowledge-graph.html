@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式元标签 -->
+    <title>Knowledge Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        /* 重置页面默认样式，消除边距 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            overflow: hidden; /* 去掉页面滚动条 */
+            background-color: transparent; /* 透明背景，适配主页面 */
+        }
+        /* 图谱容器占满 iframe 可视区域 */
+        #knowledge-graph {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        /* 节点文字优化：避免重叠、提升可读性 */
+        .node text {
+            font-family: Arial, sans-serif;
+            text-anchor: start; /* 文字左对齐 */
+            white-space: nowrap; /* 禁止文字换行 */
+        }
+        /* 连接线优化：更细腻 */
+        .link {
+            stroke: #ccc;
+            stroke-opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div id="knowledge-graph"></div>
+
+    <script>
+    const graphData = {
+      nodes: [
+        // 保留你原有的所有节点数据
+        { id: "paper-2025-tnnls", name: "Enhancing Domain Generalization in Medical Image Segmentation", group: 1 },
+        { id: "paper-2025-tweb", name: "Cross-domain Transfer of Valence Preferences via Meta-optimization", group: 1 },
+        { id: "paper-2025-tkde", name: "Collaborative Knowledge Fusion for Multi-task Recommender Systems", group: 1 },
+        { id: "paper-2025-kdd", name: "Diffmv: Unified Diffusion Framework for Healthcare Predictions", group: 1 },
+        { id: "paper-2025-tois", name: "Beyond Sequential Patterns: Healthcare Predictions with Contextual Insights", group: 1 },
+        { id: "paper-2025-naacl", name: "Instruct-of-Reflection: Enhancing LLM Iterative Reflection", group: 1 },
+        { id: "paper-2025-www", name: "Unveiling Discrete Clues: Healthcare Predictions for Rare Diseases", group: 1 },
+        { id: "paper-2024-tkde", name: "Enhancing Precision Drug Recommendations via Motif Relationships", group: 1 },
+        { id: "paper-2024-kdd", name: "Performative Debias with Fair-exposure Optimization", group: 1 },
+        { id: "paper-2024-tsmc", name: "Bi-discriminator Domain Adversarial Neural Networks", group: 1 },
+        { id: "paper-2023-tkde", name: "Cross-Domain Recommendation via Progressive Structural Alignment", group: 1 },
+        { id: "paper-2023-cikm", name: "Sequential recommendation via adaptive cross-domain knowledge decomposition", group: 1 },
+        { id: "paper-2023-www", name: "Cross-domain recommendation via user interest alignment", group: 1 },
+        { id: "paper-2022-joc", name: "Ensemble Learning with Gradient Resampling for Class-imbalanced problems", group: 1 },
+        { id: "paper-2022-www", name: "Winning Tracker: Real-time Winning Prediction in MOBA Games", group: 1 },
+        { id: "paper-2022-aaai1", name: "Multi-dimensional Prediction of Guild Health in Online Games", group: 1 },
+        { id: "paper-2022-aaai2", name: "Co-Promotion Predictions of Financing and Sales Market", group: 1 },
+        { id: "paper-2022-tevc", name: "CoEA: Cooperative–Competitive Evolutionary Algorithm for Bidirectional Recommendations", group: 1 },
+        { id: "paper-2020-icis", name: "Machine Learning for Measuring Information Disclosure in Sharing Economy", group: 1 },
+        { id: "paper-2020-jssms", name: "Fresh Food Logistics Risk Assessment Based on Bayesian Network", group: 1 },
+        { id: "jour-tnnls", name: "TNNLS", group: 2 },
+        { id: "jour-tweb", name: "TWeb", group: 2 },
+        { id: "jour-tkde", name: "TKDE", group: 2 },
+        { id: "jour-kdd", name: "KDD", group: 2 },
+        { id: "jour-tois", name: "TOIS", group: 2 },
+        { id: "jour-naacl", name: "NAACL", group: 2 },
+        { id: "jour-www", name: "WWW", group: 2 },
+        { id: "jour-tsmc", name: "TSMC", group: 2 },
+        { id: "jour-cikm", name: "CIKM", group: 2 },
+        { id: "jour-joc", name: "JOC", group: 2 },
+        { id: "jour-aaai", name: "AAAI", group: 2 },
+        { id: "jour-tevc", name: "TEVC", group: 2 },
+        { id: "jour-icis", name: "ICIS", group: 2 },
+        { id: "jour-jssms", name: "JSSMS", group: 2 },
+        { id: "kw-recommender", name: "Recommender System", group: 3 },
+        { id: "kw-transfer", name: "Transfer Learning", group: 3 },
+        { id: "kw-ai4science", name: "AI for Science", group: 3 },
+        { id: "kw-healthcare", name: "Healthcare Prediction", group: 3 },
+        { id: "kw-domain-adapt", name: "Domain Adaptation", group: 3 },
+        { id: "kw-llm", name: "Large Language Model", group: 3 },
+        { id: "kw-games", name: "Game Analytics", group: 3 },
+        { id: "kw-imbalanced", name: "Class Imbalance", group: 3 },
+        { id: "kw-sharing-econ", name: "Sharing Economy", group: 3 },
+        { id: "kw-logistics", name: "Logistics Risk", group: 3 }
+      ],
+      links: [
+        // 保留你原有的所有链接数据
+        { source: "paper-2025-tnnls", target: "jour-tnnls", value: 1 },
+        { source: "paper-2025-tweb", target: "jour-tweb", value: 1 },
+        { source: "paper-2025-tkde", target: "jour-tkde", value: 1 },
+        { source: "paper-2025-kdd", target: "jour-kdd", value: 1 },
+        { source: "paper-2025-tois", target: "jour-tois", value: 1 },
+        { source: "paper-2025-naacl", target: "jour-naacl", value: 1 },
+        { source: "paper-2025-www", target: "jour-www", value: 1 },
+        { source: "paper-2024-tkde", target: "jour-tkde", value: 1 },
+        { source: "paper-2024-kdd", target: "jour-kdd", value: 1 },
+        { source: "paper-2024-tsmc", target: "jour-tsmc", value: 1 },
+        { source: "paper-2023-tkde", target: "jour-tkde", value: 1 },
+        { source: "paper-2023-cikm", target: "jour-cikm", value: 1 },
+        { source: "paper-2023-www", target: "jour-www", value: 1 },
+        { source: "paper-2022-joc", target: "jour-joc", value: 1 },
+        { source: "paper-2022-www", target: "jour-www", value: 1 },
+        { source: "paper-2022-aaai1", target: "jour-aaai", value: 1 },
+        { source: "paper-2022-aaai2", target: "jour-aaai", value: 1 },
+        { source: "paper-2022-tevc", target: "jour-tevc", value: 1 },
+        { source: "paper-2020-icis", target: "jour-icis", value: 1 },
+        { source: "paper-2020-jssms", target: "jour-jssms", value: 1 },
+        { source: "paper-2025-tweb", target: "kw-transfer", value: 1 },
+        { source: "paper-2025-tkde", target: "kw-recommender", value: 1 },
+        { source: "paper-2025-kdd", target: "kw-healthcare", value: 1 },
+        { source: "paper-2025-tois", target: "kw-healthcare", value: 1 },
+        { source: "paper-2025-naacl", target: "kw-llm", value: 1 },
+        { source: "paper-2025-www", target: "kw-healthcare", value: 1 },
+        { source: "paper-2024-tkde", target: "kw-recommender", value: 1 },
+        { source: "paper-2024-kdd", target: "kw-recommender", value: 1 },
+        { source: "paper-2024-tsmc", target: "kw-domain-adapt", value: 1 },
+        { source: "paper-2023-tkde", target: "kw-recommender", value: 1 },
+        { source: "paper-2023-tkde", target: "kw-transfer", value: 1 },
+        { source: "paper-2023-cikm", target: "kw-recommender", value: 1 },
+        { source: "paper-2023-www", target: "kw-recommender", value: 1 },
+        { source: "paper-2023-www", target: "kw-transfer", value: 1 },
+        { source: "paper-2022-joc", target: "kw-imbalanced", value: 1 },
+        { source: "paper-2022-www", target: "kw-games", value: 1 },
+        { source: "paper-2022-aaai1", target: "kw-games", value: 1 },
+        { source: "paper-2022-tevc", target: "kw-recommender", value: 1 },
+        { source: "paper-2020-icis", target: "kw-sharing-econ", value: 1 },
+        { source: "paper-2020-jssms", target: "kw-logistics", value: 1 },
+        { source: "paper-2025-tnnls", target: "kw-ai4science", value: 1 },
+        { source: "paper-2025-kdd", target: "kw-ai4science", value: 1 },
+        { source: "paper-2025-tois", target: "kw-ai4science", value: 1 },
+        { source: "paper-2025-www", target: "kw-ai4science", value: 1 },
+        { source: "kw-recommender", target: "kw-ai4science", value: 1 },
+        { source: "kw-transfer", target: "kw-ai4science", value: 1 },
+        { source: "kw-healthcare", target: "kw-ai4science", value: 1 }
+      ]
+    };
+
+    // 优化力导向布局参数：让节点分布更合理
+    const svg = d3.select("#knowledge-graph")
+      .append("svg")
+      .attr("width", "100%")
+      .attr("height", "100%")
+      // 增大 viewBox 尺寸，给节点更多展示空间
+      .attr("viewBox", [0, 0, 1200, 800])
+      .attr("preserveAspectRatio", "xMidYMid meet"); // 保持比例，居中显示
+
+    const simulation = d3.forceSimulation(graphData.nodes)
+      .force("link", d3.forceLink(graphData.links).id(d => d.id)
+        .distance(d => {
+          // 微调距离：避免节点过于拥挤
+          if (d.source.group === 1 && d.target.group === 2) return 120;
+          if (d.source.group === 1 && d.target.group === 3) return 180;
+          return 220;
+        })
+        .strength(0.8) // 增强链接的拉力，让关联节点更靠近
+      )
+      .force("charge", d3.forceManyBody().strength(-400)) // 增大排斥力，避免节点重叠
+      .force("center", d3.forceCenter(600, 400)) // 居中调整为新 viewBox 中心
+      .force("collision", d3.forceCollide().radius(60)); // 增大碰撞半径，进一步避免重叠
+
+    // 绘制连接线（添加类名，方便样式控制）
+    const link = svg.append("g")
+      .attr("class", "link")
+      .selectAll("line")
+      .data(graphData.links)
+      .enter().append("line")
+      .attr("stroke-width", d => Math.sqrt(d.value * 2)); // 加粗连接线
+
+    // 优化节点颜色：更美观的配色
+    const color = d3.scaleOrdinal()
+      .domain([1, 2, 3])
+      // 替换为更协调的配色：论文(深蓝)、期刊(蓝绿)、关键词(浅紫)
+      .range(["#2563eb", "#0d9488", "#9333ea"]);
+
+    const node = svg.append("g")
+      .selectAll(".node")
+      .data(graphData.nodes)
+      .enter().append("g")
+      .attr("class", "node")
+      .call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
+
+    // 优化节点大小：区分更明显
+    node.append("circle")
+      .attr("r", d => {
+        if (d.group === 1) return 10;  // 论文节点稍大
+        if (d.group === 2) return 12;  // 期刊节点更大
+        return 14;                     // 关键词节点最大
+      })
+      .attr("fill", d => color(d.group))
+      .attr("stroke", "#fff")          // 给节点加白色描边，更突出
+      .attr("stroke-width", 1.5);
+
+    // 优化文字样式：更大、更清晰
+    node.append("text")
+      .attr("dx", 15)
+      .attr("dy", ".35em")
+      .text(d => d.name)
+      .style("font-size", "11px")
+      .style("fill", "#222")
+      .style("font-weight", 500)
+      .style("pointer-events", "none");
+
+    simulation.on("tick", () => {
+      link
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+
+      node
+        .attr("transform", d => `translate(${d.x},${d.y})`);
+    });
+
+    // 拖拽函数保持不变
+    function dragstarted(event, d) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+    function dragged(event, d) {
+      d.fx = event.x;
+      d.fy = event.y;
+    }
+    function dragended(event, d) {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+    </script>
+</body>
+</html>
