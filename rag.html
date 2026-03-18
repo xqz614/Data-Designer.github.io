@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Retrieval-augmented Generation - Latest arXiv Papers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;600;1,400&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-primary: #ffffff;
@@ -23,9 +22,7 @@
       --radius-sm: 4px;
       --radius-md: 8px;
     }
-    
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body {
       font-family: 'Source Serif 4', Georgia, serif;
       font-size: 16px;
@@ -35,145 +32,39 @@
       min-height: 100vh;
       padding: 40px 20px;
     }
-    
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .back-link {
-      display: inline-block;
-      color: var(--secondary);
-      text-decoration: none;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-    
+    .container { max-width: 900px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 3rem; }
+    .back-link { display: inline-block; color: var(--secondary); text-decoration: none; margin-bottom: 1rem; font-size: 0.9rem; }
     .back-link:hover { text-decoration: underline; }
-    
-    h1 {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .subtitle {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .stat {
-      background: var(--bg-secondary);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-md);
-      font-size: 0.9rem;
-      color: var(--text-tertiary);
-    }
-    
+    h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1rem; }
+    .stats { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .stat { background: var(--bg-secondary); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem; color: var(--text-tertiary); }
     .paper-card {
-      background: var(--bg-primary);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 1.5rem;
-      padding: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      border: 1px solid var(--border-light);
-      transition: box-shadow 0.2s ease;
+      background: var(--bg-primary); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem; padding: 1.5rem; display: flex; gap: 1rem;
+      border: 1px solid var(--border-light); transition: box-shadow 0.2s ease;
     }
-    
-    .paper-card:hover {
-      box-shadow: var(--shadow-md);
-    }
-    
+    .paper-card:hover { box-shadow: var(--shadow-md); }
     .paper-number {
-      flex: 0 0 40px;
-      width: 40px;
-      height: 40px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 1.1rem;
+      flex: 0 0 40px; width: 40px; height: 40px; background: var(--primary); color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 600; font-size: 1.1rem;
     }
-    
-    .paper-content {
-      flex: 1;
-    }
-    
-    .paper-title {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      line-height: 1.4;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    
+    .paper-content { flex: 1; }
+    .paper-title { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 1.1rem; line-height: 1.4; display: block; margin-bottom: 0.5rem; }
     .paper-title:hover { text-decoration: underline; }
-    
-    .paper-authors {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-bottom: 0.25rem;
-    }
-    
-    .paper-date {
-      color: var(--text-tertiary);
-      font-size: 0.85rem;
-      margin-bottom: 0.75rem;
-    }
-    
+    .paper-authors { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .paper-date { color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 0.75rem; }
     .paper-abstract {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-      padding: 0.75rem;
-      background: var(--bg-secondary);
-      border-radius: var(--radius-sm);
+      color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.75rem;
+      padding: 0.75rem; background: var(--bg-secondary); border-radius: var(--radius-sm);
       border-left: 3px solid var(--accent);
     }
-    
-    .paper-links {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .paper-link {
-      color: var(--secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-    
+    .paper-links { display: flex; gap: 1rem; }
+    .paper-link { color: var(--secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
     .paper-link:hover { text-decoration: underline; }
-    
-    .footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-light);
-      color: var(--text-tertiary);
-      font-size: 0.9rem;
-    }
+    .footer { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-light); color: var(--text-tertiary); font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -187,58 +78,15 @@
         <span class="stat">📅 Updated: 2026-03-18</span>
       </div>
     </div>
-    
     <div class="papers-list">
 
     <div class="paper-card">
       <div class="paper-number">1</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16871v1" target="_blank" class="paper-title">WorldCam: Interactive Autoregressive 3D Gaming Worlds with Camera Pose as a Unifying Geometric Representation</a>
-        <div class="paper-authors">Jisu Nam, Yicong Hong, Chun-Hao Paul Huang et al. (12 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Recent advances in video diffusion transformers have enabled interactive gaming world models that allow users to explore generated environments over extended horizons. However, existing approaches struggle with precise action control and long-horizon 3D consistency. Most prior works treat user actions as abstract conditioning signals, overlooking the fundamental geometric coupling between actions ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16871v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16871v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">2</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16870v1" target="_blank" class="paper-title">Demystifing Video Reasoning</a>
-        <div class="paper-authors">Ruisi Wang, Zhongang Cai, Fanyi Pu et al. (14 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Recent advances in video generation have revealed an unexpected phenomenon: diffusion-based video models exhibit non-trivial reasoning capabilities. Prior work attributes this to a Chain-of-Frames (CoF) mechanism, where reasoning is assumed to unfold sequentially across video frames. In this work, we challenge this assumption and uncover a fundamentally different mechanism. We show that reasoning ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16870v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16870v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">3</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16869v1" target="_blank" class="paper-title">SegviGen: Repurposing 3D Generative Model for Part Segmentation</a>
-        <div class="paper-authors">Lin Li, Haoran Feng, Zehuan Huang et al. (11 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We introduce SegviGen, a framework that repurposes native 3D generative models for 3D part segmentation. Existing pipelines either lift strong 2D priors into 3D via distillation or multi-view mask aggregation, often suffering from cross-view inconsistency and blurred boundaries, or explore native 3D discriminative segmentation, which typically requires large-scale annotated 3D data and substantial...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16869v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16869v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">4</div>
-      <div class="paper-content">
         <a href="http://arxiv.org/abs/2603.16867v1" target="_blank" class="paper-title">Efficient Reasoning on the Edge</a>
         <div class="paper-authors">Yelysei Bondarenko, Thomas Hehn, Rob Hesselink et al. (18 authors)</div>
         <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Large language models (LLMs) with chain-of-thought reasoning achieve state-of-the-art performance across complex problem-solving tasks, but their verbose reasoning traces and large context requirements make them impractical for edge deployment. These challenges include high token generation costs, large KV-cache footprints, and inefficiencies when distilling reasoning capabilities into smaller mod...</div>
+        <div class="paper-abstract">Large language models (LLMs) with chain-of-thought reasoning achieve state-of-the-art performance across complex problem-solving tasks, but their verbose reasoning traces and large context requirements make them impractical for edge deployment. These challenges include high token generation costs, large KV-cache footprints, and inefficiencies when distilling reasoning capabilities into smaller...</div>
         <div class="paper-links">
           <a href="http://arxiv.org/abs/2603.16867v1" target="_blank" class="paper-link">arXiv →</a>
           <a href="https://arxiv.org/pdf/2603.16867v1" target="_blank" class="paper-link">PDF</a>
@@ -247,54 +95,12 @@
     </div>
 
     <div class="paper-card">
-      <div class="paper-number">5</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16866v1" target="_blank" class="paper-title">ManiTwin: Scaling Data-Generation-Ready Digital Object Dataset to 100K</a>
-        <div class="paper-authors">Kaixuan Wang, Tianxing Chen, Jiawei Liu et al. (16 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Learning in simulation provides a useful foundation for scaling robotic manipulation capabilities. However, this paradigm often suffers from a lack of data-generation-ready digital assets, in both scale and diversity. In this work, we present ManiTwin, an automated and efficient pipeline for generating data-generation-ready digital object twins. Our pipeline transforms a single image into simulati...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16866v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16866v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">6</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16865v1" target="_blank" class="paper-title">Prescribed-Time Distributed Generalized Nash Equilibrium Seeking</a>
-        <div class="paper-authors">Liraz Mudrik, Isaac Kaminer, Sean Kragelund et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">This paper proposes the first fully distributed algorithm for finding the Generalized Nash Equilibrium (GNE) of a non-cooperative game with shared coupling constraints and general cost coupling at a user-prescribed finite time T. As a foundation, a centralized gradient-based prescribed-time convergence result is established for the GNE problem, extending the optimization Lyapunov function framewor...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16865v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16865v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">7</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16864v1" target="_blank" class="paper-title">SparkVSR: Interactive Video Super-Resolution via Sparse Keyframe Propagation</a>
-        <div class="paper-authors">Jiongze Yu, Xiangbo Gao, Pooja Verlani et al. (7 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Video Super-Resolution (VSR) aims to restore high-quality video frames from low-resolution (LR) estimates, yet most existing VSR approaches behave like black boxes at inference time: users cannot reliably correct unexpected artifacts, but instead can only accept whatever the model produces. In this paper, we propose a novel interactive VSR framework dubbed SparkVSR that makes sparse keyframes a si...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16864v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16864v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">8</div>
+      <div class="paper-number">2</div>
       <div class="paper-content">
         <a href="http://arxiv.org/abs/2603.16862v1" target="_blank" class="paper-title">Chronos: Temporal-Aware Conversational Agents with Structured Event Retrieval for Long-Term Memory</a>
         <div class="paper-authors">Sahil Sen, Elias Lumer, Anmol Gulati et al. (4 authors)</div>
         <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Recent advances in Large Language Models (LLMs) have enabled conversational AI agents to engage in extended multi-turn interactions spanning weeks or months. However, existing memory systems struggle to reason over temporally grounded facts and preferences that evolve across months of interaction and lack effective retrieval strategies for multi-hop, time-sensitive queries over long dialogue histo...</div>
+        <div class="paper-abstract">Recent advances in Large Language Models (LLMs) have enabled conversational AI agents to engage in extended multi-turn interactions spanning weeks or months. However, existing memory systems struggle to reason over temporally grounded facts and preferences that evolve across months of interaction and lack effective retrieval strategies for multi-hop, time-sensitive queries over long dialogue...</div>
         <div class="paper-links">
           <a href="http://arxiv.org/abs/2603.16862v1" target="_blank" class="paper-link">arXiv →</a>
           <a href="https://arxiv.org/pdf/2603.16862v1" target="_blank" class="paper-link">PDF</a>
@@ -303,110 +109,12 @@
     </div>
 
     <div class="paper-card">
-      <div class="paper-number">9</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16861v1" target="_blank" class="paper-title">MolmoB0T: Large-Scale Simulation Enables Zero-Shot Manipulation</a>
-        <div class="paper-authors">Abhay Deshpande, Maya Guru, Rose Hendrix et al. (26 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">A prevailing view in robot learning is that simulation alone is not enough; effective sim-to-real transfer is widely believed to require at least some real-world data collection or task-specific fine-tuning to bridge the gap between simulated and physical environments. We challenge that assumption. With sufficiently large-scale and diverse simulated synthetic training data, we show that zero-shot ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16861v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16861v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">10</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16860v1" target="_blank" class="paper-title">DreamPlan: Efficient Reinforcement Fine-Tuning of Vision-Language Planners via Video World Models</a>
-        <div class="paper-authors">Emily Yue-Ting Jia, Weiduo Yuan, Tianheng Shi et al. (6 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Robotic manipulation requires sophisticated commonsense reasoning, a capability naturally possessed by large-scale Vision-Language Models (VLMs). While VLMs show promise as zero-shot planners, their lack of grounded physical understanding often leads to compounding errors and low success rates when deployed in complex real-world environments, particularly for challenging tasks like deformable obje...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16860v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16860v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">11</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16859v1" target="_blank" class="paper-title">SocialOmni: Benchmarking Audio-Visual Social Interactivity in Omni Models</a>
-        <div class="paper-authors">Tianyu Xie, Jinfa Huang, Yuexiao Ma et al. (12 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Omni-modal large language models (OLMs) redefine human-machine interaction by natively integrating audio, vision, and text. However, existing OLM benchmarks remain anchored to static, accuracy-centric tasks, leaving a critical gap in assessing social interactivity, the fundamental capacity to navigate dynamic cues in natural dialogues. To this end, we propose SocialOmni, a comprehensive benchmark ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16859v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16859v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">12</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16857v1" target="_blank" class="paper-title">Long-Horizon Traffic Forecasting via Incident-Aware Conformal Spatio-Temporal Transformers</a>
-        <div class="paper-authors">Mayur Patil, Qadeer Ahmed, Shawn Midlam-Mohler et al. (7 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Reliable multi-horizon traffic forecasting is challenging because network conditions are stochastic, incident disruptions are intermittent, and effective spatial dependencies vary across time-of-day patterns. This study is conducted on the Ohio Department of Transportation (ODOT) traffic count data and corresponding ODOT crash records. This work utilizes a Spatio-Temporal Transformer (STT) model w...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16857v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16857v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">13</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16855v1" target="_blank" class="paper-title">Lifting the fog - a case for non-reversible "lifted" Markov chains</a>
-        <div class="paper-authors">Gabriele Tartero, Sora Shiratani, Werner Krauth</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Phase transitions appear all over science, and are familiar from everyday life, as water boiling, sugar melting into caramel or as nematic molecules turning smectic in liquid-crystal displays. The dynamics of phase transitions can be extremely slow, as for example when fog in winter does not lift, that is when the coarsening takes much time from many tiny water droplets to fewer but larger rain dr...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16855v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16855v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">14</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16851v1" target="_blank" class="paper-title">Koopman Lifted Finite Memory Identification via Truncated Grunwald Letnikov Kernels</a>
-        <div class="paper-authors">Navid Mojahed, Mahdis Rabbani, Shima Nazari</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We propose a data-driven linear modeling framework for controlled nonlinear hereditary systems that combines Koopman lifting with a truncated Grunwald-Letnikov memory term. The key idea is to model nonlinear state dependence through a lifted observable representation while imposing history dependence directly in the lifted coordinates through fixed fractional-difference weights. This preserves lin...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16851v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16851v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">15</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16849v1" target="_blank" class="paper-title">GIST: Gauge-Invariant Spectral Transformers for Scalable Graph Neural Operators</a>
-        <div class="paper-authors">Mattia Rigotti, Nicholas Thumiger, Thomas Frick</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Adapting transformer positional encoding to meshes and graph-structured data presents significant computational challenges: exact spectral methods require cubic-complexity eigendecomposition and can inadvertently break gauge invariance through numerical solver artifacts, while efficient approximate methods sacrifice gauge symmetry by design. Both failure modes cause catastrophic generalization in ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16849v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16849v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">16</div>
+      <div class="paper-number">3</div>
       <div class="paper-content">
         <a href="http://arxiv.org/abs/2603.16848v1" target="_blank" class="paper-title">Mediocrity is the key for LLM as a Judge Anchor Selection</a>
         <div class="paper-authors">Shachar Don-Yehiya, Asaf Yehudai, Leshem Choshen et al. (4 authors)</div>
         <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">The ``LLM-as-a-judge'' paradigm has become a standard method for evaluating open-ended generation. To address the quadratic scalability costs of pairwise comparisons, popular benchmarks like Arena-Hard and AlpacaEval compare all models against a single anchor. However, despite its widespread use, the impact of anchor selection on the reliability of the results remains largely unexplored. In this w...</div>
+        <div class="paper-abstract">The ``LLM-as-a-judge&#x27;&#x27; paradigm has become a standard method for evaluating open-ended generation. To address the quadratic scalability costs of pairwise comparisons, popular benchmarks like Arena-Hard and AlpacaEval compare all models against a single anchor. However, despite its widespread use, the impact of anchor selection on the reliability of the results remains largely...</div>
         <div class="paper-links">
           <a href="http://arxiv.org/abs/2603.16848v1" target="_blank" class="paper-link">arXiv →</a>
           <a href="https://arxiv.org/pdf/2603.16848v1" target="_blank" class="paper-link">PDF</a>
@@ -415,166 +123,12 @@
     </div>
 
     <div class="paper-card">
-      <div class="paper-number">17</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16847v1" target="_blank" class="paper-title">Solving gravitational field equations by Wiener-Hopf matrix factorisation, and beyond</a>
-        <div class="paper-authors">M. Cristina Câmara, Gabriel Lopes Cardoso</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">By viewing Einstein's field equations -- reduced to two dimensions -- as an integrable system, one can simultaneously obtain exact solutions to both the equations themselves and their associated Lax pair via a canonical Wiener-Hopf factorisation of a so-called monodromy matrix. In this article, we review this remarkable interplay between gravitational field equations, integrable systems, Riemann-H...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16847v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16847v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">18</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16846v1" target="_blank" class="paper-title">Dynamic Meta-Layer Aggregation for Byzantine-Robust Federated Learning</a>
-        <div class="paper-authors">Reek Das, Biplab Kanti Sen</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Federated Learning (FL) is increasingly applied in sectors like healthcare, finance, and IoT, enabling collaborative model training while safeguarding user privacy. However, FL systems are susceptible to Byzantine adversaries that inject malicious updates, which can severely compromise global model performance. Existing defenses tend to focus on specific attack types and fail against untargeted st...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16846v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16846v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">19</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16845v1" target="_blank" class="paper-title">Efficient Shadow Tomography of Thermal States</a>
-        <div class="paper-authors">Chi-Fang Chen, András Gilyén</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We present a general protocol for estimating $M$ observables from only $\mathcal{O}(\log (M)/\varepsilon^2)$ copies of a Gibbs state whose Hamiltonian is accessible. The protocol uses single-copy, nonadaptive measurements and uses a total Hamiltonian simulation time of $\widetilde{\mathcal{O}}(βM/\varepsilon^2)$; we show that the sample complexity is optimal in a black-box setting where exponentia...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16845v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16845v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">20</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16844v1" target="_blank" class="paper-title">M^3: Dense Matching Meets Multi-View Foundation Models for Monocular Gaussian Splatting SLAM</a>
-        <div class="paper-authors">Kerui Ren, Guanghao Li, Changjian Jiang et al. (10 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Streaming reconstruction from uncalibrated monocular video remains challenging, as it requires both high-precision pose estimation and computationally efficient online refinement in dynamic environments. While coupling 3D foundation models with SLAM frameworks is a promising paradigm, a critical bottleneck persists: most multi-view foundation models estimate poses in a feed-forward manner, yieldin...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16844v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16844v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">21</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16840v1" target="_blank" class="paper-title">What DINO saw: ALiBi positional encoding reduces positional bias in Vision Transformers</a>
-        <div class="paper-authors">Moritz Pawlowsky, Antonis Vamvakeros, Alexander Weiss et al. (6 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Vision transformers (ViTs) - especially feature foundation models like DINOv2 - learn rich representations useful for many downstream tasks. However, architectural choices (such as positional encoding) can lead to these models displaying positional biases and artefacts independent of semantic content. This makes zero-shot adaption difficult in fields like material science, where images are often c...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16840v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16840v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">22</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16839v1" target="_blank" class="paper-title">Learning to Present: Inverse Specification Rewards for Agentic Slide Generation</a>
-        <div class="paper-authors">Karthik Ragunath Ananda Kumar, Subrahmanyam Arunachalam</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Automated presentation generation remains a challenging task requiring coherent content creation, visual design, and audience-aware communication. This work proposes an OpenEnv-compatible reinforcement learning environment where LLM agents learn to research topics, plan content, and generate professional HTML slide presentations through tool use. We introduce a multi-component reward system combin...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16839v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16839v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">23</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16838v1" target="_blank" class="paper-title">Complex Wannier centers and drifting Wannier functions in non-Hermitian Hamiltonians</a>
-        <div class="paper-authors">Pedro Fittipaldi de Castro, Wladimir A. Benalcazar</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">The extension of topological band theory to non-Hermitian Hamiltonians with line energy gaps remains largely unexplored, despite early indications of rich underlying physics. In this setting, Wilson loops-the quantities underlying polarization-generally become nonunitary, yet the physical consequences of this nonunitarity have remained unclear. Within the framework of biorthonormal quantum mechani...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16838v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16838v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">24</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16826v1" target="_blank" class="paper-title">The Hilbert matrix on analytic tent spaces</a>
-        <div class="paper-authors">Tanausú Aguilar-Hernández, Petros Galanopoulos, Elena de la Rosa</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We study for the first time the action of the Hilbert matrix $$\mathcal H=(c_{n,k})_{n,k\geq 0}, \quad c_{n,k}=\frac{1}{n+k+1}$$ on the analytic tent spaces $AT^q_p, 1<p,q <\infty,$ of the unit disc $\mathbb D$ of the complex plane. They were proposed by Triebel as the natural analytic version of the tent spaces of measurable functions defined by Coifman, Meyer and Stein. The $AT_p^q$ spaces are c...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16826v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16826v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">25</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16822v1" target="_blank" class="paper-title">Surg$Σ$: A Spectrum of Large-Scale Multimodal Data and Foundation Models for Surgical Intelligence</a>
-        <div class="paper-authors">Zhitao Zeng, Mengya Xu, Jian Jiang et al. (16 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Surgical intelligence has the potential to improve the safety and consistency of surgical care, yet most existing surgical AI frameworks remain task-specific and struggle to generalize across procedures and institutions. Although multimodal foundation models, particularly multimodal large language models, have demonstrated strong cross-task capabilities across various medical domains, their advanc...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16822v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16822v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">26</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16821v1" target="_blank" class="paper-title">Measurement-Based Estimation of Causal Conditional Variances and Its Application to Macroscopic quantum phenomenon</a>
-        <div class="paper-authors">Kosei Hatakeyama, Ryotaro Fukuzumi, Akira Matsumura et al. (5 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We analytically investigate a quantum estimation method for a mechanical oscillator in a detuned cavity system based solely on homodyne measurement records, building on the framework developed by C.Meng et al. (Science Advances 8, 7585 (2022)). Estimation based only on measurement records is important because it enables state verification without assuming knowledge of the true system state. We con...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16821v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16821v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">27</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16818v1" target="_blank" class="paper-title">Leveraging LLMs for Structured Information Extraction and Analysis from Cloud Incident Reports (Work In Progress Paper)</a>
-        <div class="paper-authors">Xiaoyu Chu, Shashikant Ilager, Yizhen Zang et al. (5 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Incident management is essential to maintain the reliability and availability of cloud computing services. Cloud vendors typically disclose incident reports to the public, summarizing the failures and recovery process to help minimize their impact. However, such reports are often lengthy and unstructured, making them difficult to understand, analyze, and use for long-term dependability improvement...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16818v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16818v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">28</div>
+      <div class="paper-number">4</div>
       <div class="paper-content">
         <a href="http://arxiv.org/abs/2603.16817v1" target="_blank" class="paper-title">Is Conformal Factuality for RAG-based LLMs Robust? Novel Metrics and Systematic Insights</a>
         <div class="paper-authors">Yi Chen, Daiwei Chen, Sukrut Madhav Chikodikar et al. (5 authors)</div>
         <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Large language models (LLMs) frequently hallucinate, limiting their reliability in knowledge-intensive applications. Retrieval-augmented generation (RAG) and conformal factuality have emerged as potential ways to address this limitation. While RAG aims to ground responses in retrieved evidence, it provides no statistical guarantee that the final output is correct. Conformal factuality filtering of...</div>
+        <div class="paper-abstract">Large language models (LLMs) frequently hallucinate, limiting their reliability in knowledge-intensive applications. Retrieval-augmented generation (RAG) and conformal factuality have emerged as potential ways to address this limitation. While RAG aims to ground responses in retrieved evidence, it provides no statistical guarantee that the final output is correct. Conformal factuality filtering...</div>
         <div class="paper-links">
           <a href="http://arxiv.org/abs/2603.16817v1" target="_blank" class="paper-link">arXiv →</a>
           <a href="https://arxiv.org/pdf/2603.16817v1" target="_blank" class="paper-link">PDF</a>
@@ -583,237 +137,12 @@
     </div>
 
     <div class="paper-card">
-      <div class="paper-number">29</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16816v1" target="_blank" class="paper-title">WildDepth: A Multimodal Dataset for 3D Wildlife Perception and Depth Estimation</a>
-        <div class="paper-authors">Muhammad Aamir, Naoya Muramatsu, Sangyun Shin et al. (8 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Depth estimation and 3D reconstruction have been extensively studied as core topics in computer vision. Starting from rigid objects with relatively simple geometric shapes, such as vehicles, the research has expanded to address general objects, including challenging deformable objects, such as humans and animals. However, for the animal, in particular, the majority of existing models are trained b...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16816v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16816v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">30</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16809v1" target="_blank" class="paper-title">CABTO: Context-Aware Behavior Tree Grounding for Robot Manipulation</a>
-        <div class="paper-authors">Yishuai Cai, Xinglin Chen, Yunxin Mao et al. (7 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Behavior Trees (BTs) offer a powerful paradigm for designing modular and reactive robot controllers. BT planning, an emerging field, provides theoretical guarantees for the automated generation of reliable BTs. However, BT planning typically assumes that a well-designed BT system is already grounded -- comprising high-level action models and low-level control policies -- which often requires exten...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16809v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16809v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">31</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16807v1" target="_blank" class="paper-title">Impact of phase modulation on the dynamics of temporal localized structures in injected Kerr microcavities</a>
-        <div class="paper-authors">Marc Hunkemöller, Thomas G. Seidel, Julien Javaloyes et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We theoretically investigate how phase modulation alters the dynamics of temporal localized structures (TLSs) in vertically emitting Kerr micro-cavities under detuned optical injection operating in the normal dispersion regime. We show that the emergence of TLSs in general is governed by a synchronization between the imposed modulation and the intrinsic pulse dynamics. We perform a multi-parameter...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16807v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16807v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">32</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16805v1" target="_blank" class="paper-title">Making Separation-First Multi-Stream Audio Watermarking Feasible via Joint Training</a>
-        <div class="paper-authors">Houmin Sun, Zi Hu, Linxi Li et al. (6 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Modern audio is created by mixing stems from different sources, raising the question: can we independently watermark each stem and recover all watermarks after separation? We study a separation-first, multi-stream watermarking framework-embedding distinct information into stems using unique keys but a shared structure, mixing, separating, and decoding from each output. A naive pipeline (robust wat...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16805v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16805v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">33</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16800v1" target="_blank" class="paper-title">RaDAR: Relation-aware Diffusion-Asymmetric Graph Contrastive Learning for Recommendation</a>
-        <div class="paper-authors">Yixuan Huang, Jiawei Chen, Shengfan Zhang et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Collaborative filtering (CF) recommendation has been significantly advanced by integrating Graph Neural Networks (GNNs) and Graph Contrastive Learning (GCL). However, (i) random edge perturbations often distort critical structural signals and degrade semantic consistency across augmented views, and (ii) data sparsity hampers the propagation of collaborative signals, limiting generalization.
-  To t...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16800v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16800v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">34</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16797v1" target="_blank" class="paper-title">Adaptive Moments are Surprisingly Effective for Plug-and-Play Diffusion Sampling</a>
-        <div class="paper-authors">Christian Belardi, Justin Lovelace, Kilian Q. Weinberger et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Guided diffusion sampling relies on approximating often intractable likelihood scores, which introduces significant noise into the sampling dynamics. We propose using adaptive moment estimation to stabilize these noisy likelihood scores during sampling. Despite its simplicity, our approach achieves state-of-the-art results on image restoration and class-conditional generation tasks, outperforming ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16797v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16797v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">35</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16793v1" target="_blank" class="paper-title">A note on Pisier's method in interpolation of abstract Hardy spaces</a>
-        <div class="paper-authors">Hugues Moyart</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">In his approach to Jones theorem on the interpolation of Hardy spaces on the torus, Pisier introduced an original method allowing the computation of complex interpolation spaces by means of real interpolation techniques. This approach has been successfully extended to noncommutative analytic Hardy spaces arising from subdiagonal algebras. In this paper, we formulate and prove an abstract version o...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16793v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16793v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">36</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16792v1" target="_blank" class="paper-title">V-Co: A Closer Look at Visual Representation Alignment via Co-Denoising</a>
-        <div class="paper-authors">Han Lin, Xichen Pan, Zun Wang et al. (7 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Pixel-space diffusion has recently re-emerged as a strong alternative to latent diffusion, enabling high-quality generation without pretrained autoencoders. However, standard pixel-space diffusion models receive relatively weak semantic supervision and are not explicitly designed to capture high-level visual structure. Recent representation-alignment methods (e.g., REPA) suggest that pretrained vi...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16792v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16792v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">37</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16790v1" target="_blank" class="paper-title">InCoder-32B: Code Foundation Model for Industrial Scenarios</a>
-        <div class="paper-authors">Jian Yang, Wei Zhang, Jiajun Wu et al. (28 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Recent code large language models have achieved remarkable progress on general programming tasks. Nevertheless, their performance degrades significantly in industrial scenarios that require reasoning about hardware semantics, specialized language constructs, and strict resource constraints. To address these challenges, we introduce InCoder-32B (Industrial-Coder-32B), the first 32B-parameter code f...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16790v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16790v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">38</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16783v1" target="_blank" class="paper-title">SpokenUS: A Spoken User Simulator for Task-Oriented Dialogue</a>
-        <div class="paper-authors">Jonggeun Lee, Junseong Pyo, Jeongmin Park et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Robust task-oriented spoken dialogue agents require exposure to the full diversity of how people interact through speech. Building spoken user simulators that address this requires large-scale spoken task-oriented dialogue (TOD) data encompassing spoken user behaviors, yet existing datasets are limited in scale and domain coverage, with no systematic pipeline for augmenting them. To address this, ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16783v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16783v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">39</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16781v1" target="_blank" class="paper-title">IOSVLM: A 3D Vision-Language Model for Unified Dental Diagnosis from Intraoral Scans</a>
-        <div class="paper-authors">Huimin Xiong, Zijie Meng, Tianxiang Hu et al. (6 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">3D intraoral scans (IOS) are increasingly adopted in routine dentistry due to abundant geometric evidence, and unified multi-disease diagnosis is desirable for clinical documentation and communication. While recent works introduce dental vision-language models (VLMs) to enable unified diagnosis and report generation on 2D images or multi-view images rendered from IOS, they do not fully leverage na...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16781v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16781v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">40</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16777v1" target="_blank" class="paper-title">Anticipatory Planning for Multimodal AI Agents</a>
-        <div class="paper-authors">Yongyuan Liang, Shijie Zhou, Yu Gu et al. (9 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Recent advances in multimodal agents have improved computer-use interaction and tool-usage, yet most existing systems remain reactive, optimizing actions in isolation without reasoning about future states or long-term goals. This limits planning coherence and prevents agents from reliably solving high-level, multi-step tasks. We introduce TraceR1, a two-stage reinforcement learning framework that ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16777v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16777v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">41</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16776v1" target="_blank" class="paper-title">Cosmic Dipole as a Symmetry Response: From the Ellis--Baldwin Formula to Correlation Function Dipoles</a>
-        <div class="paper-authors">Tsutomu T. Takeuchi</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">The cosmic dipole in galaxy number counts is traditionally described by the Ellis--Baldwin (EB) formula under simplifying assumptions of power-law source counts and flux-limited selection. We reformulate the EB dipole as a symmetry response of observed counts to a Lorentz boost, leading to the general expression $D=βR$, where $R=\partial\ln N/\partial\lnβ$ encodes the underlying population and sel...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16776v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16776v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">42</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16768v1" target="_blank" class="paper-title">Overlapping Covariance Intersection: Fusion with Partial Structural Knowledge of Correlation from Multiple Sources</a>
-        <div class="paper-authors">Leonardo Pedroso, Pedro Batista, W. P. M. H. Heemels</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Emerging large-scale engineering systems rely on distributed fusion for situational awareness, where agents combine noisy local sensor measurements with exchanged information to obtain fused estimates. However, at the sheer scale of these systems, tracking cross-correlations becomes infeasible, preventing the use of optimal filters. Covariance intersection (CI) methods address fusion problems with...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16768v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16768v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">43</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16766v1" target="_blank" class="paper-title">General multi-Novikov algebras, multi-differential algebras and their free constructions</a>
-        <div class="paper-authors">Xiaoyan Wang, Li Guo, Huhu Zhang</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Motivated by the recent development of noncommutative Novikov algebras and multi-Novikov algebras from the study of regularity structures of stochastic PDEs, this paper gives a general approach to study various multi-Novikov algebras and multi-differential algebras, with close connection with Poisson algebras. The construction of S. Gelfand of Novikov algebras from differential commutative algebra...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16766v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16766v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">44</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16763v1" target="_blank" class="paper-title">Coherent RFRS groups</a>
-        <div class="paper-authors">Sam P. Fisher, Marco Linton, Pablo Sánchez-Peralta</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We prove that a finitely generated virtually RFRS group of cohomological dimension at most $2$ is coherent if and only if its second $L^{2}$-Betti number vanishes if and only if it is virtually free-by-cyclic. The non-vanishing of the second $L^{2}$-Betti number provides the first known global obstruction to coherence in any reasonably wide class of groups, allowing for proofs of incoherence witho...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16763v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16763v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">45</div>
+      <div class="paper-number">5</div>
       <div class="paper-content">
         <a href="http://arxiv.org/abs/2603.16759v1" target="_blank" class="paper-title">TurnWise: The Gap between Single- and Multi-turn Language Model Capabilities</a>
         <div class="paper-authors">Victoria Graf, Valentina Pyatkin, Nouha Dziri et al. (5 authors)</div>
         <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Multi-turn conversations are a common and critical mode of language model interaction. However, current open training and evaluation data focus on single-turn settings, failing to capture the additional dimension of these longer interactions. To understand this multi-/single-turn gap, we first introduce a new benchmark, TurnWiseEval, for multi-turn capabilities that is directly comparable to singl...</div>
+        <div class="paper-abstract">Multi-turn conversations are a common and critical mode of language model interaction. However, current open training and evaluation data focus on single-turn settings, failing to capture the additional dimension of these longer interactions. To understand this multi-/single-turn gap, we first introduce a new benchmark, TurnWiseEval, for multi-turn capabilities that is directly comparable to...</div>
         <div class="paper-links">
           <a href="http://arxiv.org/abs/2603.16759v1" target="_blank" class="paper-link">arXiv →</a>
           <a href="https://arxiv.org/pdf/2603.16759v1" target="_blank" class="paper-link">PDF</a>
@@ -822,68 +151,12 @@
     </div>
 
     <div class="paper-card">
-      <div class="paper-number">46</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16757v1" target="_blank" class="paper-title">pADAM: A Plug-and-Play All-in-One Diffusion Architecture for Multi-Physics Learning</a>
-        <div class="paper-authors">Amirhossein Mollaali, Bongseok Kim, Christian Moya et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Generalizing across disparate physical laws remains a fundamental challenge for artificial intelligence in science. Existing deep-learning solvers are largely confined to single-equation settings, limiting transfer across physical regimes and inference tasks. Here we introduce pADAM, a unified generative framework that learns a shared probabilistic prior across heterogeneous partial differential e...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16757v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16757v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">47</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16755v1" target="_blank" class="paper-title">A Practical Algorithm for Feature-Rich, Non-Stationary Bandit Problems</a>
-        <div class="paper-authors">Wei Min Loh, Sajib Kumer Sinha, Ankur Agarwal et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Contextual bandits are incredibly useful in many practical problems. We go one step further by devising a more realistic problem that combines: (1) contextual bandits with dense arm features, (2) non-linear reward functions, and (3) a generalization of correlated bandits where reward distributions change over time but the degree of correlation maintains. This formulation lends itself to a wider se...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16755v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16755v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">48</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16753v1" target="_blank" class="paper-title">Phonon collisional broadening and heat transport beyond the Boltzmann equation</a>
-        <div class="paper-authors">Enrico Di Lucente, Nicola Marzari, Michele Simoncelli</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">In crystals, macroscopic technological properties such as thermal conductivity originate from the microscopic drift and scattering of phonons, commonly described by the Boltzmann Transport Equation (BTE). Despite its widespread use, the most general space-time nonlocal form of the BTE still lacks a rigorous derivation of its collisional part based on Fermi's Golden Rule (FGR), and becomes inadequa...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16753v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16753v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">49</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16751v1" target="_blank" class="paper-title">Finding Common Ground in a Sea of Alternatives</a>
-        <div class="paper-authors">Jay Chooi, Paul Gölz, Ariel D. Procaccia et al. (5 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We study the problem of selecting a statement that finds common ground across diverse population preferences. Generative AI is uniquely suited for this task because it can access a practically infinite set of statements, but AI systems like the Habermas machine leave the choice of generated statement to a voting rule. What it means for this rule to find common ground, however, is not well-defined....</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16751v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16751v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">50</div>
+      <div class="paper-number">6</div>
       <div class="paper-content">
         <a href="http://arxiv.org/abs/2603.16749v1" target="_blank" class="paper-title">Probing Cultural Signals in Large Language Models through Author Profiling</a>
         <div class="paper-authors">Valentin Lafargue, Ariel Guerra-Adames, Emmanuelle Claeys et al. (5 authors)</div>
         <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Large language models (LLMs) are increasingly deployed in applications with societal impact, raising concerns about the cultural biases they encode. We probe these representations by evaluating whether LLMs can perform author profiling from song lyrics in a zero-shot setting, inferring singers' gender and ethnicity without task-specific fine-tuning. Across several open-source models evaluated on m...</div>
+        <div class="paper-abstract">Large language models (LLMs) are increasingly deployed in applications with societal impact, raising concerns about the cultural biases they encode. We probe these representations by evaluating whether LLMs can perform author profiling from song lyrics in a zero-shot setting, inferring singers&#x27; gender and ethnicity without task-specific fine-tuning. Across several open-source models...</div>
         <div class="paper-links">
           <a href="http://arxiv.org/abs/2603.16749v1" target="_blank" class="paper-link">arXiv →</a>
           <a href="https://arxiv.org/pdf/2603.16749v1" target="_blank" class="paper-link">PDF</a>
@@ -891,10 +164,625 @@
       </div>
     </div>
 
+    <div class="paper-card">
+      <div class="paper-number">7</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16737v1" target="_blank" class="paper-title">Retrieving Counterfactuals Improves Visual In-Context Learning</a>
+        <div class="paper-authors">Guangzhi Xiong, Sanchit Sinha, Zhenghao He et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Vision-language models (VLMs) have achieved impressive performance across a wide range of multimodal reasoning tasks, but they often struggle to disentangle fine-grained visual attributes and reason about underlying causal relationships. In-context learning (ICL) offers a promising avenue for VLMs to adapt to new tasks, but its effectiveness critically depends on the selection of demonstration...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16737v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16737v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
     </div>
-    
+
+    <div class="paper-card">
+      <div class="paper-number">8</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16733v1" target="_blank" class="paper-title">IQuest-Coder-V1 Technical Report</a>
+        <div class="paper-authors">Jian Yang, Wei Zhang, Shawn Guo et al. (38 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">In this report, we introduce the IQuest-Coder-V1 series-(7B/14B/40B/40B-Loop), a new family of code large language models (LLMs). Moving beyond static code representations, we propose the code-flow multi-stage training paradigm, which captures the dynamic evolution of software logic through different phases of the pipeline. Our models are developed through the evolutionary pipeline, starting with...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16733v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16733v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">9</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16654v1" target="_blank" class="paper-title">Omanic: Towards Step-wise Evaluation of Multi-hop Reasoning in Large Language Models</a>
+        <div class="paper-authors">Xiaojie Gu, Sherry T. Tong, Aosong Feng et al. (11 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Reasoning-focused large language models (LLMs) have advanced in many NLP tasks, yet their evaluation remains challenging: final answers alone do not expose the intermediate reasoning steps, making it difficult to determine whether a model truly reasons correctly and where failures occur, while existing multi-hop QA benchmarks lack step-level annotations for diagnosing reasoning failures. To...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16654v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16654v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">10</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16643v1" target="_blank" class="paper-title">Good Arguments Against the People Pleasers: How Reasoning Mitigates (Yet Masks) LLM Sycophancy</a>
+        <div class="paper-authors">Zhaoxin Feng, Zheng Chen, Jianfei Ma et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Alignment techniques often inadvertently induce sycophancy in LLMs. While prior studies studied this behaviour in direct-answer settings, the role of Chain-of-Thought (CoT) reasoning remains under-explored: does it serve as a logical constraint that mitigates sycophancy, or a tool for post-hoc rationalization that masks it? We evaluate a range of models across objective and subjective tasks to...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16643v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16643v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">11</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16642v1" target="_blank" class="paper-title">When AI Navigates the Fog of War</a>
+        <div class="paper-authors">Ming Li, Xirui Li, Tianyi Zhou</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Can AI reason about a war before its trajectory becomes historically obvious? Analyzing this capability is difficult because retrospective geopolitical prediction is heavily confounded by training-data leakage. We address this challenge through a temporally grounded case study of the early stages of the 2026 Middle East conflict, which unfolded after the training cutoff of current frontier...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16642v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16642v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">12</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16578v1" target="_blank" class="paper-title">When and Why Does Unsupervised RL Succeed in Mathematical Reasoning? A Manifold Envelopment Perspective</a>
+        <div class="paper-authors">Zelin Zhang, Fei Cheng, Chenhui Chu</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Although outcome-based reinforcement learning (RL) significantly advances the mathematical reasoning capabilities of Large Language Models (LLMs), its reliance on computationally expensive ground-truth annotations imposes a severe scalability bottleneck. Unsupervised RL guided by intrinsic rewards offers a scalable alternative, yet it suffers from opaque training dynamics and catastrophic...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16578v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16578v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">13</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16574v1" target="_blank" class="paper-title">Diverging Transformer Predictions for Human Sentence Processing: A Comprehensive Analysis of Agreement Attraction Effects</a>
+        <div class="paper-authors">Titus von der Malsburg, Sebastian Padó</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Transformers underlie almost all state-of-the-art language models in computational linguistics, yet their cognitive adequacy as models of human sentence processing remains disputed. In this work, we use a surprisal-based linking mechanism to systematically evaluate eleven autoregressive transformers of varying sizes and architectures on a more comprehensive set of English agreement attraction...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16574v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16574v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">14</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16553v1" target="_blank" class="paper-title">EmoLLM: Appraisal-Grounded Cognitive-Emotional Co-Reasoning in Large Language Models</a>
+        <div class="paper-authors">Yifei Zhang, Mingyang Li, Henry Gao et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Large language models (LLMs) demonstrate strong cognitive intelligence (IQ), yet many real-world interactions also require emotional intelligence (EQ) to produce responses that are both factually reliable and emotionally appropriate. In settings such as emotional support, technical assistance, and consultation, effective dialogue depends on how situations are appraised with respect to the...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16553v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16553v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">15</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16496v1" target="_blank" class="paper-title">AdaMem: Adaptive User-Centric Memory for Long-Horizon Dialogue Agents</a>
+        <div class="paper-authors">Shannan Yan, Jingchen Ni, Leqi Zheng et al. (9 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Large language model (LLM) agents increasingly rely on external memory to support long-horizon interaction, personalized assistance, and multi-step reasoning. However, existing memory systems still face three core challenges: they often rely too heavily on semantic similarity, which can miss evidence crucial for user-centric understanding; they frequently store related experiences as isolated...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16496v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16496v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">16</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16483v1" target="_blank" class="paper-title">On the Emotion Understanding of Synthesized Speech</a>
+        <div class="paper-authors">Yuan Ge, Haishu Zhao, Aokai Hao et al. (13 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Emotion is a core paralinguistic feature in voice interaction. It is widely believed that emotion understanding models learn fundamental representations that transfer to synthesized speech, making emotion understanding results a plausible reward or evaluation metric for assessing emotional expressiveness in speech synthesis. In this work, we critically examine this assumption by systematically...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16483v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16483v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">17</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16459v1" target="_blank" class="paper-title">DynHD: Hallucination Detection for Diffusion Large Language Models via Denoising Dynamics Deviation Learning</a>
+        <div class="paper-authors">Yanyu Qian, Yue Tan, Yixin Liu et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Diffusion large language models (D-LLMs) have emerged as a promising alternative to auto-regressive models due to their iterative refinement capabilities. However, hallucinations remain a critical issue that hinders their reliability. To detect hallucination responses from model outputs, token-level uncertainty (e.g., entropy) has been widely used as an effective signal to indicate potential...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16459v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16459v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">18</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16435v1" target="_blank" class="paper-title">VQKV: High-Fidelity and High-Ratio Cache Compression via Vector-Quantization</a>
+        <div class="paper-authors">Yixuan Wang, Qingyu Shi, Jiayu Zhou et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">The growing context length of Large Language Models (LLMs) enlarges the Key-Value (KV) cache, limiting deployment in resource-limited environments. Prior training-free approaches for KV cache compression typically rely on low-rank approximation or scalar quantization, which fail to simultaneously achieve high compression ratios and high reconstruction fidelity. We propose VQKV, a novel,...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16435v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16435v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">19</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16415v1" target="_blank" class="paper-title">IndexRAG: Bridging Facts for Cross-Document Reasoning at Index Time</a>
+        <div class="paper-authors">Zhenghua Bao, Yi Shi</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Multi-hop question answering (QA) requires reasoning across multiple documents, yet existing retrieval-augmented generation (RAG) approaches address this either through graph-based methods requiring additional online processing or iterative multi-step reasoning. We present IndexRAG, a novel approach that shifts cross-document reasoning from online inference to offline indexing. IndexRAG...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16415v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16415v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">20</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16410v1" target="_blank" class="paper-title">PlotTwist: A Creative Plot Generation Framework with Small Language Models</a>
+        <div class="paper-authors">Abhinav Thorat, Ravi Kolla, Jyotin Goel et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Creative plot generation presents a fundamental challenge for language models: transforming a concise premise into a coherent narrative that sustains global structure, character development, and emotional resonance. Although recent Large Language Models (LLMs) demonstrate strong fluency across general-purpose tasks, they typically require preference alignment to perform well on specialized...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16410v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16410v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">21</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16397v1" target="_blank" class="paper-title">Fanar 2.0: Arabic Generative AI Stack</a>
+        <div class="paper-authors">FANAR TEAM, Ummar Abbas, Mohammad Shahmeer Ahmad et al. (37 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">We present Fanar 2.0, the second generation of Qatar&#x27;s Arabic-centric Generative AI platform. Sovereignty is a first-class design principle: every component, from data pipelines to deployment infrastructure, was designed and operated entirely at QCRI, Hamad Bin Khalifa University. Fanar 2.0 is a story of resource-constrained excellence: the effort ran on 256 NVIDIA H100 GPUs, with Arabic...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16397v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16397v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">22</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16309v1" target="_blank" class="paper-title">Omnilingual MT: Machine Translation for 1,600 Languages</a>
+        <div class="paper-authors">Omnilingual MT Team, Belen Alastruey, Niyati Bafna et al. (31 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">High-quality machine translation (MT) can scale to hundreds of languages, setting a high bar for multilingual systems. However, compared to the world&#x27;s 7,000 languages, current systems still offer only limited coverage: about 200 languages on the target side, and maybe a few hundreds more on the source side, supported due to cross-lingual transfer. And even these numbers have been hard to...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16309v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16309v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">23</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16244v1" target="_blank" class="paper-title">More Rounds, More Noise: Why Multi-Turn Review Fails to Improve Cross-Context Verification</a>
+        <div class="paper-authors">Song Tae-Eun</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Cross-Context Review (CCR) improves LLM verification by separating production and review into independent sessions. A natural extension is multi-turn review: letting the reviewer ask follow-up questions, receive author responses, and review again. We call this Dynamic Cross-Context Review (D-CCR). In a controlled experiment with 30 artifacts and 150 injected errors, we tested four D-CCR variants...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16244v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16244v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">24</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16236v1" target="_blank" class="paper-title">ReFORM: Review-aggregated Profile Generation via LLM with Multi-Factor Attention for Restaurant Recommendation</a>
+        <div class="paper-authors">Moonsoo Park, Seulbeen Je, Donghyeon Park</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">In recommender systems, large language models (LLMs) have gained popularity for generating descriptive summarization to improve recommendation robustness, along with Graph Convolution Networks. However, existing LLM-enhanced recommendation studies mainly rely on the internal knowledge of LLMs about item titles while neglecting the importance of various factors influencing users&#x27; decisions....</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16236v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16236v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">25</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16219v1" target="_blank" class="paper-title">SpecSteer: Synergizing Local Context and Global Reasoning for Efficient Personalized Generation</a>
+        <div class="paper-authors">Hang Lv, Sheng Liang, Hao Wang et al. (9 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Realizing personalized intelligence faces a core dilemma: sending user history to centralized large language models raises privacy concerns, while on-device small language models lack the reasoning capacity required for high-quality generation. Our pilot study shows that purely local enhancements remain insufficient to reliably bridge this gap. We therefore propose SpecSteer, an asymmetric...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16219v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16219v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">26</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16192v1" target="_blank" class="paper-title">Structured Semantic Cloaking for Jailbreak Attacks on Large Language Models</a>
+        <div class="paper-authors">Xiaobing Sun, Perry Lam, Shaohua Li et al. (7 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Modern LLMs employ safety mechanisms that extend beyond surface-level input filtering to latent semantic representations and generation-time reasoning, enabling them to recover obfuscated malicious intent during inference and refuse accordingly, and rendering many surface-level obfuscation jailbreak attacks ineffective. We propose Structured Semantic Cloaking (S2C), a novel multi-dimensional...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16192v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16192v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">27</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16169v1" target="_blank" class="paper-title">Open-Source Reproduction and Explainability Analysis of Corrective Retrieval Augmented Generation</a>
+        <div class="paper-authors">Surya Vardhan Yalavarthi</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Corrective Retrieval Augmented Generation (CRAG) improves the robustness of RAG systems by evaluating retrieved document quality and triggering corrective actions. However, the original implementation relies on proprietary components including the Google Search API and closed model weights, limiting reproducibility. In this work, we present a fully open-source reproduction of CRAG, replacing...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16169v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16169v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">28</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16142v1" target="_blank" class="paper-title">Parametric Social Identity Injection and Diversification in Public Opinion Simulation</a>
+        <div class="paper-authors">Hexi Wang, Yujia Zhou, Bangde Du et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Large language models (LLMs) have recently been adopted as synthetic agents for public opinion simulation, offering a promising alternative to costly and slow human surveys. Despite their scalability, current LLM-based simulation methods fail to capture social diversity, producing flattened inter-group differences and overly homogeneous responses within demographic groups. We identify this...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16142v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16142v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">29</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16138v1" target="_blank" class="paper-title">Answer Bubbles: Information Exposure in AI-Mediated Search</a>
+        <div class="paper-authors">Michelle Huang, Agam Goyal, Koustuv Saha et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Generative search systems are increasingly replacing link-based retrieval with AI-generated summaries, yet little is known about how these systems differ in sources, language, and fidelity to cited material. We examine responses to 11,000 real search queries across four systems -- vanilla GPT, Search GPT, Google AI Overviews, and traditional Google Search -- at three levels: source diversity,...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16138v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16138v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">30</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16137v1" target="_blank" class="paper-title">SIA: A Synthesize-Inject-Align Framework for Knowledge-Grounded and Secure E-commerce Search LLMs with Industrial Deployment</a>
+        <div class="paper-authors">Zhouwei Zhai, Mengxiang Chen, Anmeng Zhang</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Large language models offer transformative potential for e-commerce search by enabling intent-aware recommendations. However, their industrial deployment is hindered by two critical challenges: (1) knowledge hallucination due to insufficient encoding of dynamic, fine-grained product knowledge, and (2) security vulnerabilities under jailbreak attacks that threaten compliance. To address these...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16137v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16137v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">31</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16131v1" target="_blank" class="paper-title">SciZoom: A Large-scale Benchmark for Hierarchical Scientific Summarization across the LLM Era</a>
+        <div class="paper-authors">Han Jang, Junhyeok Lee, Kyu Sung Choi</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">The explosive growth of AI research has created unprecedented information overload, increasing the demand for scientific summarization at multiple levels of granularity beyond traditional abstracts. While LLMs are increasingly adopted for summarization, existing benchmarks remain limited in scale, target only a single granularity, and predate the LLM era. Moreover, since the release of ChatGPT in...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16131v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16131v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">32</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16128v1" target="_blank" class="paper-title">Social Simulacra in the Wild: AI Agent Communities on Moltbook</a>
+        <div class="paper-authors">Agam Goyal, Olivia Pal, Hari Sundaram et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">As autonomous LLM-based agents increasingly populate social platforms, understanding the dynamics of AI-agent communities becomes essential for both communication research and platform governance. We present the first large-scale empirical comparison of AI-agent and human online communities, analyzing 73,899 Moltbook and 189,838 Reddit posts across five matched communities. Structurally, we find...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16128v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16128v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">33</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16112v1" target="_blank" class="paper-title">ASDA: Automated Skill Distillation and Adaptation for Financial Reasoning</a>
+        <div class="paper-authors">Tik Yu Yim, Wenting Tan, Sum Yee Chan et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Adapting large language models (LLMs) to specialized financial reasoning typically requires expensive fine-tuning that produces model-locked expertise. Training-free alternatives have emerged, yet our experiments show that leading methods (GEPA and ACE) achieve only marginal gains on the FAMMA financial reasoning benchmark, exposing the limits of unstructured text optimization for complex,...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16112v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16112v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">34</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16091v1" target="_blank" class="paper-title">CounterRefine: Answer-Conditioned Counterevidence Retrieval for Inference-Time Knowledge Repair in Factual Question Answering</a>
+        <div class="paper-authors">Tianyi Huang, Ying Kai Deng</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">In factual question answering, many errors are not failures of access but failures of commitment: the system retrieves relevant evidence, yet still settles on the wrong answer. We present CounterRefine, a lightweight inference-time repair layer for retrieval-grounded question answering. CounterRefine first produces a short answer from retrieved evidence, then gathers additional support and...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16091v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16091v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">35</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16088v1" target="_blank" class="paper-title">RecBundle: A Next-Generation Geometric Paradigm for Explainable Recommender Systems</a>
+        <div class="paper-authors">Hui Wang, Tianzhu Hu, Mingming Li et al. (9 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Recommender systems are inherently dynamic feedback loops where prolonged local interactions accumulate into macroscopic structural degradation such as information cocoons. Existing representation learning paradigms are universally constrained by the assumption of a single flat space, forcing topologically grounded user associations and semantically driven historical interactions to be fitted...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16088v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16088v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">36</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16068v1" target="_blank" class="paper-title">Resource Consumption Threats in Large Language Models</a>
+        <div class="paper-authors">Yuanhe Zhang, Xinyue Wang, Zhican Chen et al. (10 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Given limited and costly computational infrastructure, resource efficiency is a key requirement for large language models (LLMs). Efficient LLMs increase service capacity for providers and reduce latency and API costs for users. Recent resource consumption threats induce excessive generation, degrading model efficiency and harming both service availability and economic sustainability. This survey...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16068v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16068v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">37</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16002v1" target="_blank" class="paper-title">RadAnnotate: Large Language Models for Efficient and Reliable Radiology Report Annotation</a>
+        <div class="paper-authors">Saisha Pradeep Shetty, Roger Eric Goldman, Vladimir Filkov</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Radiology report annotation is essential for clinical NLP, yet manual labeling is slow and costly. We present RadAnnotate, an LLM-based framework that studies retrieval-augmented synthetic reports and confidence-based selective automation to reduce expert effort for labeling in RadGraph. We study RadGraph-style entity labeling (graph nodes) and leave relation extraction (edges) to future work....</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16002v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16002v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">38</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15997v1" target="_blank" class="paper-title">Visual Set Program Synthesizer</a>
+        <div class="paper-authors">Zehua Cheng, Wei Dai, Wenhu Zhang et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">A user pointing their phone at a supermarket shelf and asking &quot;Which soda has the least sugar?&quot; poses a difficult challenge for current visual Al assistants. Such queries require not only object recognition, but explicit set-based reasoning such as filtering, comparison, and aggregation. Standard endto-end MLLMs often fail at these tasks because they lack an explicit mechanism for...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15997v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15997v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">39</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15981v1" target="_blank" class="paper-title">Aligning Paralinguistic Understanding and Generation in Speech LLMs via Multi-Task Reinforcement Learning</a>
+        <div class="paper-authors">Jingxiang Chen, Minseok Kim, Seong-Gyun Leem et al. (16 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Speech large language models (LLMs) observe paralinguistic cues such as prosody, emotion, and non-verbal sounds--crucial for intent understanding. However, leveraging these cues faces challenges: limited training data, annotation difficulty, and models exploiting lexical shortcuts over paralinguistic signals. We propose multi-task reinforcement learning (RL) with chain-of-thought prompting that...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15981v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15981v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">40</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15968v1" target="_blank" class="paper-title">MAC: Multi-Agent Constitution Learning</a>
+        <div class="paper-authors">Rushil Thareja, Gautam Gupta, Francesco Pinto et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Constitutional AI is a method to oversee and control LLMs based on a set of rules written in natural language. These rules are typically written by human experts, but could in principle be learned automatically given sufficient training data for the desired behavior. Existing LLM-based prompt optimizers attempt this but are ineffective at learning constitutions since (i) they require many labeled...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15968v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15968v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">41</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15965v1" target="_blank" class="paper-title">MoLoRA: Composable Specialization via Per-Token Adapter Routing</a>
+        <div class="paper-authors">Shrey Shah, Justin Wagle</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Multi-adapter serving systems route entire sequences to a single adapter, forcing a choice when requests span multiple domains. This assumption fails in two important settings: (1) multimodal generation, where text and image tokens require different adapters within the same sequence, and (2) mixed-capability requests like &quot;write code to solve this equation,&quot; which need expertise from...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15965v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15965v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">42</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15922v1" target="_blank" class="paper-title">Machine Translation in the Wild: User Reaction to Xiaohongshu&#x27;s Built-In Translation Feature</a>
+        <div class="paper-authors">Sui He</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">The growing integration of machine translation into social media platforms is transforming how users interact with each other across cultural and linguistic boundaries. This paper examines user reactions to the launch of Xiaohongshu&#x27;s built-in translation feature in January 2025. Drawing on a dataset of 6,723 comments collected from 11 official posts promoting the translation function, this...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15922v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15922v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">43</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15909v1" target="_blank" class="paper-title">Prompt Engineering for Scale Development in Generative Psychometrics</a>
+        <div class="paper-authors">Lara Lee Russell-Lasalandra, Hudson Golino</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">This Monte Carlo simulation examines how prompt engineering strategies shape the quality of large language model (LLM)--generated personality assessment items within the AI-GENIE framework for generative psychometrics. Item pools targeting the Big Five traits were generated using multiple prompting designs (zero-shot, few-shot, persona-based, and adaptive), model temperatures, and LLMs, then...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15909v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15909v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">44</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15892v1" target="_blank" class="paper-title">Temporal Fact Conflicts in LLMs: Reproducibility Insights from Unifying DYNAMICQA and MULAN</a>
+        <div class="paper-authors">Ritajit Dey, Iadh Ounis, Graham McDonald et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Large Language Models (LLMs) often struggle with temporal fact conflicts due to outdated or evolving information in their training data. Two recent studies with accompanying datasets report opposite conclusions on whether external context can effectively resolve such conflicts. DYNAMICQA evaluates how effective external context is in shifting the model&#x27;s output distribution, finding that...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15892v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15892v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">45</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15773v1" target="_blank" class="paper-title">Morphemes Without Borders: Evaluating Root-Pattern Morphology in Arabic Tokenizers and LLMs</a>
+        <div class="paper-authors">Yara Alakeel, Chatrine Qwaider, Hanan Aldarmaki et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">This work investigates how effectively large language models (LLMs) and their tokenization schemes represent and generate Arabic root-pattern morphology, probing whether they capture genuine morphological structure or rely on surface memorization. Arabic morphological system provides a rich testbed for analyzing how LLMs handle complex, non-concatenative forms and how tokenization choices...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15773v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15773v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">46</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15611v1" target="_blank" class="paper-title">Code-A1: Adversarial Evolving of Code LLM and Test LLM via Reinforcement Learning</a>
+        <div class="paper-authors">Aozhe Wang, Yuchen Yan, Nan Zhou et al. (8 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Reinforcement learning for code generation relies on verifiable rewards from unit test pass rates. Yet high-quality test suites are scarce, existing datasets offer limited coverage, and static rewards fail to adapt as models improve. Recent self-play methods unify code and test generation in a single model, but face a inherent dilemma: white-box access leads to self-collusion where the model...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15611v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15611v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">47</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15600v1" target="_blank" class="paper-title">From Passive Observer to Active Critic: Reinforcement Learning Elicits Process Reasoning for Robotic Manipulation</a>
+        <div class="paper-authors">Yibin Liu, Yaxing Lyu, Daqi Gao et al. (8 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Accurate process supervision remains a critical challenge for long-horizon robotic manipulation. A primary bottleneck is that current video MLLMs, trained primarily under a Supervised Fine-Tuning (SFT) paradigm, function as passive &quot;Observers&quot; that recognize ongoing events rather than evaluating the current state relative to the final task goal. In this paper, we introduce PRIMO R1...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15600v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15600v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">48</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15594v1" target="_blank" class="paper-title">OpenSeeker: Democratizing Frontier Search Agents by Fully Open-Sourcing Training Data</a>
+        <div class="paper-authors">Yuwen Du, Rui Ye, Shuo Tang et al. (7 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Deep search capabilities have become an indispensable competency for frontier Large Language Model (LLM) agents, yet the development of high-performance search agents remains dominated by industrial giants due to a lack of transparent, high-quality training data. This persistent data scarcity has fundamentally hindered the progress of the broader research community in developing and innovating...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15594v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15594v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">49</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15547v1" target="_blank" class="paper-title">Can LLMs Model Incorrect Student Reasoning? A Case Study on Distractor Generation</a>
+        <div class="paper-authors">Yanick Zengaffinen, Andreas Opedal, Donya Rooein et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Modeling plausible student misconceptions is critical for AI in education. In this work, we examine how large language models (LLMs) reason about misconceptions when generating multiple-choice distractors, a task that requires modeling incorrect yet plausible answers by coordinating solution knowledge, simulating student misconceptions, and evaluating plausibility. We introduce a taxonomy for...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15547v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15547v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">50</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15518v1" target="_blank" class="paper-title">Beyond the Covariance Trap: Unlocking Generalization in Same-Subject Knowledge Editing for Large Language Models</a>
+        <div class="paper-authors">Xiyu Liu, Qingyi Si, Zhengxiao Liu et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">While locate-then-edit knowledge editing efficiently updates knowledge encoded within Large Language Models (LLMs), a critical generalization failure mode emerges in the practical same-subject knowledge editing scenario: models fail to recall the updated knowledge when following user instructions, despite successfully recalling it in the original edited form. This paper identifies the geometric...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15518v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15518v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    </div>
     <div class="footer">
-      <p>Auto-generated from arXiv API | <a href="index.html">Chuang Zhao</a></p>
+      <p>Auto-generated from arXiv API | Chuang Zhao</p>
     </div>
   </div>
 </body>

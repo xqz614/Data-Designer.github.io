@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI for Marketing - Latest arXiv Papers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;600;1,400&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-primary: #ffffff;
@@ -23,9 +22,7 @@
       --radius-sm: 4px;
       --radius-md: 8px;
     }
-    
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body {
       font-family: 'Source Serif 4', Georgia, serif;
       font-size: 16px;
@@ -35,145 +32,39 @@
       min-height: 100vh;
       padding: 40px 20px;
     }
-    
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .back-link {
-      display: inline-block;
-      color: var(--secondary);
-      text-decoration: none;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-    
+    .container { max-width: 900px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 3rem; }
+    .back-link { display: inline-block; color: var(--secondary); text-decoration: none; margin-bottom: 1rem; font-size: 0.9rem; }
     .back-link:hover { text-decoration: underline; }
-    
-    h1 {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .subtitle {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .stat {
-      background: var(--bg-secondary);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-md);
-      font-size: 0.9rem;
-      color: var(--text-tertiary);
-    }
-    
+    h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1rem; }
+    .stats { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .stat { background: var(--bg-secondary); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem; color: var(--text-tertiary); }
     .paper-card {
-      background: var(--bg-primary);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 1.5rem;
-      padding: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      border: 1px solid var(--border-light);
-      transition: box-shadow 0.2s ease;
+      background: var(--bg-primary); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem; padding: 1.5rem; display: flex; gap: 1rem;
+      border: 1px solid var(--border-light); transition: box-shadow 0.2s ease;
     }
-    
-    .paper-card:hover {
-      box-shadow: var(--shadow-md);
-    }
-    
+    .paper-card:hover { box-shadow: var(--shadow-md); }
     .paper-number {
-      flex: 0 0 40px;
-      width: 40px;
-      height: 40px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 1.1rem;
+      flex: 0 0 40px; width: 40px; height: 40px; background: var(--primary); color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 600; font-size: 1.1rem;
     }
-    
-    .paper-content {
-      flex: 1;
-    }
-    
-    .paper-title {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      line-height: 1.4;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    
+    .paper-content { flex: 1; }
+    .paper-title { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 1.1rem; line-height: 1.4; display: block; margin-bottom: 0.5rem; }
     .paper-title:hover { text-decoration: underline; }
-    
-    .paper-authors {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-bottom: 0.25rem;
-    }
-    
-    .paper-date {
-      color: var(--text-tertiary);
-      font-size: 0.85rem;
-      margin-bottom: 0.75rem;
-    }
-    
+    .paper-authors { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .paper-date { color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 0.75rem; }
     .paper-abstract {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-      padding: 0.75rem;
-      background: var(--bg-secondary);
-      border-radius: var(--radius-sm);
+      color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.75rem;
+      padding: 0.75rem; background: var(--bg-secondary); border-radius: var(--radius-sm);
       border-left: 3px solid var(--accent);
     }
-    
-    .paper-links {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .paper-link {
-      color: var(--secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-    
+    .paper-links { display: flex; gap: 1rem; }
+    .paper-link { color: var(--secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
     .paper-link:hover { text-decoration: underline; }
-    
-    .footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-light);
-      color: var(--text-tertiary);
-      font-size: 0.9rem;
-    }
+    .footer { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-light); color: var(--text-tertiary); font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -187,548 +78,15 @@
         <span class="stat">📅 Updated: 2026-03-18</span>
       </div>
     </div>
-    
     <div class="papers-list">
 
     <div class="paper-card">
       <div class="paper-number">1</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16867v1" target="_blank" class="paper-title">Efficient Reasoning on the Edge</a>
-        <div class="paper-authors">Yelysei Bondarenko, Thomas Hehn, Rob Hesselink et al. (18 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Large language models (LLMs) with chain-of-thought reasoning achieve state-of-the-art performance across complex problem-solving tasks, but their verbose reasoning traces and large context requirements make them impractical for edge deployment. These challenges include high token generation costs, large KV-cache footprints, and inefficiencies when distilling reasoning capabilities into smaller mod...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16867v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16867v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">2</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16865v1" target="_blank" class="paper-title">Prescribed-Time Distributed Generalized Nash Equilibrium Seeking</a>
-        <div class="paper-authors">Liraz Mudrik, Isaac Kaminer, Sean Kragelund et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">This paper proposes the first fully distributed algorithm for finding the Generalized Nash Equilibrium (GNE) of a non-cooperative game with shared coupling constraints and general cost coupling at a user-prescribed finite time T. As a foundation, a centralized gradient-based prescribed-time convergence result is established for the GNE problem, extending the optimization Lyapunov function framewor...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16865v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16865v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">3</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16862v1" target="_blank" class="paper-title">Chronos: Temporal-Aware Conversational Agents with Structured Event Retrieval for Long-Term Memory</a>
-        <div class="paper-authors">Sahil Sen, Elias Lumer, Anmol Gulati et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Recent advances in Large Language Models (LLMs) have enabled conversational AI agents to engage in extended multi-turn interactions spanning weeks or months. However, existing memory systems struggle to reason over temporally grounded facts and preferences that evolve across months of interaction and lack effective retrieval strategies for multi-hop, time-sensitive queries over long dialogue histo...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16862v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16862v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">4</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16858v1" target="_blank" class="paper-title">SOMA: Unifying Parametric Human Body Models</a>
-        <div class="paper-authors">Jun Saito, Jiefeng Li, Michael de Ruyter et al. (15 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Parametric human body models are foundational to human reconstruction, animation, and simulation, yet they remain mutually incompatible: SMPL, SMPL-X, MHR, Anny, and related models each diverge in mesh topology, skeletal structure, shape parameterization, and unit convention, making it impractical to exploit their complementary strengths within a single pipeline. We present SOMA, a unified body la...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16858v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16858v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">5</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16855v1" target="_blank" class="paper-title">Lifting the fog - a case for non-reversible "lifted" Markov chains</a>
-        <div class="paper-authors">Gabriele Tartero, Sora Shiratani, Werner Krauth</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Phase transitions appear all over science, and are familiar from everyday life, as water boiling, sugar melting into caramel or as nematic molecules turning smectic in liquid-crystal displays. The dynamics of phase transitions can be extremely slow, as for example when fog in winter does not lift, that is when the coarsening takes much time from many tiny water droplets to fewer but larger rain dr...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16855v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16855v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">6</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16850v1" target="_blank" class="paper-title">Unifying Optimization and Dynamics to Parallelize Sequential Computation: A Guide to Parallel Newton Methods for Breaking Sequential Bottlenecks</a>
-        <div class="paper-authors">Xavier Gonzalez</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Massively parallel hardware (GPUs) and long sequence data have made parallel algorithms essential for machine learning at scale. Yet dynamical systems, like recurrent neural networks and Markov chain Monte Carlo, were thought to suffer from sequential bottlenecks. Recent work showed that dynamical systems can in fact be parallelized across the sequence length by reframing their evaluation as a sys...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16850v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16850v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">7</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16849v1" target="_blank" class="paper-title">GIST: Gauge-Invariant Spectral Transformers for Scalable Graph Neural Operators</a>
-        <div class="paper-authors">Mattia Rigotti, Nicholas Thumiger, Thomas Frick</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Adapting transformer positional encoding to meshes and graph-structured data presents significant computational challenges: exact spectral methods require cubic-complexity eigendecomposition and can inadvertently break gauge invariance through numerical solver artifacts, while efficient approximate methods sacrifice gauge symmetry by design. Both failure modes cause catastrophic generalization in ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16849v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16849v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">8</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16848v1" target="_blank" class="paper-title">Mediocrity is the key for LLM as a Judge Anchor Selection</a>
-        <div class="paper-authors">Shachar Don-Yehiya, Asaf Yehudai, Leshem Choshen et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">The ``LLM-as-a-judge'' paradigm has become a standard method for evaluating open-ended generation. To address the quadratic scalability costs of pairwise comparisons, popular benchmarks like Arena-Hard and AlpacaEval compare all models against a single anchor. However, despite its widespread use, the impact of anchor selection on the reliability of the results remains largely unexplored. In this w...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16848v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16848v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">9</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16846v1" target="_blank" class="paper-title">Dynamic Meta-Layer Aggregation for Byzantine-Robust Federated Learning</a>
-        <div class="paper-authors">Reek Das, Biplab Kanti Sen</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Federated Learning (FL) is increasingly applied in sectors like healthcare, finance, and IoT, enabling collaborative model training while safeguarding user privacy. However, FL systems are susceptible to Byzantine adversaries that inject malicious updates, which can severely compromise global model performance. Existing defenses tend to focus on specific attack types and fail against untargeted st...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16846v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16846v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">10</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16834v1" target="_blank" class="paper-title">Bohr phenomenon for analytic and harmonic mappings on shifted disks</a>
-        <div class="paper-authors">Vasudevarao Allu, Raju Biswas, Rajib Mandal</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">The primary objective of this paper is to establish several sharp results concerning the Bohr inequality, the refined Bohr inequality, and the improved Bohr inequality for the classes of analytic functions and harmonic mappings defined on the shifted disks \[ Ω_γ=\left\{z\in\mathbb{C}:\left|z+\fracγ{1-γ}\right|<\frac{1}{1-γ}\right\}\quad\text{for}\quadγ\in[0,1).\]...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16834v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16834v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">11</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16831v1" target="_blank" class="paper-title">Two-loop Six-point Planar Massless Feynman Integrals to Higher $ε$ Orders</a>
-        <div class="paper-authors">Yuanche Liu, Antonela Matijašić, Tiziano Peraro et al. (6 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">In this work, we calculate two-loop six-point planar massless Feynman integrals at higher orders in the dimensional regulator $ε$, corresponding to higher transcendental weights. In previous works, these integrals were calculated up to weight four for the purpose of two-loop gauge theory amplitudes. Using modern rational reconstruction methods, we identify the complete alphabet with $269$ letters ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16831v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16831v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">12</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16830v1" target="_blank" class="paper-title">Sub-cell Wave Reconstruction from Differentiated Riemann Variables</a>
-        <div class="paper-authors">Steve Shkoller</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We introduce a postprocessing procedure that recovers sub-cell wave geometry from a standard one-dimensional Euler shock-capturing computation using differentiated Riemann variables (DRVs) -- characteristic derivatives that separate the three wave families into distinct localized spikes. Filtered DRV surrogates detect the waves, plateau sampling extracts the local states, and a pressure-wave-funct...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16830v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16830v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">13</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16826v1" target="_blank" class="paper-title">The Hilbert matrix on analytic tent spaces</a>
-        <div class="paper-authors">Tanausú Aguilar-Hernández, Petros Galanopoulos, Elena de la Rosa</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We study for the first time the action of the Hilbert matrix $$\mathcal H=(c_{n,k})_{n,k\geq 0}, \quad c_{n,k}=\frac{1}{n+k+1}$$ on the analytic tent spaces $AT^q_p, 1<p,q <\infty,$ of the unit disc $\mathbb D$ of the complex plane. They were proposed by Triebel as the natural analytic version of the tent spaces of measurable functions defined by Coifman, Meyer and Stein. The $AT_p^q$ spaces are c...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16826v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16826v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">14</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16823v1" target="_blank" class="paper-title">Deep Reinforcement Learning-driven Edge Offloading for Latency-constrained XR pipelines</a>
-        <div class="paper-authors">Sourya Saha, Saptarshi Debroy</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Immersive extended reality (XR) applications introduce latency-critical workloads that must satisfy stringent real-time responsiveness while operating on energy- and battery-constrained devices, making execution placement between end devices and nearby edge servers a fundamental systems challenge. Existing approaches to adaptive execution and computation offloading typically optimize average perfo...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16823v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16823v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">15</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16822v1" target="_blank" class="paper-title">Surg$Σ$: A Spectrum of Large-Scale Multimodal Data and Foundation Models for Surgical Intelligence</a>
-        <div class="paper-authors">Zhitao Zeng, Mengya Xu, Jian Jiang et al. (16 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Surgical intelligence has the potential to improve the safety and consistency of surgical care, yet most existing surgical AI frameworks remain task-specific and struggle to generalize across procedures and institutions. Although multimodal foundation models, particularly multimodal large language models, have demonstrated strong cross-task capabilities across various medical domains, their advanc...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16822v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16822v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">16</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16821v1" target="_blank" class="paper-title">Measurement-Based Estimation of Causal Conditional Variances and Its Application to Macroscopic quantum phenomenon</a>
-        <div class="paper-authors">Kosei Hatakeyama, Ryotaro Fukuzumi, Akira Matsumura et al. (5 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We analytically investigate a quantum estimation method for a mechanical oscillator in a detuned cavity system based solely on homodyne measurement records, building on the framework developed by C.Meng et al. (Science Advances 8, 7585 (2022)). Estimation based only on measurement records is important because it enables state verification without assuming knowledge of the true system state. We con...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16821v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16821v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">17</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16818v1" target="_blank" class="paper-title">Leveraging LLMs for Structured Information Extraction and Analysis from Cloud Incident Reports (Work In Progress Paper)</a>
-        <div class="paper-authors">Xiaoyu Chu, Shashikant Ilager, Yizhen Zang et al. (5 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Incident management is essential to maintain the reliability and availability of cloud computing services. Cloud vendors typically disclose incident reports to the public, summarizing the failures and recovery process to help minimize their impact. However, such reports are often lengthy and unstructured, making them difficult to understand, analyze, and use for long-term dependability improvement...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16818v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16818v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">18</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16816v1" target="_blank" class="paper-title">WildDepth: A Multimodal Dataset for 3D Wildlife Perception and Depth Estimation</a>
-        <div class="paper-authors">Muhammad Aamir, Naoya Muramatsu, Sangyun Shin et al. (8 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Depth estimation and 3D reconstruction have been extensively studied as core topics in computer vision. Starting from rigid objects with relatively simple geometric shapes, such as vehicles, the research has expanded to address general objects, including challenging deformable objects, such as humans and animals. However, for the animal, in particular, the majority of existing models are trained b...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16816v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16816v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">19</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16812v1" target="_blank" class="paper-title">ODIN-Based CPU-GPU Architecture with Replay-Driven Simulation and Emulation</a>
-        <div class="paper-authors">Nij Dorairaj, Debabrata Chatterjee, Hong Wang et al. (11 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Integration of CPU and GPU technologies is a key enabler for modern AI and graphics workloads, combining control-oriented processing with massive parallel compute capability. As systems evolve toward chiplet-based architectures, pre-silicon validation of tightly coupled CPU-GPU subsystems becomes increasingly challenging due to complex validation framework setup, large design scale, high concurren...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16812v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16812v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">20</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16811v1" target="_blank" class="paper-title">Correlations of the phase gradients of the light wave propagating in a turbulent medium in the regime of strong scintillations</a>
-        <div class="paper-authors">V. A. Bogachev, I. V. Kolokolov, V. V. Lebedev et al. (5 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We investigate analytically and numerically correlation functions of the phase of light waves that propagate through turbulent media. We examine the case of strong scintillations that occur at large values of the Rytov dispersion, $σ^2_R$. Then, it is possible to relate the pair correlation function of phase gradients to the known pair correlation function of the envelope dependent on the distance...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16811v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16811v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">21</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16802v1" target="_blank" class="paper-title">Computability of the Hahn-Banach Theorem Revisited</a>
-        <div class="paper-authors">Vasco Brattka, Christopher Sorg</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Computational properties of the Hahn-Banach theorem have been studied in computable, constructive and reverse mathematics and in all these approaches the theorem is equivalent to weak Kőnig's lemma. Gherardi and Marcone proved that this is also true in the uniform sense of Weihrauch complexity. However, their result requires the underlying space to be variable. We prove that the Hahn-Banach theore...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16802v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16802v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">22</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16798v1" target="_blank" class="paper-title">High-Dimensional Gaussian Mean Estimation under Realizable Contamination</a>
-        <div class="paper-authors">Ilias Diakonikolas, Daniel M. Kane, Thanasis Pittas</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We study mean estimation for a Gaussian distribution with identity covariance in $\mathbb{R}^d$ under a missing data scheme termed realizable $ε$-contamination model. In this model an adversary can choose a function $r(x)$ between 0 and $ε$ and each sample $x$ goes missing with probability $r(x)$. Recent work Ma et al., 2024 proposed this model as an intermediate-strength setting between Missing C...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16798v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16798v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">23</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16793v1" target="_blank" class="paper-title">A note on Pisier's method in interpolation of abstract Hardy spaces</a>
-        <div class="paper-authors">Hugues Moyart</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">In his approach to Jones theorem on the interpolation of Hardy spaces on the torus, Pisier introduced an original method allowing the computation of complex interpolation spaces by means of real interpolation techniques. This approach has been successfully extended to noncommutative analytic Hardy spaces arising from subdiagonal algebras. In this paper, we formulate and prove an abstract version o...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16793v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16793v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">24</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16792v1" target="_blank" class="paper-title">V-Co: A Closer Look at Visual Representation Alignment via Co-Denoising</a>
-        <div class="paper-authors">Han Lin, Xichen Pan, Zun Wang et al. (7 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Pixel-space diffusion has recently re-emerged as a strong alternative to latent diffusion, enabling high-quality generation without pretrained autoencoders. However, standard pixel-space diffusion models receive relatively weak semantic supervision and are not explicitly designed to capture high-level visual structure. Recent representation-alignment methods (e.g., REPA) suggest that pretrained vi...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16792v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16792v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">25</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16789v1" target="_blank" class="paper-title">Conservative Continuous-Time Treatment Optimization</a>
-        <div class="paper-authors">Nora Schneider, Georg Manten, Niki Kilbertus</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We develop a conservative continuous-time stochastic control framework for treatment optimization from irregularly sampled patient trajectories. The unknown patient dynamics are modeled as a controlled stochastic differential equation with treatment as a continuous-time control. Naive model-based optimization can exploit model errors and propose out-of-support controls, so optimizing the estimated...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16789v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16789v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">26</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16786v1" target="_blank" class="paper-title">Elastic Sketch under Random Stationary Streams: Limiting Behavior and Near-Optimal Configuration</a>
-        <div class="paper-authors">Younes Ben Mazziane, Vinay Kumar B. R., Othmane Marfoq</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">\texttt{Elastic-Sketch} is a hash-based data structure for counting item's appearances in a data stream, and it has been empirically shown to achieve a better memory-accuracy trade-off compared to classical methods. This algorithm combines a \textit{heavy block}, which aims to maintain exact counts for a small set of dynamically \textit{elected} items, with a light block that implements \texttt{Co...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16786v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16786v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">27</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16784v1" target="_blank" class="paper-title">Quantum signal processing in Hilbert space fragmented systems</a>
-        <div class="paper-authors">Naoya Egawa, Kaoru Mizuta, Joji Nasu</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Quantum signal processing (QSP), originally developed for composite pulse sequences in nuclear magnetic resonance systems, has recently attracted attention as a unified framework for quantum algorithms. A pioneering study applied QSP to nonequilibrium control in integrable many-body systems, enabling the realization of nonequilibrium dynamics with greater flexibility than Floquet engineering. Howe...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16784v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16784v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">28</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16782v1" target="_blank" class="paper-title">Magnetism Induced by Periodically Driven Non-Magnetic Impurities on Surfaces with Spin-Orbit Coupling</a>
-        <div class="paper-authors">Malen Etxeberria-Etxaniz, Andrés Arnau, Asier Eiguren</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We investigate the response of the Rashba spin-orbit system to a time-periodic scalar potential, in order to determine whether an induced magnetization exists. We approach this by employing the Floquet-Green function method within the Keldysh formalism, computing the non-equilibrium steady state of the system. We find that, even in the absence of an external magnetic field, the system evolves into...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16782v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16782v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">29</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16780v1" target="_blank" class="paper-title">Quantum-Enabled Probabilistic Optimal Power Flow with Built-in Differential Privacy</a>
-        <div class="paper-authors">Yuji Cao, Tongxin Li, Yue Chen</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Quantum computing has been regarded as a promising approach to accelerate power system optimization. However, challenges such as limited qubits and inherent noise hinder their widespread adoption in power systems. In this paper, we propose a qubit-efficient framework for solving a crucial power system optimization problem, the probabilistic optimal power flow (POPF). We demonstrate that quantum no...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16780v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16780v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">30</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16778v1" target="_blank" class="paper-title">Optimal multi-parameter control of trapped active matter</a>
-        <div class="paper-authors">Luke K. Davis</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">The realization of efficient micro-machines built from active matter requires precise thermodynamic control far from equilibrium. Despite theoretical progress, the focus on single-parameter driving, coupled with strict theoretical assumptions, limits efforts to capture modern multi-parameter control experiments. Here, guided by careful theoretical considerations, we develop a transparent computati...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16778v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16778v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">31</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16777v1" target="_blank" class="paper-title">Anticipatory Planning for Multimodal AI Agents</a>
-        <div class="paper-authors">Yongyuan Liang, Shijie Zhou, Yu Gu et al. (9 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Recent advances in multimodal agents have improved computer-use interaction and tool-usage, yet most existing systems remain reactive, optimizing actions in isolation without reasoning about future states or long-term goals. This limits planning coherence and prevents agents from reliably solving high-level, multi-step tasks. We introduce TraceR1, a two-stage reinforcement learning framework that ...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16777v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16777v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">32</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16768v1" target="_blank" class="paper-title">Overlapping Covariance Intersection: Fusion with Partial Structural Knowledge of Correlation from Multiple Sources</a>
-        <div class="paper-authors">Leonardo Pedroso, Pedro Batista, W. P. M. H. Heemels</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Emerging large-scale engineering systems rely on distributed fusion for situational awareness, where agents combine noisy local sensor measurements with exchanged information to obtain fused estimates. However, at the sheer scale of these systems, tracking cross-correlations becomes infeasible, preventing the use of optimal filters. Covariance intersection (CI) methods address fusion problems with...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16768v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16768v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">33</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16762v1" target="_blank" class="paper-title">An asymmetry lower bound on fermionic non-Gaussianity</a>
-        <div class="paper-authors">Filiberto Ares, Michele Mazzoni, Sara Murciano et al. (6 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Fermionic Gaussian states are a fundamental tool in many-body physics, faithfully representing non-interacting quantum systems and allowing for efficient numerical simulations. Given a many-body wave function, it is therefore interesting to ask how much it differs from that of a Gaussian state, as quantified by the notion of non-Gaussianity. In this work, we relate measures of non-Gaussianity with...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16762v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16762v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">34</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16761v1" target="_blank" class="paper-title">SOMP: Scalable Gradient Inversion for Large Language Models via Subspace-Guided Orthogonal Matching Pursuit</a>
-        <div class="paper-authors">Yibo Li, Qiongxiu Li</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Gradient inversion attacks reveal that private training text can be reconstructed from shared gradients, posing a privacy risk to large language models (LLMs). While prior methods perform well in small-batch settings, scaling to larger batch sizes and longer sequences remains challenging due to severe signal mixing, high computational cost, and degraded fidelity. We present SOMP (Subspace-Guided O...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16761v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16761v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">35</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16756v1" target="_blank" class="paper-title">Sequential Bayesian Experimental Design for Prediction in Physical Experiments Informed by Computer Models</a>
-        <div class="paper-authors">Hao Zhu, Markus Hainy</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">In many scientific and engineering domains, physical experiments are often costly, non-replicable, or time-consuming. The Kennedy and O'Hagan (KOH) model framework has become a widely used approach for combining simulator runs with limited experimental observations. Under a Bayesian implementation, the simulator output, model discrepancy, and observation noise are jointly modeled by coupled Gaussi...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16756v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16756v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">36</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16753v1" target="_blank" class="paper-title">Phonon collisional broadening and heat transport beyond the Boltzmann equation</a>
-        <div class="paper-authors">Enrico Di Lucente, Nicola Marzari, Michele Simoncelli</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">In crystals, macroscopic technological properties such as thermal conductivity originate from the microscopic drift and scattering of phonons, commonly described by the Boltzmann Transport Equation (BTE). Despite its widespread use, the most general space-time nonlocal form of the BTE still lacks a rigorous derivation of its collisional part based on Fermi's Golden Rule (FGR), and becomes inadequa...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16753v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16753v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">37</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16751v1" target="_blank" class="paper-title">Finding Common Ground in a Sea of Alternatives</a>
-        <div class="paper-authors">Jay Chooi, Paul Gölz, Ariel D. Procaccia et al. (5 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We study the problem of selecting a statement that finds common ground across diverse population preferences. Generative AI is uniquely suited for this task because it can access a practically infinite set of statements, but AI systems like the Habermas machine leave the choice of generated statement to a voting rule. What it means for this rule to find common ground, however, is not well-defined....</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16751v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16751v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">38</div>
-      <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16748v1" target="_blank" class="paper-title">Fine-Grained Network Traffic Classification with Contextual QoS Profiling</a>
-        <div class="paper-authors">Huiwen Zhang, Feng Ye</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Accurate network traffic classification is vital for managing modern applications with strict Quality of Service (QoS) demands, such as edge computing, real-time XR, and autonomous systems. While recent advances in application-level classification show high accuracy, they often miss fine-grained in-app QoS variations critical for service differentiation. This paper proposes a hierarchical graph ne...</div>
-        <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16748v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16748v1" target="_blank" class="paper-link">PDF</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-number">39</div>
-      <div class="paper-content">
         <a href="http://arxiv.org/abs/2603.16744v1" target="_blank" class="paper-title">Nonstandard Errors in AI Agents</a>
         <div class="paper-authors">Ruijiang Gao, Steven Chong Xiao</div>
         <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We study whether state-of-the-art AI coding agents, given the same data and research question, produce the same empirical results. Deploying 150 autonomous Claude Code agents to independently test six hypotheses about market quality trends in NYSE TAQ data for SPY (2015--2024), we find that AI agents exhibit sizable \textit{nonstandard errors} (NSEs), that is, uncertainty from agent-to-agent varia...</div>
+        <div class="paper-abstract">We study whether state-of-the-art AI coding agents, given the same data and research question, produce the same empirical results. Deploying 150 autonomous Claude Code agents to independently test six hypotheses about market quality trends in NYSE TAQ data for SPY (2015--2024), we find that AI agents exhibit sizable \textit{nonstandard errors} (NSEs), that is, uncertainty from agent-to-agent...</div>
         <div class="paper-links">
           <a href="http://arxiv.org/abs/2603.16744v1" target="_blank" class="paper-link">arXiv →</a>
           <a href="https://arxiv.org/pdf/2603.16744v1" target="_blank" class="paper-link">PDF</a>
@@ -737,15 +95,547 @@
     </div>
 
     <div class="paper-card">
+      <div class="paper-number">2</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16526v1" target="_blank" class="paper-title">Exploring different approaches to customize language models for domain-specific text-to-code generation</a>
+        <div class="paper-authors">Luís Freire, Fernanda A. Andaló, Nicki Skafte Detlefsen</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Large language models (LLMs) have demonstrated strong capabilities in generating executable code from natural language descriptions. However, general-purpose models often struggle in specialized programming contexts where domain-specific libraries, APIs, or conventions must be used. Customizing smaller open-source models offers a cost-effective alternative to relying on large proprietary systems....</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16526v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16526v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">3</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.16043v1" target="_blank" class="paper-title">Collaborative Temporal Feature Generation via Critic-Free Reinforcement Learning for Cross-User Sensor-Based Activity Recognition</a>
+        <div class="paper-authors">Xiaozhou Ye, Feng Jiang, Zihan Wang et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-17</div>
+        <div class="paper-abstract">Human Activity Recognition using wearable inertial sensors is foundational to healthcare monitoring, fitness analytics, and context-aware computing, yet its deployment is hindered by cross-user variability arising from heterogeneous physiological traits, motor habits, and sensor placements. Existing domain generalization approaches either neglect temporal dependencies in sensor streams or depend...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.16043v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.16043v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">4</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15978v1" target="_blank" class="paper-title">From Workflow Automation to Capability Closure: A Formal Framework for Safe and Revenue-Aware Customer Service AI</a>
+        <div class="paper-authors">Cosimo Spera, Garima Agrawal, Riccardo De Maria</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Customer service automation is undergoing a structural transformation. The dominant paradigm is shifting from scripted chatbots and single-agent responders toward networks of specialised AI agents that compose capabilities dynamically across billing, service provision, payments, and fulfilment. This shift introduces a safety gap that no current platform has closed: two agents individually...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15978v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15978v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">5</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15970v1" target="_blank" class="paper-title">100x Cost &amp; Latency Reduction: Performance Analysis of AI Query Approximation using Lightweight Proxy Models</a>
+        <div class="paper-authors">Yeounoh Chung, Rushabh Desai, Jian He et al. (12 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Several data warehouse and database providers have recently introduced extensions to SQL called AI Queries, enabling users to specify functions and conditions in SQL that are evaluated by LLMs, thereby broadening significantly the kinds of queries one can express over the combination of structured and unstructured data. LLMs offer remarkable semantic reasoning capabilities, making them an...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15970v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15970v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">6</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15960v1" target="_blank" class="paper-title">Optimizing Hospital Capacity During Pandemics: A Dual-Component Framework for Strategic Patient Relocation</a>
+        <div class="paper-authors">Sadaf Tabatabaee, Hicham El Baz, Mohammed Khalil Ghali et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">The COVID-19 pandemic has placed immense strain on hospital systems worldwide, leading to critical capacity challenges. This research proposes a two-part framework to optimize hospital capacity through patient relocation strategies. The first component involves developing a time series prediction model to forecast patient arrival rates. Using historical data on COVID-19 cases and...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15960v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15960v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">7</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15459v1" target="_blank" class="paper-title">Financial Transaction Retrieval and Contextual Evidence for Knowledge-Grounded Reasoning</a>
+        <div class="paper-authors">Artem Sakhno, Daniil Tomilov, Yuliana Shakhvalieva et al. (8 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Nowadays, success of financial organizations heavily depends on their ability to process digital traces generated by their clients, e.g., transaction histories, gathered from various sources to improve user modeling pipelines. As general-purpose LLMs struggle with time-distributed tabular data, production stacks still depend on specialized tabular and sequence models with limited transferability...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15459v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15459v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">8</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15357v1" target="_blank" class="paper-title">Multi-Scenario User Profile Construction via Recommendation Lists</a>
+        <div class="paper-authors">Hui Zhang, Jiayu Liu</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Recommender systems (RS) play a core role in various domains, including business analytics, helping users and companies make appropriate decisions. To optimize service quality, related technologies focus on constructing user profiles by analyzing users&#x27; historical behavior information. This paper considers four analytical scenarios to evaluate user profiling capabilities under different...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15357v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15357v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">9</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15351v1" target="_blank" class="paper-title">PMAx: An Agentic Framework for AI-Driven Process Mining</a>
+        <div class="paper-authors">Anton Antonov, Humam Kourani, Alessandro Berti et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Process mining provides powerful insights into organizational workflows, but extracting these insights typically requires expertise in specialized query languages and data science tools. Large Language Models (LLMs) offer the potential to democratize process mining by enabling business users to interact with process data through natural language. However, using LLMs as direct analytical engines...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15351v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15351v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">10</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15280v1" target="_blank" class="paper-title">Advancing Multimodal Agent Reasoning with Long-Term Neuro-Symbolic Memory</a>
+        <div class="paper-authors">Rongjie Jiang, Jianwei Wang, Gengda Zhao et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Recent advances in large language models have driven the emergence of intelligent agents operating in open-world, multimodal environments. To support long-term reasoning, such agents are typically equipped with external memory systems. However, most existing multimodal agent memories rely primarily on neural representations and vector-based retrieval, which are well-suited for inductive,...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15280v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15280v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">11</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15250v1" target="_blank" class="paper-title">In-Context Symbolic Regression for Robustness-Improved Kolmogorov-Arnold Networks</a>
+        <div class="paper-authors">Francesco Sovrano, Lidia Losavio, Giulia Vilone et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Symbolic regression aims to replace black-box predictors with concise analytical expressions that can be inspected and validated in scientific machine learning. Kolmogorov-Arnold Networks (KANs) are well suited to this goal because each connection between adjacent units (an &quot;edge&quot;) is parametrised by a learnable univariate function that can, in principle, be replaced by a symbolic...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15250v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15250v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">12</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.14861v1" target="_blank" class="paper-title">Video Detector: A Dual-Phase Vision-Based System for Real-Time Traffic Intersection Control and Intelligent Transportation Analysis</a>
+        <div class="paper-authors">Mustafa Fatih Şen, Halûk Gümüşkaya, Şenol Pazar</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Urban traffic management increasingly requires intelligent sensing systems capable of adapting to dynamic traffic conditions without costly infrastructure modifications. Vision-based vehicle detection has therefore become a key technology for modern intelligent transportation systems. This study presents Video Detector (VD), a dual-phase vision-based traffic intersection management system...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.14861v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.14861v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">13</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.14706v1" target="_blank" class="paper-title">AdapterTune: Zero-Initialized Low-Rank Adapters for Frozen Vision Transformers</a>
+        <div class="paper-authors">Salim Khazem</div>
+        <div class="paper-date">📅 2026-03-16</div>
+        <div class="paper-abstract">Frozen-backbone transfer with Vision Transformers faces two under-addressed issues: optimization instability when adapters are naively inserted into a fixed feature extractor, and the absence of principled guidance for setting adapter capacity. We introduce AdapterTune, which augments each transformer block with a residual low-rank bottleneck whose up-projection is zero-initialized, guaranteeing...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.14706v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.14706v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">14</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.14374v1" target="_blank" class="paper-title">A Systematic Comparison and Evaluation of Building Ontologies for Deploying Data-Driven Analytics in Smart Buildings</a>
+        <div class="paper-authors">Zhangcheng Qiang, Stuart Hands, Kerry Taylor et al. (8 authors)</div>
+        <div class="paper-date">📅 2026-03-15</div>
+        <div class="paper-abstract">Ontologies play a critical role in data exchange, information integration, and knowledge sharing across diverse smart building applications. Yet, semantic differences between the prevailing building ontologies hamper their purpose of bringing data interoperability and restrict the ability to reuse building ontologies in real-world applications. In this paper, we propose and adopt a framework to...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.14374v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.14374v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">15</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.13997v1" target="_blank" class="paper-title">Location Aware Embedding for Geotargeting in Sponsored Search Advertising</a>
+        <div class="paper-authors">Jelena Gligorijevic, Djordje Gligorijevic, Aravindan Raghuveer et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-14</div>
+        <div class="paper-abstract">Web search has become an inevitable part of everyday life. Improving and monetizing web search has been a focus of major Internet players. Understanding the context of web search query is an important aspect of this task as it represents unobserved facts that add meaning to an otherwise incomplete query.The context of a query consists of user&#x27;s location, local time, search history,...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.13997v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.13997v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">16</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.13816v1" target="_blank" class="paper-title">Artificial intelligence-driven improvement of hospital logistics management resilience: a practical exploration based on H Hospital</a>
+        <div class="paper-authors">Lu Huang, Dongjing Shan, Han Chen</div>
+        <div class="paper-date">📅 2026-03-14</div>
+        <div class="paper-abstract">Hospital logistics management faces growing pressure from internal operations and external emergencies, with artificial intelligence (AI) holding untapped potential to boost its resilience. This study explores AI&#x27;s role in enhancing logistics resilience via a mixed-methods case study of H Hospital, combining 12 key informant interviews and a full survey of 151 logistics staff, with the PDCA...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.13816v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.13816v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">17</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.13777v1" target="_blank" class="paper-title">Generate Then Correct: Single Shot Global Correction for Aspect Sentiment Quad Prediction</a>
+        <div class="paper-authors">Shidong He, Haoyu Wang, Wenjie Luo</div>
+        <div class="paper-date">📅 2026-03-14</div>
+        <div class="paper-abstract">Aspect-based sentiment analysis (ABSA) extracts aspect-level sentiment signals from user-generated text, supports product analytics, experience monitoring, and public-opinion tracking, and is central to fine-grained opinion mining. A key challenge in ABSA is aspect sentiment quad prediction (ASQP), which requires identifying four elements: the aspect term, the aspect category, the opinion term,...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.13777v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.13777v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">18</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.13059v1" target="_blank" class="paper-title">Competition-Aware CPC Forecasting with Near-Market Coverage</a>
+        <div class="paper-authors">Sebastian Frey, Edoardo Beccari, Maximilian Kranz et al. (7 authors)</div>
+        <div class="paper-date">📅 2026-03-13</div>
+        <div class="paper-abstract">Cost-per-click (CPC) in paid search is a volatile auction outcome generated by a competitive landscape that is only partially observable from any single advertiser&#x27;s history. Using Google Ads auction logs from a concentrated car-rental market (2021--2023), we forecast weekly CPC for 1,811 keyword series and approximate latent competition through complementary signals derived from keyword...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.13059v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.13059v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">19</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.12743v1" target="_blank" class="paper-title">MoKus: Leveraging Cross-Modal Knowledge Transfer for Knowledge-Aware Concept Customization</a>
+        <div class="paper-authors">Chenyang Zhu, Hongxiang Li, Xiu Li et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-13</div>
+        <div class="paper-abstract">Concept customization typically binds rare tokens to a target concept. Unfortunately, these approaches often suffer from unstable performance as the pretraining data seldom contains these rare tokens. Meanwhile, these rare tokens fail to convey the inherent knowledge of the target concept. Consequently, we introduce Knowledge-aware Concept Customization, a novel task aiming at binding diverse...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.12743v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.12743v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">20</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.12483v1" target="_blank" class="paper-title">Generating Expressive and Customizable Evals for Timeseries Data Analysis Agents with AgentFuel</a>
+        <div class="paper-authors">Aadyaa Maddi, Prakhar Naval, Deepti Mande et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-12</div>
+        <div class="paper-abstract">Across many domains (e.g., IoT, observability, telecommunications, cybersecurity), there is an emerging adoption of conversational data analysis agents that enable users to &quot;talk to your data&quot; to extract insights. Such data analysis agents operate on timeseries data models; e.g., measurements from sensors or events monitoring user clicks and actions in product analytics. We evaluate 6...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.12483v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.12483v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">21</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.12060v1" target="_blank" class="paper-title">Chemical Reaction Networks Learn Better than Spiking Neural Networks</a>
+        <div class="paper-authors">Sophie Jaffard, Ivo F. Sbalzarini</div>
+        <div class="paper-date">📅 2026-03-12</div>
+        <div class="paper-abstract">We mathematically prove that chemical reaction networks without hidden layers can solve tasks for which spiking neural networks require hidden layers. Our proof uses the deterministic mass-action kinetics formulation of chemical reaction networks. Specifically, we prove that a certain reaction network without hidden layers can learn a classification task previously proved to be achievable by a...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.12060v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.12060v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">22</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.11872v2" target="_blank" class="paper-title">ELISA: An Interpretable Hybrid Generative AI Agent for Expression-Grounded Discovery in Single-Cell Genomics</a>
+        <div class="paper-authors">Omar Coser</div>
+        <div class="paper-date">📅 2026-03-12</div>
+        <div class="paper-abstract">Translating single-cell RNA sequencing (scRNA-seq) data into mechanistic biological hypotheses remains a critical bottleneck, as agentic AI systems lack direct access to transcriptomic representations while expression foundation models remain opaque to natural language. Here we introduce ELISA (Embedding-Linked Interactive Single-cell Agent), an interpretable framework that unifies scGPT...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.11872v2" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.11872v2" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">23</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.11834v1" target="_blank" class="paper-title">Hybrid Human-Agent Social Dilemmas in Energy Markets</a>
+        <div class="paper-authors">Isuri Perera, Frits de Nijs, Julian Garcia</div>
+        <div class="paper-date">📅 2026-03-12</div>
+        <div class="paper-abstract">In hybrid populations where humans delegate strategic decision-making to autonomous agents, understanding when and how cooperative behaviors can emerge remains a key challenge. We study this problem in the context of energy load management: consumer agents schedule their appliance use under demand-dependent pricing. This structure can create a social dilemma where everybody would benefit from...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.11834v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.11834v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">24</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.11736v1" target="_blank" class="paper-title">Gender Bias in Generative AI-assisted Recruitment Processes</a>
+        <div class="paper-authors">Martina Ullasci, Marco Rondina, Riccardo Coppola et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-12</div>
+        <div class="paper-abstract">In recent years, generative artificial intelligence (GenAI) systems have assumed increasingly crucial roles in selection processes, personnel recruitment and analysis of candidates&#x27; profiles. However, the employment of large language models (LLMs) risks reproducing, and in some cases amplifying, gender stereotypes and bias already present in the labour market. The objective of this paper is...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.11736v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.11736v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">25</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.11493v1" target="_blank" class="paper-title">OrthoEraser: Coupled-Neuron Orthogonal Projection for Concept Erasure</a>
+        <div class="paper-authors">Chuancheng Shi, Wenhua Wu, Fei Shen et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-12</div>
+        <div class="paper-abstract">Text-to-image (T2I) models face significant safety risks from adversarial induction, yet current concept erasure methods often cause collateral damage to benign attributes when suppressing selected neurons entirely. This occurs because sensitive and benign semantics exhibit non-orthogonal superposition, sharing activation subspaces where their respective vectors are inherently entangled. To...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.11493v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.11493v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">26</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.11383v1" target="_blank" class="paper-title">Vision-Based Hand Shadowing for Robotic Manipulation via Inverse Kinematics</a>
+        <div class="paper-authors">Hendrik Chiche, Antoine Jamme, Trevor Rigoberto Martinez</div>
+        <div class="paper-date">📅 2026-03-11</div>
+        <div class="paper-abstract">Teleoperation of low-cost robotic manipulators remains challenging due to the complexity of mapping human hand articulations to robot joint commands. We present an offline hand-shadowing and retargeting pipeline from a single egocentric RGB-D camera mounted on 3D-printed glasses. The pipeline detects 21 hand landmarks per hand using MediaPipe Hands, deprojects them into 3D via depth sensing,...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.11383v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.11383v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">27</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.11331v1" target="_blank" class="paper-title">Jailbreak Scaling Laws for Large Language Models: Polynomial-Exponential Crossover</a>
+        <div class="paper-authors">Indranil Halder, Annesya Banerjee, Cengiz Pehlevan</div>
+        <div class="paper-date">📅 2026-03-11</div>
+        <div class="paper-abstract">Adversarial attacks can reliably steer safety-aligned large language models toward unsafe behavior. Empirically, we find that adversarial prompt-injection attacks can amplify attack success rate from the slow polynomial growth observed without injection to exponential growth with the number of inference-time samples. To explain this phenomenon, we propose a theoretical generative model of proxy...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.11331v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.11331v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">28</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.14173v1" target="_blank" class="paper-title">Hybrid Intent-Aware Personalization with Machine Learning and RAG-Enabled Large Language Models for Financial Services Marketing</a>
+        <div class="paper-authors">Akhil Chandra Shanivendra</div>
+        <div class="paper-date">📅 2026-03-11</div>
+        <div class="paper-abstract">Personalized marketing in financial services requires models that can both predict customer behavior and generate compliant, context-appropriate content. This paper presents a hybrid architecture that integrates classical machine learning for segmentation, latent intent modeling, and personalization prediction with retrieval-augmented large language models for grounded content generation. A...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.14173v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.14173v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">29</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.10625v1" target="_blank" class="paper-title">A Hypergraph-Based Framework for Exploratory Business Intelligence</a>
+        <div class="paper-authors">Yunkai Lou, Shunyang Li, Longbin Lai et al. (6 authors)</div>
+        <div class="paper-date">📅 2026-03-11</div>
+        <div class="paper-abstract">Business Intelligence (BI) analysis is evolving towards Exploratory BI, an iterative, multi-round exploration paradigm where analysts progressively refine their understanding. However, traditional BI systems impose critical limits for Exploratory BI: heavy reliance on expert knowledge, high computational costs, static schemas, and lack of reusability. We present ExBI, a novel system that...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.10625v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.10625v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">30</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.10573v1" target="_blank" class="paper-title">Implicit Statistical Inference in Transformers: Approximating Likelihood-Ratio Tests In-Context</a>
+        <div class="paper-authors">Faris Chaudhry, Siddhant Gadkari</div>
+        <div class="paper-date">📅 2026-03-11</div>
+        <div class="paper-abstract">In-context learning (ICL) allows Transformers to adapt to novel tasks without weight updates, yet the underlying algorithms remain poorly understood. We adopt a statistical decision-theoretic perspective by investigating simple binary hypothesis testing, where the optimal policy is determined by the likelihood-ratio test. Notably, this setup provides a mathematically rigorous setting for...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.10573v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.10573v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">31</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.10357v1" target="_blank" class="paper-title">Utility Function is All You Need: LLM-based Congestion Control</a>
+        <div class="paper-authors">Neta Rozen-Schiff, Liron Schiff, Stefan Schmid</div>
+        <div class="paper-date">📅 2026-03-11</div>
+        <div class="paper-abstract">Congestion is a critical and challenging problem in communication networks. Congestion control protocols allow network applications to tune their sending rate in a way that optimizes their performance and the network utilization. In the common distributed setting, the applications cannot collaborate with each other directly but instead obtain similar estimations about the state of the network...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.10357v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.10357v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">32</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.13380v1" target="_blank" class="paper-title">Querying Everything Everywhere All at Once: Supervaluationism for the Agentic Lakehouse</a>
+        <div class="paper-authors">Jacopo Tagliabue</div>
+        <div class="paper-date">📅 2026-03-11</div>
+        <div class="paper-abstract">Agentic analytics is turning the lakehouse into a multi-version system: swarms of (human or AI) producers materialize competing pipelines in data branches, while (human or AI) consumers need answers without knowing the underlying data life-cycle. We demonstrate a new system that answers questions across branches rather than at a single snapshot. Our prototype focuses on a novel query path that...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.13380v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.13380v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">33</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.11082v1" target="_blank" class="paper-title">Quality-Driven Agentic Reasoning for LLM-Assisted Software Design: Questions-of-Thoughts (QoT) as a Time-Series Self-QA Chain</a>
+        <div class="paper-authors">Yen-Ku Liu, Yun-Cheng Tsai</div>
+        <div class="paper-date">📅 2026-03-10</div>
+        <div class="paper-abstract">Recent advances in large language models (LLMs) have accelerated AI-assisted software development, yet practical deployment remains constrained by incomplete implementations, weak modularization, and inconsistent security practices. We introduce Questions-of-Thoughts (QoT), a quality-driven inference-time scaffold that turns a user goal into (i) an ordered sequence of engineering steps and (ii)...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.11082v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.11082v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">34</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.09942v1" target="_blank" class="paper-title">Towards Flexible Spectrum Access: Data-Driven Insights into Spectrum Demand</a>
+        <div class="paper-authors">Mohamad Alkadamani, Amir Ghasemi, Halim Yanikomeroglu</div>
+        <div class="paper-date">📅 2026-03-10</div>
+        <div class="paper-abstract">In the diverse landscape of 6G networks, where wireless connectivity demands surge and spectrum resources remain limited, flexible spectrum access becomes paramount. The success of crafting such schemes hinges on our ability to accurately characterize spectrum demand patterns across space and time. This paper presents a data-driven methodology for estimating spectrum demand variations over space...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.09942v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.09942v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">35</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.15664v1" target="_blank" class="paper-title">Quantum Amplitude Estimation for Catastrophe Insurance Tail-Risk Pricing: Empirical Convergence and NISQ Noise Analysis</a>
+        <div class="paper-authors">Alexis Kirke</div>
+        <div class="paper-date">📅 2026-03-10</div>
+        <div class="paper-abstract">Classical Monte Carlo methods for pricing catastrophe insurance tail risk converge at order reciprocal root N, requiring large simulation budgets to resolve upper-tail percentiles of the loss distribution. This sample-sparsity problem can lead to AI models trained on impoverished tail data, producing poorly calibrated risk estimates where insolvency risk is greatest. Quantum Amplitude Estimation...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.15664v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.15664v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">36</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.13373v1" target="_blank" class="paper-title">Ethical Fairness without Demographics in Human-Centered AI</a>
+        <div class="paper-authors">Shaily Roy, Harshit Sharma, Asif Salekin</div>
+        <div class="paper-date">📅 2026-03-10</div>
+        <div class="paper-abstract">Computational models are increasingly embedded in human-centered domains such as healthcare, education, workplace analytics, and digital well-being, where their predictions directly influence individual outcomes and collective welfare. In such contexts, achieving high accuracy alone is insufficient; models must also act ethically and equitably across diverse populations. However, fair AI...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.13373v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.13373v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">37</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.09151v2" target="_blank" class="paper-title">Deep Tabular Research via Continual Experience-Driven Execution</a>
+        <div class="paper-authors">Junnan Dong, Chuang Zhou, Zheng Yuan et al. (10 authors)</div>
+        <div class="paper-date">📅 2026-03-10</div>
+        <div class="paper-abstract">Large language models often struggle with complex long-horizon analytical tasks over unstructured tables, which typically feature hierarchical and bidirectional headers and non-canonical layouts. We formalize this challenge as Deep Tabular Research (DTR), requiring multi-step reasoning over interdependent table regions. To address DTR, we propose a novel agentic framework that treats tabular...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.09151v2" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.09151v2" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">38</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.10057v1" target="_blank" class="paper-title">SBOMs into Agentic AIBOMs: Schema Extensions, Agentic Orchestration, and Reproducibility Evaluation</a>
+        <div class="paper-authors">Petar Radanliev, Carsten Maple, Omar Santos et al. (4 authors)</div>
+        <div class="paper-date">📅 2026-03-09</div>
+        <div class="paper-abstract">Software supply-chain security requires provenance mechanisms that support reproducibility and vulnerability assessment under dynamic execution conditions. Conventional Software Bills of Materials (SBOMs) provide static dependency inventories but cannot capture runtime behaviour, environment drift, or exploitability context. This paper introduces agentic Artificial Intelligence Bills of Materials...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.10057v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.10057v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-number">39</div>
+      <div class="paper-content">
+        <a href="http://arxiv.org/abs/2603.08806v1" target="_blank" class="paper-title">Test-Driven AI Agent Definition (TDAD): Compiling Tool-Using Agents from Behavioral Specifications</a>
+        <div class="paper-authors">Tzafrir Rehan</div>
+        <div class="paper-date">📅 2026-03-09</div>
+        <div class="paper-abstract">We present Test-Driven AI Agent Definition (TDAD), a methodology that treats agent prompts as compiled artifacts: engineers provide behavioral specifications, a coding agent converts them into executable tests, and a second coding agent iteratively refines the prompt until tests pass. Deploying tool-using LLM agents in production requires measurable behavioral compliance that current development...</div>
+        <div class="paper-links">
+          <a href="http://arxiv.org/abs/2603.08806v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.08806v1" target="_blank" class="paper-link">PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card">
       <div class="paper-number">40</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16743v1" target="_blank" class="paper-title">Novel cluster-algebraic letters for 5- and 6-point QCD processes</a>
-        <div class="paper-authors">Rigers Aliaj, Garbriele Dian, Georgios Papathanasiou</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">By breaking dual conformal invariance, we transform cluster-algebraic predictions for the alphabet of 9-point amplitudes in $\mathcal{N}=4$ super Yang-Mills theory to analogous predictions for 5- and 6-point processes in QCD. We start by obtaining, for the first time, candidate letters for 6-point processes with one massive external leg, and discover that they surprisingly also contain nested squa...</div>
+        <a href="http://arxiv.org/abs/2603.08704v1" target="_blank" class="paper-title">Evaluating Financial Intelligence in Large Language Models: Benchmarking SuperInvesting AI with LLM Engines</a>
+        <div class="paper-authors">Akshay Gulati, Kanha Singhania, Tushar Banga et al. (11 authors)</div>
+        <div class="paper-date">📅 2026-03-09</div>
+        <div class="paper-abstract">Large language models are increasingly used for financial analysis and investment research, yet systematic evaluation of their financial reasoning capabilities remains limited. In this work, we introduce the AI Financial Intelligence Benchmark (AFIB), a multi-dimensional evaluation framework designed to assess financial analysis capabilities across five dimensions: factual accuracy, analytical...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16743v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16743v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.08704v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.08704v1" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -753,13 +643,13 @@
     <div class="paper-card">
       <div class="paper-number">41</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16738v1" target="_blank" class="paper-title">MedCL-Bench: Benchmarking stability-efficiency trade-offs and scaling in biomedical continual learning</a>
-        <div class="paper-authors">Min Zeng, Shuang Zhou, Zaifu Zhan et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Medical language models must be updated as evidence and terminology evolve, yet sequential updating can trigger catastrophic forgetting. Although biomedical NLP has many static benchmarks, no unified, task-diverse benchmark exists for evaluating continual learning under standardized protocols, robustness to task order and compute-aware reporting. We introduce MedCL-Bench, which streams ten biomedi...</div>
+        <a href="http://arxiv.org/abs/2603.08655v1" target="_blank" class="paper-title">OfficeQA Pro: An Enterprise Benchmark for End-to-End Grounded Reasoning</a>
+        <div class="paper-authors">Krista Opsahl-Ong, Arnav Singhvi, Jasmine Collins et al. (13 authors)</div>
+        <div class="paper-date">📅 2026-03-09</div>
+        <div class="paper-abstract">We introduce OfficeQA Pro, a benchmark for evaluating AI agents on grounded, multi-document reasoning over a large and heterogeneous document corpus. The corpus consists of U.S. Treasury Bulletins spanning nearly 100 years, comprising 89,000 pages and over 26 million numerical values. OfficeQA Pro consists of 133 questions that require precise document parsing, retrieval, and analytical reasoning...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16738v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16738v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.08655v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.08655v1" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -767,13 +657,13 @@
     <div class="paper-card">
       <div class="paper-number">42</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16732v1" target="_blank" class="paper-title">Confusion-Aware Spectral Regularizer for Long-Tailed Recognition</a>
-        <div class="paper-authors">Ziquan Zhu, Gaojie Jin, Hanruo Zhu et al. (14 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Long-tailed image classification remains a long-standing challenge, as real-world data typically follow highly imbalanced distributions where a few head classes dominate and many tail classes contain only limited samples. This imbalance biases feature learning toward head categories and leads to significant degradation on rare classes. Although recent studies have proposed re-sampling, re-weightin...</div>
+        <a href="http://arxiv.org/abs/2603.13368v1" target="_blank" class="paper-title">Real-Time Monocular Scene Analysis for UAV in Outdoor Environments</a>
+        <div class="paper-authors">Yara AlaaEldin</div>
+        <div class="paper-date">📅 2026-03-09</div>
+        <div class="paper-abstract">In this thesis, we leverage monocular cameras on aerial robots to predict depth and semantic maps in low-altitude unstructured environments. We propose a joint deep-learning architecture, named Co-SemDepth, that can perform the two tasks accurately and rapidly, and validate its effectiveness on a variety of datasets. The training of neural networks requires an abundance of annotated data, and in...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16732v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16732v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.13368v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.13368v1" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -781,13 +671,13 @@
     <div class="paper-card">
       <div class="paper-number">43</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16729v1" target="_blank" class="paper-title">GeMA: Learning Latent Manifold Frontiers for Benchmarking Complex Systems</a>
-        <div class="paper-authors">Jia Ming Li,  Anupriya, Daniel J. Graham</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Benchmarking the performance of complex systems such as rail networks, renewable generation assets and national economies is central to transport planning, regulation and macroeconomic analysis. Classical frontier methods, notably Data Envelopment Analysis (DEA) and Stochastic Frontier Analysis (SFA), estimate an efficient frontier in the observed input-output space and define efficiency as distan...</div>
+        <a href="http://arxiv.org/abs/2603.08206v3" target="_blank" class="paper-title">Distributional Regression with Tabular Foundation Models: Evaluating Probabilistic Predictions via Proper Scoring Rules</a>
+        <div class="paper-authors">Jonas Landsgesell, Pascal Knoll</div>
+        <div class="paper-date">📅 2026-03-09</div>
+        <div class="paper-abstract">Tabular foundation models such as TabPFN and TabICL already produce full predictive distributions, yet the benchmarks used to evaluate them (TabArena, TALENT, and others) still rely almost exclusively on point-estimate metrics (RMSE, $R^2$). This mismatch implicitly rewards models that elicit a good conditional mean while ignoring the quality of the predicted distribution. We make two...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16729v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16729v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.08206v3" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.08206v3" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -795,13 +685,13 @@
     <div class="paper-card">
       <div class="paper-number">44</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16725v1" target="_blank" class="paper-title">Machine Learning Reconstruction of High-Dimensional Electronic Structure from Angle-Resolved Photoemission Spectroscopy</a>
-        <div class="paper-authors">Yu Zhang, Yong Zhong, Nhat Huy Tran et al. (10 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">The emergent behavior of quantum materials is governed by their electronic structure, which can be experimentally probed by photoemission spectroscopy techniques that generate a four-dimensional dataset of energy and momentum. However, the quantitative extraction of Hamiltonian parameters from these high-dimensional spectra remains a significant challenge, currently relying on labor-intensive, exp...</div>
+        <a href="http://arxiv.org/abs/2603.07998v1" target="_blank" class="paper-title">Aero-Promptness: Drag-Aware Aerodynamic Manipulability for Propeller-driven Vehicles</a>
+        <div class="paper-authors">Antonio Franchi</div>
+        <div class="paper-date">📅 2026-03-09</div>
+        <div class="paper-abstract">This work introduces the Drag-Aware Aerodynamic Manipulability (DAAM), a geometric framework for control allocation in redundant multirotors. By equipping the propeller spin-rate space with a Riemannian metric based on the remaining symmetric acceleration capacity of each motor, the formulation explicitly accounts for motor torque limits and aerodynamic drag. Mapping this metric through the...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16725v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16725v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.07998v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.07998v1" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -809,13 +699,13 @@
     <div class="paper-card">
       <div class="paper-number">45</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16721v1" target="_blank" class="paper-title">Looking for (Genomic) Needles in a Haystack: Sparsity-Driven Search for Identifying Correlated Genetic Mutations in Cancer</a>
-        <div class="paper-authors">Ritvik Prabhu, Emil Vatai, Bernard Moussad et al. (7 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Cancer typically arises not from a single genetic mutation (i.e., hit) but from multi-hit combinations that accumulate within cells. However, enumerating multi-hit combinations becomes exponentially more expensive computationally as the number of candidate hit gene combinations grow, i.e. on the order of 20,000 choose h, where 20,000 is the number of genes in the human genome and h is the number o...</div>
+        <a href="http://arxiv.org/abs/2603.07940v1" target="_blank" class="paper-title">AI Agents, Language, Deep Learning and the Next Revolution in Science</a>
+        <div class="paper-authors">Ke Li, Beijiang Liu, Bruce Mellado et al. (5 authors)</div>
+        <div class="paper-date">📅 2026-03-09</div>
+        <div class="paper-abstract">Modern science is reaching a critical inflection point. Instruments across disciplines, from particle physics and astronomy to genomics and climate modeling, now produce data of such scale, diversity, and interdependence that traditional analytical methods can no longer keep pace. This growing imbalance between data generation and data understanding signals the need for a new scientific paradigm....</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16721v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16721v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.07940v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.07940v1" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -823,13 +713,13 @@
     <div class="paper-card">
       <div class="paper-number">46</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16719v1" target="_blank" class="paper-title">Emotion-Aware Classroom Quality Assessment Leveraging IoT-Based Real-Time Student Monitoring</a>
-        <div class="paper-authors">Hai Nguyen, Hieu Dao, Hung Nguyen et al. (5 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">This study presents high-throughput, real-time multi-agent affective computing framework designed to enhance classroom learning through emotional state monitoring. As large classroom sizes and limited teacher student interaction increasingly challenge educators, there is a growing need for scalable, data-driven tools capable of capturing students' emotional and engagement patterns in real time. Th...</div>
+        <a href="http://arxiv.org/abs/2603.07834v1" target="_blank" class="paper-title">AI Misuse in Education Is a Measurement Problem: Toward a Learning Visibility Framework</a>
+        <div class="paper-authors">Eduardo Davalos, Yike Zhang</div>
+        <div class="paper-date">📅 2026-03-08</div>
+        <div class="paper-abstract">The rapid integration of conversational AI systems into educational settings has intensified ethical concerns about academic integrity, fairness, and students&#x27; cognitive development. Institutional responses have largely centered on AI detection tools and restrictive policies, yet such approaches have proven unreliable and ethically contentious. This paper reframes AI misuse in education not...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16719v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16719v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.07834v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.07834v1" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -837,13 +727,13 @@
     <div class="paper-card">
       <div class="paper-number">47</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16712v1" target="_blank" class="paper-title">High-dimensional estimation with missing data: Statistical and computational limits</a>
-        <div class="paper-authors">Kabir Aladin Verchand, Ankit Pensia, Saminul Haque et al. (4 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">We consider computationally-efficient estimation of population parameters when observations are subject to missing data. In particular, we consider estimation under the realizable contamination model of missing data in which an $ε$ fraction of the observations are subject to an arbitrary (and unknown) missing not at random (MNAR) mechanism. When the true data is Gaussian, we provide evidence towar...</div>
+        <a href="http://arxiv.org/abs/2603.12287v1" target="_blank" class="paper-title">Context-Enriched Natural Language Descriptions of Vessel Trajectories</a>
+        <div class="paper-authors">Kostas Patroumpas, Alexandros Troupiotis-Kapeliaris, Giannis Spiliopoulos et al. (7 authors)</div>
+        <div class="paper-date">📅 2026-03-08</div>
+        <div class="paper-abstract">We address the problem of transforming raw vessel trajectory data collected from AIS into structured and semantically enriched representations interpretable by humans and directly usable by machine reasoning systems. We propose a context-aware trajectory abstraction framework that segments noisy AIS sequences into distinct trips each consisting of clean, mobility-annotated episodes. Each episode...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16712v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16712v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.12287v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.12287v1" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -851,13 +741,13 @@
     <div class="paper-card">
       <div class="paper-number">48</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16710v1" target="_blank" class="paper-title">Design of Transit Networks: Global Optimization of Continuous Approximation Models via Geometric Programming</a>
-        <div class="paper-authors">Haoyang Mao, Weihua Gu, Wenbo Fan et al. (5 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Continuous approximation (CA) models have been widely adopted in transit network design studies due to their strong analytical tractability and high computational efficiency. However, such models are typically formulated as nonconvex optimization problems, and existing solution approaches mainly rely on iterative algorithms that exploit first-order optimality information or nonlinear programming s...</div>
+        <a href="http://arxiv.org/abs/2603.06863v1" target="_blank" class="paper-title">A prior information informed learning architecture for flying trajectory prediction</a>
+        <div class="paper-authors">Xianda Huang, Zidong Han, Ruibo Jin et al. (7 authors)</div>
+        <div class="paper-date">📅 2026-03-06</div>
+        <div class="paper-abstract">Trajectory prediction for flying objects is critical in domains ranging from sports analytics to aerospace. However, traditional methods struggle with complex physical modeling, computational inefficiencies, and high hardware demands, often neglecting critical trajectory events like landing points. This paper introduces a novel, hardware-efficient trajectory prediction framework that integrates...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16710v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16710v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.06863v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.06863v1" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -865,13 +755,13 @@
     <div class="paper-card">
       <div class="paper-number">49</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16705v1" target="_blank" class="paper-title">A Variational Pseudo-Observation Guided Nudged Particle Filter</a>
-        <div class="paper-authors">Theofania Karampela, Ryne Beeson</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Nonlinear filtering with standard PF methods requires mitigative techniques to quell weight degeneracy, such as resampling. This is especially true in high-dimensional systems with sparse observations. Unfortunately, such techniques are also fragile when applied to systems with exceedingly rare events. Nonlinear systems with these properties can be assimilated effectively with a control-based PF m...</div>
+        <a href="http://arxiv.org/abs/2603.05917v1" target="_blank" class="paper-title">Stock Market Prediction Using Node Transformer Architecture Integrated with BERT Sentiment Analysis</a>
+        <div class="paper-authors">Mohammad Al Ridhawi, Mahtab Haj Ali, Hussein Al Osman</div>
+        <div class="paper-date">📅 2026-03-06</div>
+        <div class="paper-abstract">Stock market prediction presents considerable challenges for investors, financial institutions, and policymakers operating in complex market environments characterized by noise, non-stationarity, and behavioral dynamics. Traditional forecasting methods often fail to capture the intricate patterns and cross-sectional dependencies inherent in financial markets. This paper presents an integrated...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16705v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16705v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.05917v1" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.05917v1" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
@@ -879,21 +769,20 @@
     <div class="paper-card">
       <div class="paper-number">50</div>
       <div class="paper-content">
-        <a href="http://arxiv.org/abs/2603.16699v1" target="_blank" class="paper-title">Efficient generation of entangled photons in the telecommunications range using nonlinear metasurfaces integrated with ScAlN/GaN heterostructures</a>
-        <div class="paper-authors">Jaeyeon Yu, Jewel Mohajan, Mikhail Tokman et al. (11 authors)</div>
-        <div class="paper-date">📅 2026-03-17</div>
-        <div class="paper-abstract">Entangled photons provide non-classical correlations that enable measurement sensitivities beyond classical limits, scalable fault-tolerant quantum computation, and fundamentally secure quantum communication, making them a foundational necessity for next-generation quantum technologies. Here we propose and analyze a novel source of entangled photons based on ScAlN/GaN quantum wells integrated with...</div>
+        <a href="http://arxiv.org/abs/2603.05884v2" target="_blank" class="paper-title">Computational Pathology in the Era of Emerging Foundation and Agentic AI -- International Expert Perspectives on Clinical Integration and Translational Readiness</a>
+        <div class="paper-authors">Qian Da, Yijiang Chen, Min Ju et al. (28 authors)</div>
+        <div class="paper-date">📅 2026-03-06</div>
+        <div class="paper-abstract">Recent breakthroughs in artificial intelligence through foundation models and agents have accelerated the evolution of computational pathology. Demonstrated performance gains reported across academia in benchmarking datasets in predictive tasks such as diagnosis, prognosis, and treatment response have ignited substantial enthusiasm for clinical application. Despite this development momentum, real...</div>
         <div class="paper-links">
-          <a href="http://arxiv.org/abs/2603.16699v1" target="_blank" class="paper-link">arXiv →</a>
-          <a href="https://arxiv.org/pdf/2603.16699v1" target="_blank" class="paper-link">PDF</a>
+          <a href="http://arxiv.org/abs/2603.05884v2" target="_blank" class="paper-link">arXiv →</a>
+          <a href="https://arxiv.org/pdf/2603.05884v2" target="_blank" class="paper-link">PDF</a>
         </div>
       </div>
     </div>
 
     </div>
-    
     <div class="footer">
-      <p>Auto-generated from arXiv API | <a href="index.html">Chuang Zhao</a></p>
+      <p>Auto-generated from arXiv API | Chuang Zhao</p>
     </div>
   </div>
 </body>
