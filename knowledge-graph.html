@@ -2,46 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式元标签 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Graph</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        /* 重置页面默认样式，消除边距 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            overflow: hidden; /* 去掉页面滚动条 */
-            background-color: transparent; /* 透明背景，适配主页面 */
+            overflow: hidden;
+            background-color: transparent;
         }
-        /* 图谱容器占满 iframe 可视区域 */
         #knowledge-graph {
             width: 100vw;
             height: 100vh;
             overflow: hidden;
         }
-        /* 节点文字优化：避免重叠、提升可读性 */
         .node text {
             font-family: Arial, sans-serif;
-            text-anchor: start; /* 文字左对齐 */
-            white-space: nowrap; /* 禁止文字换行 */
+            text-anchor: start;
+            white-space: nowrap;
+            /* 文字抗锯齿+白色描边，提升可读性 */
+            paint-order: stroke fill;
+            stroke: white;
+            stroke-width: 2px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
-        /* 连接线优化：更细腻 */
         .link {
             stroke: #ccc;
             stroke-opacity: 0.8;
+        }
+        /* 悬浮提示样式 */
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px; /* 放大提示文字 */
+            pointer-events: none;
+            z-index: 1000;
+            max-width: 350px;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
     <div id="knowledge-graph"></div>
+    <!-- 悬浮提示容器 -->
+    <div class="tooltip" style="display: none;"></div>
 
     <script>
     const graphData = {
       nodes: [
-        // 保留你原有的所有节点数据
         { id: "paper-2025-tnnls", name: "Enhancing Domain Generalization in Medical Image Segmentation", group: 1 },
         { id: "paper-2025-tweb", name: "Cross-domain Transfer of Valence Preferences via Meta-optimization", group: 1 },
         { id: "paper-2025-tkde", name: "Collaborative Knowledge Fusion for Multi-task Recommender Systems", group: 1 },
@@ -88,7 +104,6 @@
         { id: "kw-logistics", name: "Logistics Risk", group: 3 }
       ],
       links: [
-        // 保留你原有的所有链接数据
         { source: "paper-2025-tnnls", target: "jour-tnnls", value: 1 },
         { source: "paper-2025-tweb", target: "jour-tweb", value: 1 },
         { source: "paper-2025-tkde", target: "jour-tkde", value: 1 },
@@ -139,70 +154,98 @@
       ]
     };
 
-    // 优化力导向布局参数：让节点分布更合理
+    // 工具函数：截断长文本（放大字体后适度增加截断长度）
+    function truncateText(text, maxLength) {
+        if (text.length <= maxLength) return text;
+        return text.substring(0, maxLength) + "...";
+    }
+
+    // 优化力导向布局：适配放大后的节点/字体
     const svg = d3.select("#knowledge-graph")
       .append("svg")
       .attr("width", "100%")
       .attr("height", "100%")
-      // 增大 viewBox 尺寸，给节点更多展示空间
-      .attr("viewBox", [0, 0, 1200, 800])
-      .attr("preserveAspectRatio", "xMidYMid meet"); // 保持比例，居中显示
+      .attr("viewBox", [0, 0, 2000, 1400]) // 进一步增大画布空间
+      .attr("preserveAspectRatio", "xMidYMid meet");
 
     const simulation = d3.forceSimulation(graphData.nodes)
       .force("link", d3.forceLink(graphData.links).id(d => d.id)
         .distance(d => {
-          // 微调距离：避免节点过于拥挤
-          if (d.source.group === 1 && d.target.group === 2) return 120;
-          if (d.source.group === 1 && d.target.group === 3) return 180;
-          return 220;
+          // 适配放大后的节点，增大链接距离
+          if (d.source.group === 1 && d.target.group === 2) return 220;
+          if (d.source.group === 1 && d.target.group === 3) return 280;
+          return 330;
         })
-        .strength(0.8) // 增强链接的拉力，让关联节点更靠近
+        .strength(0.6)
       )
-      .force("charge", d3.forceManyBody().strength(-400)) // 增大排斥力，避免节点重叠
-      .force("center", d3.forceCenter(600, 400)) // 居中调整为新 viewBox 中心
-      .force("collision", d3.forceCollide().radius(60)); // 增大碰撞半径，进一步避免重叠
+      .force("charge", d3.forceManyBody().strength(-1200)) // 增强排斥力，避免放大后拥挤
+      .force("center", d3.forceCenter(1000, 700)) // 对应新画布中心
+      .force("collision", d3.forceCollide().radius(110)); // 增大碰撞半径，适配放大的节点+文字
 
-    // 绘制连接线（添加类名，方便样式控制）
+    // 绘制连接线（适度加粗）
     const link = svg.append("g")
       .attr("class", "link")
       .selectAll("line")
       .data(graphData.links)
       .enter().append("line")
-      .attr("stroke-width", d => Math.sqrt(d.value * 2)); // 加粗连接线
+      .attr("stroke-width", d => Math.sqrt(d.value * 3)); // 加粗连接线，适配放大的视觉效果
 
-    // 优化节点颜色：更美观的配色
+    // 节点颜色
     const color = d3.scaleOrdinal()
       .domain([1, 2, 3])
-      // 替换为更协调的配色：论文(深蓝)、期刊(蓝绿)、关键词(浅紫)
       .range(["#2563eb", "#0d9488", "#9333ea"]);
+
+    // 获取tooltip元素
+    const tooltip = d3.select(".tooltip");
 
     const node = svg.append("g")
       .selectAll(".node")
       .data(graphData.nodes)
       .enter().append("g")
       .attr("class", "node")
+      // 鼠标悬浮显示完整标题
+      .on("mouseover", function(event, d) {
+        tooltip.style("display", "block")
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY + 10) + "px")
+          .text(d.name);
+      })
+      .on("mouseout", function() {
+        tooltip.style("display", "none");
+      })
       .call(d3.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended));
 
-    // 优化节点大小：区分更明显
+    // 放大节点半径（平衡视觉效果，避免过大导致重叠）
     node.append("circle")
       .attr("r", d => {
-        if (d.group === 1) return 10;  // 论文节点稍大
-        if (d.group === 2) return 12;  // 期刊节点更大
-        return 14;                     // 关键词节点最大
+        if (d.group === 1) return 32;  // 论文节点（原15 → 放大到22）
+        if (d.group === 2) return 34;  // 期刊节点（原18 → 放大到24）
+        return 36;                     // 关键词节点（原20 → 放大到26）
       })
       .attr("fill", d => color(d.group))
-      .attr("stroke", "#fff")          // 给节点加白色描边，更突出
-      .attr("stroke-width", 1.5);
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 2); // 加粗描边，增强视觉效果
 
-    // 优化文字样式：更大、更清晰
+    // 放大字体+优化间距
     node.append("text")
-      .attr("dx", 15)
+      .attr("dx", 35) // 适度增大间距，避免文字覆盖放大后的节点
       .attr("dy", ".35em")
-      .text(d => d.name)
-      .style("font-size", "11px")
+      // 放大字体+适度增加截断长度
+      .text(d => {
+        let maxLength = 25; // 论文标题（原20 → 增加到25）
+        if (d.group === 2) maxLength = 12; // 期刊名（原10 → 增加到12）
+        if (d.group === 3) maxLength = 18; // 关键词（原15 → 增加到18）
+        return truncateText(d.name, maxLength);
+      })
+      .style("font-size", d => {
+        // 放大字体（原12/14/13 → 调整为16/18/17）
+        if (d.group === 1) return "40px";
+        if (d.group === 2) return "41px";
+        return "39px";
+      })
       .style("fill", "#222")
       .style("font-weight", 500)
       .style("pointer-events", "none");
@@ -218,7 +261,7 @@
         .attr("transform", d => `translate(${d.x},${d.y})`);
     });
 
-    // 拖拽函数保持不变
+    // 拖拽函数
     function dragstarted(event, d) {
       if (!event.active) simulation.alphaTarget(0.3).restart();
       d.fx = d.x;

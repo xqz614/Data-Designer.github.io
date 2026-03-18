@@ -342,6 +342,32 @@
       font-size: 0.95rem;
     }
     
+    /* Knowledge Graph Section - 知识图谱区 */
+    .knowledge-graph {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .knowledge-graph__container {
+      width: 50%;
+      height: 300px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      position: relative;
+      
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .knowledge-graph__desc {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
     /* Sections Common - 通用章节样式 */
     .section__list {
       display: grid;
@@ -362,7 +388,16 @@
       color: var(--text-secondary);
     }
     
+    /* Education Section - 教育背景区 */
+    .education {
+      margin-top: 3rem;
+    }
+    
     /* Awards Section - 奖项区 */
+    .awards {
+      margin-top: 3rem;
+    }
+    
     .awards__list {
       padding-left: 1.5rem;
       color: var(--text-secondary);
@@ -372,6 +407,34 @@
     .awards__list li {
       margin-bottom: 0.5rem;
       padding-left: 0.5rem;
+    }
+    
+    /* Research Interests - 研究方向 */
+    .research-interests {
+      margin-top: 3rem;
+    }
+    
+    .research-interests__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .research-interests__tag {
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      color: var(--primary);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .research-interests__tag:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
     }
     
     /* Footer - 页脚 */
@@ -422,6 +485,11 @@
       .publication__item {
         padding: 1rem;
       }
+      
+      /* 移动端知识图谱高度适配 */
+      .knowledge-graph__container {
+        height: 400px;
+      }
     }
     
     /* Smooth Scroll - 平滑滚动 */
@@ -449,7 +517,7 @@
         <p>
           PhD Candidate of Electronic and Computer Engineering<br>
           <a href="https://ece.hkust.edu.hk/">Hong Kong University of Science and Technology (HKUST)</a> (Since 12/2024)<br>
-          Research Interests: <strong>AI for Science, Transfer Learning, Recommendation System</strong>
+          Research Interests: <strong>AI for Science, Agentic Modeling, Information Retrieval</strong>
         </p>
         <p>
           Advisors: <a href="https://xmengli.github.io/">Prof. Xiaomeng Li</a> (Primary),
@@ -515,6 +583,22 @@
         <li class="news__item">Decided to join HKUST to pursue PhD under Prof. Xiaomeng Li.</li>
       </ul>
       <a href="news.html" class="news__full">Full List →</a>
+    </section>
+
+    <!-- Research Interests -->
+    <section class="research-interests">
+      <h2>Research Keywords</h2>
+      <p>My research focuses on developing novel machine learning algorithms for real-world applications, with a particular emphasis on:</p>
+      <div class="research-interests__tags">
+        <span class="research-interests__tag">AI for Science</span>
+        <span class="research-interests__tag">Transfer Learning</span>
+        <span class="research-interests__tag">Recommender Systems</span>
+        <span class="research-interests__tag">Agentic Modeling</span>
+        <span class="research-interests__tag">Large Language Models</span>
+        <span class="research-interests__tag">Game Analytics</span>
+        <span class="research-interests__tag">Knowledge Retrieval</span>
+        <span class="research-interests__tag">Marketing Analysis</span>
+      </div>
     </section>
 
     <!-- Publications Section -->
@@ -762,6 +846,17 @@
         </div>
       </div>
     </section>
+    
+    
+    <!-- Knowledge Graph Section -->
+    <section class="knowledge-graph">
+      <h2>Research Knowledge Graph</h2>
+      <p class="knowledge-graph__desc">Interactive visualization of my research publications, journals, and key research topics (drag to move, scroll to zoom).</p>
+      <div class="knowledge-graph__container">
+        <!-- 嵌入知识图谱页面 -->
+        <iframe src="knowledge-graph.html" width="100%" height="100%" frameborder="0" style="display:block;"></iframe>
+      </div>
+    </section>
 
     <!-- Internship Section -->
     <section>
@@ -844,21 +939,6 @@
       </p>
       <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=b2Y7F_bl6Usq0MdZHYxwFenfzkh5yaxJKIaE57rqReg&cl=ffffff&w=a"></script>
     </footer>
-  </div>
-
-  <div style="margin: 2rem 0; /* 上下留白，和页面其他内容分隔 */">
-    <iframe
-      src="knowledge-graph.html"  <!-- 你的图谱文件路径 -->
-      width="100%"               <!-- 宽度占满父容器 -->
-      height="700px"             <!-- 增大高度，适配图谱展示 -->
-      frameborder="0"            <!-- 去掉默认边框 -->
-      style="
-        border-radius: 12px;     <!-- 圆角边框，更美观 -->
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 轻微阴影，提升层次感 */
-        overflow: hidden;        <!-- 隐藏溢出内容 -->
-      "
-      title="Research Knowledge Graph">
-    </iframe>
   </div>
   
   <!-- Busuanzi Counter -->
