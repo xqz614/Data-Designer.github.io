@@ -226,10 +226,7 @@
         .citation-box {
             background: var(--blue-dark); color: #e2e8f0;
             padding: 28px 32px; border-radius: 14px;
-            font-family: 'SF Mono','Fira Code','Consolas',monospace;
-            font-size: .85rem; line-height: 1.7;
             max-width: 800px; margin: 0 auto;
-            white-space: pre-wrap; word-break: break-all; overflow-x: auto;
             position: relative; box-shadow: 0 8px 32px rgba(30,58,95,.3);
         }
         .citation-label {
@@ -238,6 +235,13 @@
             color: #fff; padding: 4px 12px; border-radius: 6px;
             font-family: 'Inter',sans-serif; font-size: .78rem; font-weight: 600;
             margin-bottom: 16px; letter-spacing: .03em;
+        }
+        .citation-code {
+            display: block;
+            font-family: 'SF Mono','Fira Code','Consolas',monospace;
+            font-size: .85rem; line-height: 1.7;
+            white-space: pre; overflow-x: auto;
+            color: #e2e8f0; margin: 0; padding: 0;
         }
         .copy-btn {
             position: absolute; top: 16px; right: 16px;
@@ -527,14 +531,15 @@
             <div class="citation-box">
                 <button class="copy-btn" onclick="copyBibtex()"><i class="fas fa-copy"></i> Copy</button>
                 <div class="citation-label">BibTeX</div>
-@article{zhi2025reinventing,
-  title={Reinventing Clinical Dialogue: Agentic Paradigms
-         for LLM Enabled Healthcare Communication},
-  author={Zhi, Xiaoquan and Zhao, Hongke and Wu, Likang
-          and Zhao, Chuang and Zhu, Hengshu},
-  journal={arXiv preprint arXiv:2512.01453},
-  year={2025}
-}</div>
+<code class="citation-code">@article{zhi2025reinventing,
+  title   = {Reinventing Clinical Dialogue: Agentic Paradigms
+             for LLM Enabled Healthcare Communication},
+  author  = {Zhi, Xiaoquan and Zhao, Hongke and Wu, Likang
+             and Zhao, Chuang and Zhu, Hengshu},
+  journal = {arXiv preprint arXiv:2512.01453},
+  year    = {2025}
+}</code>
+            </div>
         </div>
     </div>
 </section>
