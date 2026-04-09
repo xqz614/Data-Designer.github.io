@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Clinical Dialogue Survey</title>
+    <meta name="description" content="Reinventing Clinical Dialogue: Agentic Paradigms for LLM-Enabled Healthcare Communication - A Comprehensive Survey">
+    <link rel="icon" type="image/png" href="./resources/taxonomy.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-primary: #1a56db;
+            --blue-dark: #1e3a5f;
+            --blue-light: #3b82f6;
+            --blue-lighter: #dbeafe;
+            --blue-bg: #eff6ff;
+            --orange-primary: #ea580c;
+            --orange-light: #f97316;
+            --orange-lighter: #fff7ed;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --bg-white: #ffffff;
+            --bg-light: #f8fafc;
+            --border-light: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Fixed Header ── */
+        .fixed-header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0.8rem 0;
+            transform: translateY(-100%);
+            transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+            box-shadow: 0 1px 3px rgba(0,0,0,.06);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .fixed-header.show { transform: translateY(0); }
+        .fixed-header .fixed-title {
+            font-size: 1.1rem; font-weight: 700; text-align: center;
+            color: var(--blue-dark); letter-spacing: -0.02em;
+        }
+
+        /* ── Containers ── */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container-narrow { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--blue-bg) 0%, var(--bg-white) 50%, var(--orange-lighter) 100%);
+            overflow: hidden; padding: 80px 0 60px;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(26,86,219,.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 50%, rgba(234,88,12,.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        @keyframes float { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-2%,2%)} }
+
+        .hero-content {
+            position: relative; z-index: 2; text-align: center;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; background: rgba(26,86,219,.08);
+            border: 1px solid rgba(26,86,219,.15); border-radius: 100px;
+            font-size: .82rem; font-weight: 600; color: var(--blue-primary);
+            margin-bottom: 28px; letter-spacing: .03em; text-transform: uppercase;
+        }
+        .hero-title {
+            font-size: 3.2rem; font-weight: 800; line-height: 1.15;
+            margin-bottom: 20px; letter-spacing: -0.03em; color: var(--text-primary);
+        }
+        .hero-title .hl-blue {
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-title .hl-orange {
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem; font-weight: 400; color: var(--text-secondary);
+            margin-bottom: 36px; line-height: 1.65; max-width: 720px;
+            margin-left: auto; margin-right: auto;
+        }
+
+        /* ── Buttons ── */
+        .action-buttons { display: flex; justify-content: center; gap: 14px; margin-bottom: 40px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 24px; border-radius: 10px; font-weight: 600;
+            font-size: .9rem; text-decoration: none;
+            transition: all .25s cubic-bezier(.4,0,.2,1); border: none; cursor: pointer;
+        }
+        .btn-arxiv { background: #b31b1b; color: #fff; box-shadow: 0 2px 8px rgba(179,27,27,.25); }
+        .btn-arxiv:hover { background: #9a1717; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(179,27,27,.3); }
+        .btn-github { background: var(--text-primary); color: #fff; box-shadow: 0 2px 8px rgba(30,41,59,.25); }
+        .btn-github:hover { background: #334155; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(30,41,59,.3); }
+        .btn-hf { background: var(--orange-primary); color: #fff; box-shadow: 0 2px 8px rgba(234,88,12,.25); }
+        .btn-hf:hover { background: #c2410c; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(234,88,12,.3); }
+
+        /* ── Authors ── */
+        .authors { margin-bottom: 12px; font-size: 1.05rem; line-height: 1.8; }
+        .authors a { color: var(--blue-primary); text-decoration: none; font-weight: 500; transition: color .2s; }
+        .authors a:hover { color: var(--blue-dark); text-decoration: underline; }
+        .authors sup { font-size: .7em; color: var(--orange-primary); font-weight: 600; }
+        .affiliations { font-size: .88rem; color: var(--text-muted); line-height: 1.6; }
+        .affiliations sup { font-size: .75em; color: var(--orange-primary); font-weight: 600; }
+        .corresponding { font-size: .82rem; color: var(--text-muted); margin-top: 6px; font-style: italic; }
+
+        /* ── Teaser ── */
+        .teaser-section { padding: 40px 0 20px; background: var(--bg-white); }
+        .teaser-wrapper {
+            max-width: 900px; margin: 0 auto; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.04);
+            border: 1px solid var(--border-light);
+        }
+        .teaser-wrapper img { width: 100%; height: auto; display: block; }
+        .teaser-caption {
+            text-align: center; font-size: .88rem; color: var(--text-muted);
+            margin-top: 16px; font-style: italic; padding: 0 24px;
+        }
+
+        /* ── Sections ── */
+        .section { padding: 80px 0; }
+        .section-alt { background: var(--bg-light); }
+        .section-title {
+            font-size: 2rem; font-weight: 700; margin-bottom: 16px;
+            color: var(--text-primary); text-align: center; letter-spacing: -0.02em;
+        }
+        .section-title .accent { color: var(--blue-primary); }
+        .section-divider {
+            width: 60px; height: 3px;
+            background: linear-gradient(90deg, var(--blue-primary), var(--orange-primary));
+            margin: 0 auto 40px; border-radius: 2px;
+        }
+
+        /* ── Text blocks ── */
+        .body-text {
+            font-size: 1.05rem; line-height: 1.85; color: var(--text-secondary);
+            text-align: justify; hyphens: auto;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, var(--blue-primary) 0%, #2563eb 100%);
+            color: #fff; padding: 24px 32px; border-radius: 12px;
+            margin: 28px 0; font-weight: 500; font-size: 1.02rem;
+            line-height: 1.7; text-align: center;
+            box-shadow: 0 4px 20px rgba(26,86,219,.2);
+        }
+        .highlight-box.orange {
+            background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-light) 100%);
+            box-shadow: 0 4px 20px rgba(234,88,12,.2);
+        }
+
+        /* ── Figure ── */
+        .figure-block { margin: 40px auto; max-width: 900px; }
+        .figure-block img {
+            width: 100%; height: auto; border-radius: 14px;
+            box-shadow: 0 8px 40px rgba(0,0,0,.08); border: 1px solid var(--border-light);
+        }
+        .figure-block.no-shadow img { box-shadow: none; border: none; }
+        .figure-caption {
+            text-align: center; font-size: .88rem; color: var(--text-muted);
+            margin-top: 14px; font-style: italic;
+        }
+
+        /* ── Stats ── */
+        .stats-bar { display: flex; justify-content: center; gap: 48px; padding: 40px 0; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+        .stat-number.blue { color: var(--blue-primary); }
+        .stat-number.orange { color: var(--orange-primary); }
+        .stat-label { font-size: .85rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
+
+        /* ── Paradigm Cards ── */
+        .paradigm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+        .paradigm-card {
+            background: var(--bg-white); border-radius: 14px; padding: 28px;
+            border: 1px solid var(--border-light);
+            transition: all .3s cubic-bezier(.4,0,.2,1);
+            position: relative; overflow: hidden;
+        }
+        .paradigm-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+        .paradigm-card.blue::before { background: linear-gradient(90deg, var(--blue-primary), var(--blue-light)); }
+        .paradigm-card.orange::before { background: linear-gradient(90deg, var(--orange-primary), var(--orange-light)); }
+        .paradigm-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.08); border-color: transparent; }
+        .paradigm-icon { font-size: 1.8rem; margin-bottom: 12px; }
+        .paradigm-name { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+        .paradigm-abbr { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; }
+        .paradigm-card.blue .paradigm-abbr { color: var(--blue-primary); }
+        .paradigm-card.orange .paradigm-abbr { color: var(--orange-primary); }
+        .paradigm-desc { font-size: .9rem; color: var(--text-secondary); line-height: 1.65; }
+
+        /* ── Contribution List ── */
+        .contribution-list { display: flex; flex-direction: column; gap: 24px; margin-top: 8px; }
+        .contribution-item {
+            display: flex; gap: 20px; align-items: flex-start;
+            padding: 24px; background: var(--bg-white); border-radius: 14px;
+            border: 1px solid var(--border-light); transition: all .3s ease;
+        }
+        .contribution-item:hover { box-shadow: 0 6px 24px rgba(0,0,0,.06); border-color: transparent; }
+        .contribution-number {
+            flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1.1rem; color: #fff;
+        }
+        .contribution-number.blue { background: linear-gradient(135deg, var(--blue-primary), var(--blue-light)); }
+        .contribution-number.orange { background: linear-gradient(135deg, var(--orange-primary), var(--orange-light)); }
+        .contribution-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+        .contribution-content p { font-size: .95rem; color: var(--text-secondary); line-height: 1.65; }
+
+        /* ── Scope Cards ── */
+        .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+        .scope-card {
+            padding: 28px; border-radius: 14px; border: 1px solid var(--border-light);
+            background: var(--bg-white); transition: all .3s ease;
+        }
+        .scope-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+        .scope-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .scope-card h3 i { color: var(--blue-primary); font-size: 1.2rem; }
+        .scope-card.orange h3 i { color: var(--orange-primary); }
+        .scope-list { list-style: none; padding: 0; }
+        .scope-list li {
+            padding: 8px 0; font-size: .92rem; color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-light);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .scope-list li:last-child { border-bottom: none; }
+        .scope-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+        .scope-card .scope-list li::before { background: var(--blue-primary); }
+        .scope-card.orange .scope-list li::before { background: var(--orange-primary); }
+
+        /* ── Citation ── */
+        .citation-section { background: var(--bg-light); padding: 80px 0; }
+        .citation-box {
+            background: var(--blue-dark); color: #e2e8f0;
+            padding: 28px 32px; border-radius: 14px;
+            font-family: 'SF Mono','Fira Code','Consolas',monospace;
+            font-size: .85rem; line-height: 1.7;
+            max-width: 800px; margin: 0 auto;
+            white-space: pre-wrap; word-break: break-all; overflow-x: auto;
+            position: relative; box-shadow: 0 8px 32px rgba(30,58,95,.3);
+        }
+        .citation-label {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
+            color: #fff; padding: 4px 12px; border-radius: 6px;
+            font-family: 'Inter',sans-serif; font-size: .78rem; font-weight: 600;
+            margin-bottom: 16px; letter-spacing: .03em;
+        }
+        .copy-btn {
+            position: absolute; top: 16px; right: 16px;
+            background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+            color: #94a3b8; padding: 6px 12px; border-radius: 6px;
+            cursor: pointer; font-size: .78rem; font-family: 'Inter',sans-serif;
+            transition: all .2s;
+        }
+        .copy-btn:hover { background: rgba(255,255,255,.18); color: #fff; }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--blue-dark); color: #94a3b8;
+            text-align: center; padding: 40px 0; font-size: .88rem;
+        }
+        .footer a { color: var(--blue-light); text-decoration: none; transition: color .2s; }
+        .footer a:hover { color: #fff; }
+
+        /* ── Fade-in ── */
+        .fade-in { opacity: 0; transform: translateY(24px); transition: all .7s cubic-bezier(.4,0,.2,1); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.05rem; }
+            .action-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+            .paradigm-grid, .scope-grid { grid-template-columns: 1fr; }
+            .section { padding: 56px 0; }
+            .section-title { font-size: 1.7rem; }
+            .stats-bar { gap: 28px; }
+            .stat-number { font-size: 1.8rem; }
+            .citation-box { font-size: .75rem; padding: 20px; }
+            .contribution-item { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════ Fixed Header ═══════════ -->
+<div class="fixed-header" id="fixedHeader">
+    <div class="container"><div class="fixed-title">Agentic Clinical Dialogue Survey</div></div>
+</div>
+
+<!-- ═══════════ Hero ═══════════ -->
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-file-alt"></i> Survey Paper &middot; arXiv 2512.01453</div>
+
+        <h1 class="hero-title">
+            Reinventing <span class="hl-blue">Clinical Dialogue</span>:<br>
+            <span class="hl-orange">Agentic Paradigms</span> for LLM-Enabled<br>
+            Healthcare Communication
+        </h1>
+
+        <p class="hero-subtitle">
+            A comprehensive survey providing a first-principles analysis of the cognitive architecture underpinning the paradigm shift from generative text prediction to agentic autonomy in medical AI.
+        </p>
+
+        <div class="action-buttons">
+            <a href="https://arxiv.org/abs/2512.01453" class="btn btn-arxiv" target="_blank"><i class="fas fa-file-pdf"></i> ArXiv Paper</a>
+            <a href="https://github.com/xqz614/Awesome-Agentic-Clinical-Dialogue" class="btn btn-github" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+            <a href="https://huggingface.co/papers/2512.01453" class="btn btn-hf" target="_blank">&#129303; HuggingFace</a>
+        </div>
+
+        <div class="authors">
+            <a href="https://github.com/xqz614">Xiaoquan Zhi</a><sup>1</sup>,
+            <a href="#">Hongke Zhao</a><sup>1*</sup>,
+            <a href="#">Likang Wu</a><sup>1</sup>,
+            <a href="https://github.com/Data-Designer">Chuang Zhao</a><sup>1</sup>,
+            <a href="#">Hengshu Zhu</a><sup>2</sup>
+        </div>
+        <div class="affiliations">
+            <sup>1</sup>Tianjin University &nbsp;&nbsp;
+            <sup>2</sup>Computer Network Information Center, Chinese Academy of Sciences
+        </div>
+        <div class="corresponding">* Corresponding author</div>
+    </div>
+</section>
+
+<!-- ═══════════ Teaser: Paradigm Evolution ═══════════ -->
+<section class="teaser-section">
+    <div class="container">
+        <div class="teaser-wrapper">
+            <img src="./resources/diff_of_paradigm.png" alt="Evolution of Clinical Dialogue Systems">
+        </div>
+        <p class="teaser-caption">
+            The evolution from pipeline-based to LLM-based to agentic clinical dialogue systems, where the LLM functions as a central reasoning engine with planning, memory, action, and collaboration capabilities.
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════ Abstract ═══════════ -->
+<section class="section section-alt" id="abstract">
+    <div class="container-narrow">
+        <div class="fade-in">
+            <h2 class="section-title"><span class="accent">Abstract</span></h2>
+            <div class="section-divider"></div>
+            <div class="body-text">
+                <p>
+                    Clinical dialogue represents a complex duality requiring both the empathetic fluency of natural conversation and the rigorous precision of evidence-based medicine. While Large Language Models possess unprecedented linguistic capabilities, their architectural reliance on reactive and stateless processing often favors probabilistic plausibility over factual veracity. This structural limitation has catalyzed a paradigm shift in medical AI from generative text prediction to agentic autonomy, where the model functions as a central reasoning engine capable of deliberate planning and persistent memory.
+                </p>
+
+                <div class="highlight-box">
+                    This survey provides a first-principles analysis of the cognitive architecture underpinning the shift from generative text prediction to agentic autonomy in clinical dialogue, introducing a novel taxonomy along the axes of <strong>knowledge source</strong> and <strong>agency objective</strong>.
+                </div>
+
+                <p>
+                    Moving beyond existing reviews that primarily catalog downstream applications, we introduce a novel taxonomy structured along the orthogonal axes of knowledge source and agency objective to delineate the provenance of clinical knowledge against the system's operational scope. This framework facilitates a systematic analysis of the intrinsic trade-offs between creativity and reliability by categorizing methods into four archetypes: <strong>Latent Space Clinicians</strong>, <strong>Emergent Planners</strong>, <strong>Grounded Synthesizers</strong>, and <strong>Verifiable Workflow Automators</strong>. For each paradigm, we deconstruct the technical realization across the entire cognitive pipeline, encompassing strategic planning, memory management, action execution, collaboration, and evolution to reveal how distinct architectural choices balance the tension between autonomy and safety.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ Stats ═══════════ -->
+<section class="section" style="padding:48px 0;">
+    <div class="container">
+        <div class="stats-bar fade-in">
+            <div class="stat-item"><div class="stat-number blue">365+</div><div class="stat-label">GitHub Stars</div></div>
+            <div class="stat-item"><div class="stat-number orange">200+</div><div class="stat-label">Papers Covered</div></div>
+            <div class="stat-item"><div class="stat-number blue">4</div><div class="stat-label">Agent Paradigms</div></div>
+            <div class="stat-item"><div class="stat-number orange">5</div><div class="stat-label">Dialogue Types</div></div>
+            <div class="stat-item"><div class="stat-number blue">50+</div><div class="stat-label">Datasets</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ Four Paradigms ═══════════ -->
+<section class="section section-alt" id="paradigms">
+    <div class="container">
+        <div class="fade-in">
+            <h2 class="section-title">Four <span class="accent">Agentic Paradigms</span></h2>
+            <div class="section-divider"></div>
+            <p class="body-text" style="max-width:860px;margin:0 auto 8px;">
+                We categorize existing methods into four archetypes based on two orthogonal axes: the <strong>knowledge source</strong> (implicit knowledge navigation vs. explicit knowledge grounding) and the <strong>agency objective</strong> (event cognition vs. goal execution). Each paradigm represents a distinct philosophy for balancing the fundamental tension between autonomy and safety in clinical AI systems.
+            </p>
+
+            <div class="paradigm-grid">
+                <div class="paradigm-card blue">
+                    <div class="paradigm-icon">&#129302;</div>
+                    <div class="paradigm-abbr">LSC</div>
+                    <div class="paradigm-name">Latent Space Clinicians</div>
+                    <p class="paradigm-desc">Leverage the LLM's vast internal knowledge for creative synthesis and forming a coherent understanding of clinical situations. Trust the model's emergent reasoning capabilities to function like an experienced clinical assistant.</p>
+                </div>
+                <div class="paradigm-card orange">
+                    <div class="paradigm-icon">&#129504;</div>
+                    <div class="paradigm-abbr">EP</div>
+                    <div class="paradigm-name">Emergent Planners</div>
+                    <p class="paradigm-desc">Grant the LLM a high degree of autonomy, allowing it to dynamically devise multi-step plans to achieve complex clinical goals. The agent's behavior is emergent, independently determining necessary steps.</p>
+                </div>
+                <div class="paradigm-card blue">
+                    <div class="paradigm-icon">&#128269;</div>
+                    <div class="paradigm-abbr">GS</div>
+                    <div class="paradigm-name">Grounded Synthesizers</div>
+                    <p class="paradigm-desc">Operate under the principle that LLMs should function as powerful natural language interfaces to reliable external information, retrieving, integrating, and accurately summarizing from verifiable sources.</p>
+                </div>
+                <div class="paradigm-card orange">
+                    <div class="paradigm-icon">&#9989;</div>
+                    <div class="paradigm-abbr">VWA</div>
+                    <div class="paradigm-name">Verifiable Workflow Automators</div>
+                    <p class="paradigm-desc">Agent autonomy is strictly constrained within pre-defined, verifiable clinical workflows or decision trees, ensuring maximum safety and predictability through structured processes.</p>
+                </div>
+            </div>
+
+            <!-- Taxonomy Figure -->
+            <div class="figure-block" style="margin-top:48px;">
+                <img src="./resources/taxonomy_paper.png" alt="Taxonomy Framework">
+                <p class="figure-caption">Our proposed taxonomy framework structured along the orthogonal axes of knowledge source and agency objective. Each quadrant represents a distinct agentic paradigm with its cognitive pipeline components.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ Key Contributions ═══════════ -->
+<section class="section" id="contributions">
+    <div class="container">
+        <div class="fade-in">
+            <h2 class="section-title">Key <span class="accent">Contributions</span></h2>
+            <div class="section-divider"></div>
+            <div class="contribution-list" style="max-width:860px;margin:0 auto;">
+                <div class="contribution-item">
+                    <div class="contribution-number blue">1</div>
+                    <div class="contribution-content">
+                        <h3>Novel Taxonomy Framework</h3>
+                        <p>We introduce a novel taxonomy structured along the orthogonal axes of knowledge source and agency objective, categorizing methods into four distinct archetypes that capture the fundamental design trade-offs in clinical AI agents.</p>
+                    </div>
+                </div>
+                <div class="contribution-item">
+                    <div class="contribution-number orange">2</div>
+                    <div class="contribution-content">
+                        <h3>Comprehensive Cognitive Pipeline Analysis</h3>
+                        <p>For each paradigm, we provide an in-depth deconstruction of the technical realization across the entire cognitive pipeline: strategic planning, memory management, action execution, collaboration, and evolution.</p>
+                    </div>
+                </div>
+                <div class="contribution-item">
+                    <div class="contribution-number blue">3</div>
+                    <div class="contribution-content">
+                        <h3>Bridging Theory and Practice</h3>
+                        <p>We bridge abstract design philosophies with the pragmatic implementation ecosystem by mapping real-world applications to our taxonomy and systematically reviewing benchmarks and evaluation metrics specific to clinical agents.</p>
+                    </div>
+                </div>
+                <div class="contribution-item">
+                    <div class="contribution-number orange">4</div>
+                    <div class="contribution-content">
+                        <h3>Curated Resource Collection</h3>
+                        <p>We provide a comprehensive, continuously updated resource collection including 200+ papers, 50+ datasets across five dialogue types (QA, task-oriented, recommendation, supportive, and hybrid-function dialogue), tutorials, and leading research groups.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ Paper Statistics ═══════════ -->
+<section class="section section-alt" id="statistics">
+    <div class="container">
+        <div class="fade-in">
+            <h2 class="section-title">Publication <span class="accent">Statistics</span></h2>
+            <div class="section-divider"></div>
+            <div class="figure-block" style="max-width:800px;">
+                <img src="./resources/paper_stats.png" alt="Publication Statistics">
+                <p class="figure-caption">The statistics of publications cited in this survey. The bar chart (left) displays the number of published articles each year, and the pie chart (right) illustrates the percentage of articles published in each top venue.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ Survey Scope ═══════════ -->
+<section class="section" id="scope">
+    <div class="container">
+        <div class="fade-in">
+            <h2 class="section-title">Survey <span class="accent">Scope</span></h2>
+            <div class="section-divider"></div>
+            <div class="scope-grid" style="max-width:860px;margin:0 auto;">
+                <div class="scope-card">
+                    <h3><i class="fas fa-database"></i> Clinical Dialogue Datasets</h3>
+                    <ul class="scope-list">
+                        <li>QA Dialogue (MedQA, PubMedQA, etc.)</li>
+                        <li>Task-oriented Dialogue (MedDialog, etc.)</li>
+                        <li>Recommendation Dialogue</li>
+                        <li>Supportive Dialogue</li>
+                        <li>Hybrid-function Dialogue</li>
+                    </ul>
+                </div>
+                <div class="scope-card orange">
+                    <h3><i class="fas fa-cogs"></i> Cognitive Pipeline</h3>
+                    <ul class="scope-list">
+                        <li>Strategic Planning</li>
+                        <li>Memory Management</li>
+                        <li>Action Execution</li>
+                        <li>Collaboration &amp; Multi-agent</li>
+                        <li>Self-evolution &amp; Meta-learning</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h3><i class="fas fa-flask"></i> Methods &amp; Models</h3>
+                    <ul class="scope-list">
+                        <li>Latent Space Clinicians (LSC)</li>
+                        <li>Emergent Planners (EP)</li>
+                        <li>Grounded Synthesizers (GS)</li>
+                        <li>Verifiable Workflow Automators (VWA)</li>
+                    </ul>
+                </div>
+                <div class="scope-card orange">
+                    <h3><i class="fas fa-graduation-cap"></i> Resources</h3>
+                    <ul class="scope-list">
+                        <li>Tutorials &amp; Courses</li>
+                        <li>Leading Research Groups</li>
+                        <li>Benchmarks &amp; Evaluation</li>
+                        <li>Open-source Implementations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ Challenges & Future ═══════════ -->
+<section class="section section-alt" id="challenges">
+    <div class="container">
+        <div class="fade-in">
+            <h2 class="section-title">Challenges &amp; <span class="accent">Future Directions</span></h2>
+            <div class="section-divider"></div>
+            <div class="body-text" style="max-width:860px;margin:0 auto;">
+                <p>
+                    We identify four core challenge areas for the future of agentic clinical dialogue: <strong>Neuro-Symbolic Cognitive Architecture</strong> for integrating structured medical knowledge with neural reasoning; <strong>Holistic Patient Management</strong> for lifelong memory, sociolinguistic adaptation, and dynamic digital models; <strong>Human-AI Teaming</strong> for heterogeneous agent ecosystems and cultural competence; and <strong>High-Stakes Control</strong> for error recovery, clinical ethics, and safety guardrails.
+                </p>
+            </div>
+            <div class="figure-block" style="max-width:640px;">
+                <img src="./resources/challenge.png" alt="Future Challenges and Directions">
+                <p class="figure-caption">A structured overview of open challenges and future research directions for agentic clinical dialogue, organized around four core themes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ Looking Forward ═══════════ -->
+<section class="section" id="conclusion">
+    <div class="container-narrow">
+        <div class="fade-in">
+            <h2 class="section-title">Looking <span class="accent">Forward</span></h2>
+            <div class="section-divider"></div>
+            <div class="body-text">
+                <p>
+                    Furthermore, we bridge abstract design philosophies with the pragmatic implementation ecosystem. By mapping real-world applications to our taxonomy and systematically reviewing benchmarks and evaluation metrics specific to clinical agents, we provide a comprehensive reference for future development. We believe that the agentic paradigm is still a largely unexplored area in clinical dialogue, and we hope this survey and the accompanying resource repository will provide valuable insights for the research community.
+                </p>
+                <div class="highlight-box orange">
+                    We believe the future of clinical AI lies in the principled integration of agentic capabilities &mdash; planning, memory, tool use, and collaboration &mdash; with the rigorous safety requirements of healthcare, moving beyond reactive text generation toward truly autonomous clinical reasoning.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ Citation ═══════════ -->
+<section class="citation-section" id="citation">
+    <div class="container">
+        <div class="fade-in">
+            <h2 class="section-title">Citation</h2>
+            <div class="section-divider"></div>
+            <div class="citation-box">
+                <button class="copy-btn" onclick="copyBibtex()"><i class="fas fa-copy"></i> Copy</button>
+                <div class="citation-label">BibTeX</div>
+@article{zhi2025reinventing,
+  title={Reinventing Clinical Dialogue: Agentic Paradigms
+         for LLM Enabled Healthcare Communication},
+  author={Zhi, Xiaoquan and Zhao, Hongke and Wu, Likang
+          and Zhao, Chuang and Zhu, Hengshu},
+  journal={arXiv preprint arXiv:2512.01453},
+  year={2025}
+}</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ Footer ═══════════ -->
+<footer class="footer">
+    <div class="container">
+        <p style="margin-bottom:8px;">
+            <a href="https://arxiv.org/abs/2512.01453" style="margin:0 12px;">ArXiv</a>
+            <a href="https://github.com/xqz614/Awesome-Agentic-Clinical-Dialogue" style="margin:0 12px;">GitHub</a>
+            <a href="https://huggingface.co/papers/2512.01453" style="margin:0 12px;">HuggingFace</a>
+        </p>
+        <p>&copy; 2025 ADM Lab, Tianjin University. Built for academic research purposes.</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hero = document.getElementById('hero');
+    const fixedHeader = document.getElementById('fixedHeader');
+
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const heroHeight = hero.offsetHeight;
+        if (scrolled > heroHeight * 0.6) { fixedHeader.classList.add('show'); }
+        else { fixedHeader.classList.remove('show'); }
+    });
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+
+function copyBibtex() {
+    const bibtex = `@article{zhi2025reinventing,
+  title={Reinventing Clinical Dialogue: Agentic Paradigms for LLM Enabled Healthcare Communication},
+  author={Zhi, Xiaoquan and Zhao, Hongke and Wu, Likang and Zhao, Chuang and Zhu, Hengshu},
+  journal={arXiv preprint arXiv:2512.01453},
+  year={2025}
+}`;
+    navigator.clipboard.writeText(bibtex).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Copy'; }, 2000);
+    });
+}
+</script>
+</body>
+</html>
